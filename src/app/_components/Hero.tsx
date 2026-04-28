@@ -21,9 +21,8 @@ export default function Hero({
 
   return (
     <section className={styles.hero}>
-      <div className={styles.grain} />
-
       <div className={styles.posterFrame}>
+        <div className={styles.grain} />
         <div className={styles.metaGrid}>
           <div>
             <span>Funkcamp</span>
