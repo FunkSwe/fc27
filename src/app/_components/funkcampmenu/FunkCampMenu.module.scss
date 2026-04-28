@@ -1,0 +1,296 @@
+.menuContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.menuContainerBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 9998;
+  transition:
+    background 0.3s ease,
+    backdrop-filter 0.3s ease;
+  pointer-events: none;
+}
+
+.scrolled {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menuBar,
+.menuOverlayBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10002;
+
+  padding: 1rem 0.5rem;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  pointer-events: none;
+}
+
+.menuLogo {
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  border: 2px solid #bebebe;
+  height: 64px;
+  width: 64px;
+
+  display: grid;
+  place-content: center;
+
+  font-weight: 800;
+  transition: all 0.3s ease-in-out;
+  background: white;
+
+  pointer-events: auto;
+
+  a {
+    width: inherit;
+    height: inherit;
+    display: grid;
+    place-content: center;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0.5rem;
+  }
+
+  &:hover {
+    background: #e9e9e9;
+    border: 5px solid #545454;
+  }
+}
+
+.menuOpen,
+.menuClose {
+  /* appearance: none; */
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+  pointer-events: auto;
+
+  span {
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+    border: 2px solid #000;
+    height: 64px;
+    width: 64px;
+    color: #f3131f;
+    display: grid;
+    place-content: center;
+
+    font-size: clamp(14px, 2vw, 20px);
+    font-weight: 800;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.menuOpen {
+  color: #e5e4e4;
+
+  span:hover {
+    color: #000;
+    background: #fff;
+  }
+}
+
+.menuClose {
+  color: #000;
+
+  span:hover {
+    background: #000;
+    color: #f4eeee;
+  }
+}
+
+.menuOverlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: #f3131f;
+  z-index: 10000;
+
+  display: flex;
+  overflow: hidden;
+
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  pointer-events: none;
+
+  transition: clip-path 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.menuOverlayOpen {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  pointer-events: auto;
+
+  .menuLinkItem {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .menuInfo {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menuCopy {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding-top: 12rem;
+  padding-left: 12rem;
+  padding-bottom: 4vh;
+}
+
+.menuLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.menuLinkItem {
+  width: max-content;
+  pointer-events: auto;
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateX(100px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.35s ease;
+}
+
+.menuLink {
+  color: #000;
+  text-decoration: none;
+
+  font-family: var(--font-archivo-black), sans-serif;
+  font-size: clamp(50px, 4.5vw + 1rem, 100px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 85%;
+  text-transform: uppercase;
+
+  &:hover {
+    color: #fff;
+    transition: color 0.3s ease;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+  }
+}
+
+.menuLetter {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.menuInfo {
+  pointer-events: auto;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.3s ease 0.35s,
+    transform 0.3s ease 0.35s;
+}
+
+.menuInfoCol {
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  color: #000;
+
+  p {
+    margin: 0;
+  }
+}
+
+.copyButton {
+  margin-left: 10px;
+  border: none;
+  background: transparent;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  pointer-events: auto;
+
+  &:hover {
+    background-color: #000;
+    border-radius: 5px;
+  }
+}
+
+.copySuccess {
+  color: rgb(182, 240, 182);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+  font-size: 1rem;
+  background-color: black;
+  border-radius: 6px;
+  padding: 0.25rem 1rem;
+  margin-left: 24px;
+}
+
+@media (max-width: 900px) {
+  .menuLogo,
+  .menuOpen span,
+  .menuClose span {
+    height: 46px;
+    width: 46px;
+  }
+
+  .menuCopy {
+    padding-top: 8rem;
+    padding-left: 4rem;
+    padding-right: 2rem;
+  }
+
+  .menuLink {
+    font-size: clamp(50px, 14vw, 90px);
+  }
+
+  .menuInfoCol {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .copySuccess {
+    position: absolute;
+    left: 0;
+    right: auto;
+    bottom: -2rem;
+    margin-left: 0;
+  }
+}
