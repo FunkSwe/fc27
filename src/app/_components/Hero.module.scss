@@ -86,10 +86,10 @@
   font-weight: 900;
   left: 50%;
   top: 18%;
-  transform: translateX(-50%);
+  transform: translateX(-52%);
 
   z-index: 1;
-  width: 120%;
+  width: 100%;
 
   margin: 0;
 
@@ -97,7 +97,7 @@
   text-align: center;
   text-transform: uppercase;
 
-  font-size: clamp(8rem, 18vw, 13rem);
+  font-size: clamp(6rem, 16vw, 9rem);
   font-weight: 900;
   line-height: 0.68;
   letter-spacing: -0.14em;
