@@ -106,7 +106,7 @@
 
   color: #f3131f;
   font-family: var(--font-archivo-black), sans-serif;
-  font-size: clamp(6rem, 16vw, 15rem);
+  font-size: clamp(6rem, 16.5vw, 24rem);
   font-weight: 400;
   line-height: 0.7;
   letter-spacing: -0.14em;
@@ -236,6 +236,10 @@
   .imageWrapper {
     height: clamp(330px, 75vw, 470px);
   }
+
+  .heroImage {
+  opacity: 0.8;
+}
 }
 
 @media (max-width: 480px) {
@@ -248,7 +252,7 @@
   }
 
   .bigTitle {
-    top: 31%;
+    top: 20%;
     font-size: 30vw;
     line-height: 0.72;
   }
@@ -258,7 +262,7 @@
   }
 
   .imageWrapper {
-    height: clamp(310px, 88vw, 430px);
+    height: clamp(320px, 88vw, 460px);
   }
 
   .number {
