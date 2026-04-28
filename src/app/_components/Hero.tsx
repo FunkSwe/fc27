@@ -31,6 +31,11 @@ export default function Hero({
           </div>
 
           <div>
+            <span>Style</span>
+            <p>Locking</p>
+          </div>
+
+          <div>
             <span>Start</span>
             <p>26.03.2027</p>
           </div>
@@ -38,16 +43,6 @@ export default function Hero({
           <div>
             <span>End</span>
             <p>29.03.2027</p>
-          </div>
-
-          <div>
-            <span>Style</span>
-            <p>Locking</p>
-          </div>
-
-          <div className={styles.metaRight}>
-            <span>Worldwide</span>
-            <p>To Stocktown</p>
           </div>
         </div>
 
@@ -72,7 +67,7 @@ export default function Hero({
         <div className={styles.bottomContent}>
           <p className={styles.number}>{numberText}</p>
 
-          <div className={styles.barcode} aria-hidden="true">
+          <div className={styles.barcode} aria-hidden='true'>
             {barcodeBars.map((height, index) => (
               <span key={index} style={{ height: `${height}px` }} />
             ))}

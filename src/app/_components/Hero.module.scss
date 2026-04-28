@@ -4,6 +4,7 @@
   overflow: hidden;
   background: #e9e4d6;
   color: #000;
+  font-family: var(--geist-sans);
 }
 
 .grain {
@@ -81,6 +82,8 @@
 
 .bigTitle {
   position: absolute;
+  font-family: var(--archivo-black);
+  font-weight: 900;
   left: 50%;
   top: 18%;
   transform: translateX(-50%);
@@ -94,10 +97,12 @@
   text-align: center;
   text-transform: uppercase;
 
-  font-size: clamp(5rem, 16vw, 13rem);
-  font-weight: 950;
+  font-size: clamp(8rem, 18vw, 13rem);
+  font-weight: 900;
   line-height: 0.68;
-  letter-spacing: -0.09em;
+  letter-spacing: -0.14em;
+  text-shadow: 0.01em 0.01em #000000, 0 0 #000000;
+  font-stretch: expanded;
 
   user-select: none;
 
@@ -143,7 +148,7 @@
   margin: 0;
 
   color: #f3131f;
-  font-size: clamp(2.5rem, 7vw, 5rem);
+  /* font-size: clamp(2.5rem, 7vw, 5rem); */
   font-weight: 950;
   line-height: 0.9;
   letter-spacing: -0.08em;
@@ -174,7 +179,7 @@
 
   .posterFrame {
     min-height: 100dvh;
-    border-width: 20px;
+    border-width: 1rem;
   }
 
   .metaGrid {
@@ -182,15 +187,12 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .metaRight {
-    display: none;
-  }
 
   .bigTitle {
     top: 23%;
-    font-size: clamp(4.8rem, 24vw, 8rem);
+    font-size: clamp(6rem, 24vw, 10rem);
     line-height: 0.72;
-    font-stretch: expanded;
+
   }
 
   .imageArea {
@@ -204,7 +206,7 @@
 
 @media (max-width: 480px) {
   .posterFrame {
-    
+    padding: 1.5rem;
   }
 
   .metaGrid {
@@ -215,11 +217,20 @@
   }
 
   .bigTitle {
-    top: 25%;
-    font-size: 25vw;
+    top: 30%;
+    font-size: 30vw;
   }
 
   .number {
     font-size: 2.75rem;
+  }
+
+   .imageArea {
+    margin-bottom: 12rem;
+    
+  }
+
+  .imageArea img {
+    filter: drop-shadow(2px 2px 4px rgba(237, 23, 4, 0.899));
   }
 }
