@@ -60,6 +60,7 @@
 .metaGrid {
   position: relative;
   z-index: 5;
+  padding: 1rem 2rem;
 
   width: 100%;
   margin-bottom: auto;
@@ -95,7 +96,7 @@
 .bigTitle {
   position: absolute;
   left: 50%;
-  top: 26%;
+  top: 28.68%;
   transform: translateX(-51.5%) scaleX(1.05);
   transform-origin: center;
 

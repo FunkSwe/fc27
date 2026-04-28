@@ -5,17 +5,20 @@ import Link from 'next/link';
 import { RiFileCopyLine } from 'react-icons/ri';
 import styles from './FunkCampMenu.module.scss';
 
-const menuLinks = [
+type MenuLink = {
+  path: string;
+  label: string;
+};
+
+const menuLinks: MenuLink[] = [
   { path: '/', label: 'Home' },
   { path: '/info', label: 'Info' },
-  // { path: '/schedule', label: 'Schedule' },
-  // { path: '/contact', label: 'Contact' },
 ];
 
 export default function FunkCampMenu() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [copySuccess, setCopySuccess] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [copySuccess, setCopySuccess] = useState<boolean>(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,11 +35,7 @@ export default function FunkCampMenu() {
   }, []);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
 
     return () => {
       document.body.style.overflow = '';
@@ -66,7 +65,11 @@ export default function FunkCampMenu() {
   };
 
   return (
-    <div className={styles.menuContainer}>
+    <div
+      className={`${styles.menuContainer} ${
+        isMenuOpen ? styles.menuIsOpen : ''
+      }`}
+    >
       <div
         className={`${styles.menuContainerBg} ${
           isScrolled ? styles.scrolled : ''
@@ -86,15 +89,18 @@ export default function FunkCampMenu() {
           onClick={toggleMenu}
           aria-label='Open menu'
           aria-expanded={isMenuOpen}
+          aria-controls='funkcamp-menu-overlay'
         >
           <span>Menu</span>
         </button>
       </div>
 
       <div
+        id='funkcamp-menu-overlay'
         className={`${styles.menuOverlay} ${
           isMenuOpen ? styles.menuOverlayOpen : ''
         }`}
+        aria-hidden={!isMenuOpen}
       >
         <div className={styles.menuOverlayBar}>
           <div className={styles.menuLogo}>
@@ -108,6 +114,7 @@ export default function FunkCampMenu() {
             className={styles.menuClose}
             onClick={toggleMenu}
             aria-label='Close menu'
+            aria-expanded={isMenuOpen}
           >
             <span>Close</span>
           </button>

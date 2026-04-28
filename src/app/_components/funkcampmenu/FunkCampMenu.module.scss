@@ -94,10 +94,10 @@
   span {
     padding: 0.5rem 1rem;
     border-radius: 50%;
-    border: 2px solid #000;
+    border: 2px solid #00000011;
     height: 64px;
     width: 64px;
-    color: #f3131f;
+   
     display: grid;
     place-content: center;
 
@@ -108,20 +108,20 @@
 }
 
 .menuOpen {
-  color: #e5e4e4;
+   color: #424141;
 
   span:hover {
-    color: #000;
-    background: #fff;
+    color: rgb(51, 49, 49);
+    background: #ffffff3f;
   }
 }
 
 .menuClose {
-  color: #000;
+   color: antiquewhite;
 
   span:hover {
-    background: #000;
-    color: #f4eeee;
+    background: #b10707;
+    color: #d2cfcf;
   }
 }
 
@@ -188,7 +188,7 @@
 }
 
 .menuLink {
-  color: #000;
+  color: antiquewhite;
   text-decoration: none;
 
   font-family: var(--font-archivo-black), sans-serif;
@@ -199,9 +199,9 @@
   text-transform: uppercase;
 
   &:hover {
-    color: #fff;
+    color: rgb(238, 218, 191);
     transition: color 0.3s ease;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.069));
   }
 }
 
@@ -292,5 +292,32 @@
     right: auto;
     bottom: -2rem;
     margin-left: 0;
+  }
+}
+
+.menuIsOpen {
+  .menuBar {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+.menuOverlayBar {
+  z-index: 10004;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.12s ease,
+    visibility 0s linear 0.12s;
+}
+
+.menuOverlayOpen {
+  .menuOverlayBar {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 0.15s ease 0.2s,
+      visibility 0s linear 0s;
   }
 }
