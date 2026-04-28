@@ -32,6 +32,11 @@ export default function Hero({
             <p>2027</p>
           </div>
 
+           <div>
+            <span>Style</span>
+            <p>Locking</p>
+          </div>
+
           <div>
             <span>Start</span>
             <p>26.03.2027</p>
@@ -42,10 +47,7 @@ export default function Hero({
             <p>29.03.2027</p>
           </div>
 
-          <div className={styles.metaRight}>
-            <span>Style</span>
-            <p>Locking</p>
-          </div>
+         
         </div>
 
         <h1 className={styles.bigTitle} aria-label="Funkcamp 2027">
