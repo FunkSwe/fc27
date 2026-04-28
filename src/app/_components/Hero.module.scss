@@ -47,15 +47,14 @@
 }
 
 .metaGrid {
-  position: absolute;
-  left: clamp(1.5rem, 5vw, 4rem);
-  right: clamp(1.5rem, 5vw, 4rem);
+  position: relative;
+  text-align: left;
   top: 12%;
   z-index: 5;
 
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
 
   color: #f3131f;
   text-transform: uppercase;
