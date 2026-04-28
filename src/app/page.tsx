@@ -7,7 +7,7 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <Hero
-          title='Funkcamp 2027'
+          titleLines={['FUNK', 'CAMP', '2027']}
           subtitle='Best of the best'
           imageSrc='/images/hero-players.png'
         />
