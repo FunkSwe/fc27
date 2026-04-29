@@ -38,13 +38,13 @@ export default function Hero({
           </div>
 
           <div>
-            <span>Start</span>
-            <p>26.03.2027</p>
+            <span>Location</span>
+            <p>Stockholm</p>
           </div>
 
           <div>
-            <span>End</span>
-            <p>29.03.2027</p>
+            <span>Date</span>
+            <p>26.03.2027</p>
           </div>
 
          
