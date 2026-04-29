@@ -105,7 +105,7 @@
 
   margin: 0;
 
-  color: #ed1a24;
+  color: #e2141f;
   font-family: var(--font-archivo-black), sans-serif;
   font-size: clamp(6rem, 16.5vw, 24rem);
   font-weight: 400;
@@ -169,13 +169,17 @@
 .number {
   margin: 0;
 
-  color: #f3131f;
+  color: #e2141f;
   font-family: var(--font-archivo-black), sans-serif;
   font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.08em;
   text-transform: uppercase;
+
+  text-shadow:
+    0.01em 0.01em #000,
+    0 0 #000;
 }
 
 .barcode {
