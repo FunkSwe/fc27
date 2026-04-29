@@ -131,7 +131,7 @@
   width: 100vw;
   height: 100vh;
 
-  background: #f3131f;
+  background: #ab3130;
   z-index: 10000;
 
   display: flex;
@@ -188,7 +188,7 @@
 }
 
 .menuLink {
-  color: antiquewhite;
+  color: #eedbbf;
   text-decoration: none;
 
   font-family: var(--font-archivo-black), sans-serif;
@@ -199,7 +199,7 @@
   text-transform: uppercase;
 
   &:hover {
-    color: rgb(238, 218, 191);
+    color: #e4d1b4;
     transition: color 0.3s ease;
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.069));
   }
