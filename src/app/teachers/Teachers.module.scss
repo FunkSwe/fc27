@@ -1,0 +1,87 @@
+.teachersPage {
+  min-height: 100vh;
+  background: #e9e4d6;
+  color: #111;
+  padding: 9rem clamp(1rem, 4vw, 4rem) 4rem;
+}
+
+.hero {
+  width: 100%;
+  margin: 0 auto 4rem;
+
+  .kicker {
+    margin: 0 0 1rem;
+    color: #000000;
+    font-family: var(--font-archivo-black), sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+  }
+
+  h1 {
+    margin: 0;
+    color: #e2141f;
+    font-family: var(--font-archivo-black), sans-serif;
+    font-size: clamp(2.75rem, 12vw, 11rem);
+    font-weight: 400;
+    line-height: 0.8;
+    letter-spacing: -0.09em;
+    text-transform: uppercase;
+  }
+
+  p {
+    max-width: 760px;
+    margin-top: 1.5rem;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    line-height: 1.4;
+  }
+}
+
+.teacherGrid {
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.notice {
+  width: 100%;
+  margin: 1rem auto 0;
+  border: 3px solid #111;
+  background: transparent;
+  color: #111;
+  padding: clamp(1.5rem, 4vw, 3rem);
+
+  h2 {
+    margin: 0;
+    font-family: var(--font-archivo-black), sans-serif;
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    font-weight: 400;
+    line-height: 0.85;
+    letter-spacing: -0.08em;
+    text-transform: uppercase;
+  }
+
+  p {
+    max-width: 700px;
+    margin: 1rem 0 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 1000px) {
+  .teacherGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .teachersPage {
+    padding-top: 7rem;
+  }
+
+  .teacherGrid {
+    grid-template-columns: 1fr;
+  }
+}

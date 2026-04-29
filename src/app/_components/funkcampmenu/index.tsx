@@ -13,6 +13,7 @@ type MenuLink = {
 const menuLinks: MenuLink[] = [
   { path: '/', label: 'Home' },
   { path: '/info', label: 'Info' },
+  { path: '/teachers', label: 'Teachers' },
 ];
 
 export default function FunkCampMenu() {
