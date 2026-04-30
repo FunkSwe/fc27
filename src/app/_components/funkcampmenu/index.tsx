@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { RiFileCopyLine } from 'react-icons/ri';
 import styles from './FunkCampMenu.module.scss';
@@ -20,6 +20,10 @@ export default function FunkCampMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [copySuccess, setCopySuccess] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+  const [showLogoGif, setShowLogoGif] = useState<boolean>(false);
+  const [logoGifKey, setLogoGifKey] = useState<number>(0);
+  const logoGifTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,6 +69,27 @@ export default function FunkCampMenu() {
     }
   };
 
+  const playLogoGif = () => {
+    setLogoGifKey((prev) => prev + 1);
+    setShowLogoGif(true);
+
+    if (logoGifTimeoutRef.current) {
+      clearTimeout(logoGifTimeoutRef.current);
+    }
+
+    logoGifTimeoutRef.current = setTimeout(() => {
+      setShowLogoGif(false);
+    }, 3000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (logoGifTimeoutRef.current) {
+        clearTimeout(logoGifTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div
       className={`${styles.menuContainer} ${
@@ -79,9 +104,19 @@ export default function FunkCampMenu() {
 
       <div className={styles.menuBar}>
         <div className={styles.menuLogo}>
-          <Link href='/' aria-label='Funkcamp home'>
+          {/*  <Link href='/' aria-label='Funkcamp home'>
             <img src='/fclogosmall.png' alt='Funkcamp logo' />
-          </Link>
+          </Link> */}
+
+          <div className={styles.menuLogo}>
+            <button
+              type='button'
+              aria-label='Play Funkcamp animation'
+              onClick={playLogoGif}
+            >
+              <img src='/fclogosmall.png' alt='Funkcamp logo' />
+            </button>
+          </div>
         </div>
 
         <button
@@ -105,9 +140,18 @@ export default function FunkCampMenu() {
       >
         <div className={styles.menuOverlayBar}>
           <div className={styles.menuLogo}>
-            <Link href='/' aria-label='Funkcamp home' onClick={closeMenu}>
+            {/*  <Link href='/' aria-label='Funkcamp home' onClick={closeMenu}>
               <img src='/fclogosmall.png' alt='Funkcamp logo' />
-            </Link>
+            </Link> */}
+            <div className={styles.menuLogo}>
+              <button
+                type='button'
+                aria-label='Play Funkcamp animation'
+                onClick={playLogoGif}
+              >
+                <img src='/fclogosmall.png' alt='Funkcamp logo' />
+              </button>
+            </div>
           </div>
 
           <button
@@ -171,6 +215,12 @@ export default function FunkCampMenu() {
           </div>
         </div>
       </div>
+
+      {showLogoGif && (
+        <div className={styles.logoGifOverlay} aria-hidden='true'>
+          <img key={logoGifKey} src='/locker.gif' alt='' />
+        </div>
+      )}
     </div>
   );
 }
