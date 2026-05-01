@@ -397,3 +397,85 @@
     opacity: 1;
   }
 }
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  pointer-events: auto;
+}
+
+.headerIconButton {
+  display: grid;
+  place-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+
+  color: #424141;
+  background: rgba(255, 255, 255, 0.9);
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+
+  svg {
+    display: block;
+  }
+
+  &:hover {
+    background: #e2141f;
+    color: #eedbbf;
+    transform: translateY(-1px);
+  }
+}
+
+button.headerIconButton {
+  font: inherit;
+  padding: 0;
+}
+
+.authMenuLinks {
+  margin-top: 1.5rem;
+
+  display: grid;
+  gap: 0.75rem;
+  width: max-content;
+
+  pointer-events: auto;
+}
+
+.authMenuLink,
+.authMenuButton {
+  color: #eedbbf;
+  text-decoration: none;
+
+  font-family: var(--font-archivo-black), sans-serif;
+  font-size: clamp(28px, 3vw + 1rem, 52px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 85%;
+  text-transform: uppercase;
+
+  &:hover {
+    color: #e4d1b4;
+  }
+}
+
+.authMenuButton {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+
+  text-align: left;
+  cursor: pointer;
+}

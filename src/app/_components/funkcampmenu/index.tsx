@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './FunkCampMenu.module.scss';
 
@@ -31,6 +32,74 @@ const LoginIcon = () => (
       stroke='currentColor'
       strokeWidth='2'
       strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+);
+
+const LogoutIcon = () => (
+  <svg
+    width='18'
+    height='18'
+    viewBox='0 0 24 24'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+    aria-hidden='true'
+  >
+    <path
+      d='M14 17l-5-5 5-5'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+    <path
+      d='M9 12h12'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinecap='round'
+    />
+    <path
+      d='M3 19V5a2 2 0 0 1 2-2h6'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+);
+
+const DashboardIcon = () => (
+  <svg
+    width='18'
+    height='18'
+    viewBox='0 0 24 24'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+    aria-hidden='true'
+  >
+    <path
+      d='M3 13h8V3H3v10Z'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinejoin='round'
+    />
+    <path
+      d='M13 21h8V11h-8v10Z'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinejoin='round'
+    />
+    <path
+      d='M13 3h8v6h-8V3Z'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinejoin='round'
+    />
+    <path
+      d='M3 21h8v-6H3v6Z'
+      stroke='currentColor'
+      strokeWidth='2'
       strokeLinejoin='round'
     />
   </svg>
@@ -106,13 +175,49 @@ const menuLinks: MenuLink[] = [
 ];
 
 export default function FunkCampMenu() {
+  const router = useRouter();
+  const pathname = usePathname();
+
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [copySuccess, setCopySuccess] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const [showLogoGif, setShowLogoGif] = useState<boolean>(false);
   const [logoGifKey, setLogoGifKey] = useState<number>(0);
   const logoGifTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const checkAuth = useCallback(async () => {
+    try {
+      const response = await fetch('/api/auth/me', {
+        method: 'GET',
+        cache: 'no-store',
+        credentials: 'include',
+      });
+
+      setIsLoggedIn(response.ok);
+    } catch {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth, pathname]);
+
+  useEffect(() => {
+    const handleAuthChanged = () => {
+      checkAuth();
+    };
+
+    window.addEventListener('auth-changed', handleAuthChanged);
+    window.addEventListener('focus', handleAuthChanged);
+
+    return () => {
+      window.removeEventListener('auth-changed', handleAuthChanged);
+      window.removeEventListener('focus', handleAuthChanged);
+    };
+  }, [checkAuth]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -136,12 +241,39 @@ export default function FunkCampMenu() {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    return () => {
+      if (logoGifTimeoutRef.current) {
+        clearTimeout(logoGifTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
+
+      setIsLoggedIn(false);
+      closeMenu();
+
+      window.dispatchEvent(new Event('auth-changed'));
+
+      router.push('/auth/login');
+      router.refresh();
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
   };
 
   const copyToClipboard = async () => {
@@ -171,14 +303,6 @@ export default function FunkCampMenu() {
     }, 3000);
   };
 
-  useEffect(() => {
-    return () => {
-      if (logoGifTimeoutRef.current) {
-        clearTimeout(logoGifTimeoutRef.current);
-      }
-    };
-  }, []);
-
   return (
     <div
       className={`${styles.menuContainer} ${
@@ -193,63 +317,57 @@ export default function FunkCampMenu() {
 
       <div className={styles.menuBar}>
         <div className={styles.menuLogo}>
-          {/*  <Link href='/' aria-label='Funkcamp home'>
+          <button
+            type='button'
+            aria-label='Play Funkcamp animation'
+            onClick={playLogoGif}
+          >
             <img src='/fclogosmall.png' alt='Funkcamp logo' />
-          </Link> */}
-
-          <div className={styles.menuLogo}>
-            <button
-              type='button'
-              aria-label='Play Funkcamp animation'
-              onClick={playLogoGif}
-            >
-              <img src='/fclogosmall.png' alt='Funkcamp logo' />
-            </button>
-          </div>
+          </button>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <Link
-            href='/auth/login'
-            aria-label='Log in'
-            style={{
-              display: 'grid',
-              placeContent: 'center',
-              width: 34,
-              height: 34,
-              borderRadius: '50%',
-              border: '1px solid rgba(0,0,0,0.12)',
-              color: '#424141',
-              background: 'rgba(255,255,255,0.9)',
-              textDecoration: 'none',
-              transition: 'all 0.2s ease',
-              pointerEvents: 'auto',
-            }}
-            onClick={closeMenu}
-          >
-            <LoginIcon />
-          </Link>
+        <div className={styles.headerActions}>
+          {isLoggedIn ? (
+            <>
+              <Link
+                href='/dashboard'
+                aria-label='Dashboard'
+                className={styles.headerIconButton}
+                onClick={closeMenu}
+              >
+                <DashboardIcon />
+              </Link>
 
-          <Link
-            href='/auth/signup'
-            aria-label='Sign up'
-            style={{
-              display: 'grid',
-              placeContent: 'center',
-              width: 34,
-              height: 34,
-              borderRadius: '50%',
-              border: '1px solid rgba(0,0,0,0.12)',
-              color: '#424141',
-              background: 'rgba(255,255,255,0.9)',
-              textDecoration: 'none',
-              transition: 'all 0.2s ease',
-              pointerEvents: 'auto',
-            }}
-            onClick={closeMenu}
-          >
-            <UserAddIcon />
-          </Link>
+              <button
+                type='button'
+                aria-label='Log out'
+                className={styles.headerIconButton}
+                onClick={handleLogout}
+              >
+                <LogoutIcon />
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                href='/auth/login'
+                aria-label='Log in'
+                className={styles.headerIconButton}
+                onClick={closeMenu}
+              >
+                <LoginIcon />
+              </Link>
+
+              <Link
+                href='/auth/signup'
+                aria-label='Sign up'
+                className={styles.headerIconButton}
+                onClick={closeMenu}
+              >
+                <UserAddIcon />
+              </Link>
+            </>
+          )}
 
           <button
             type='button'
@@ -273,18 +391,13 @@ export default function FunkCampMenu() {
       >
         <div className={styles.menuOverlayBar}>
           <div className={styles.menuLogo}>
-            {/*  <Link href='/' aria-label='Funkcamp home' onClick={closeMenu}>
+            <button
+              type='button'
+              aria-label='Play Funkcamp animation'
+              onClick={playLogoGif}
+            >
               <img src='/fclogosmall.png' alt='Funkcamp logo' />
-            </Link> */}
-            <div className={styles.menuLogo}>
-              <button
-                type='button'
-                aria-label='Play Funkcamp animation'
-                onClick={playLogoGif}
-              >
-                <img src='/fclogosmall.png' alt='Funkcamp logo' />
-              </button>
-            </div>
+            </button>
           </div>
 
           <button
@@ -328,21 +441,44 @@ export default function FunkCampMenu() {
             ))}
           </nav>
 
-          <div style={{ marginTop: '1.5rem', display: 'grid', gap: '0.75rem' }}>
-            <Link
-              href='/auth/login'
-              className={styles.menuLink}
-              onClick={closeMenu}
-            >
-              Log in
-            </Link>
-            <Link
-              href='/auth/signup'
-              className={styles.menuLink}
-              onClick={closeMenu}
-            >
-              Sign up
-            </Link>
+          <div className={styles.authMenuLinks}>
+            {isLoggedIn ? (
+              <>
+                <Link
+                  href='/dashboard'
+                  className={styles.authMenuLink}
+                  onClick={closeMenu}
+                >
+                  Dashboard
+                </Link>
+
+                <button
+                  type='button'
+                  className={styles.authMenuButton}
+                  onClick={handleLogout}
+                >
+                  Log out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href='/auth/login'
+                  className={styles.authMenuLink}
+                  onClick={closeMenu}
+                >
+                  Log in
+                </Link>
+
+                <Link
+                  href='/auth/signup'
+                  className={styles.authMenuLink}
+                  onClick={closeMenu}
+                >
+                  Sign up
+                </Link>
+              </>
+            )}
           </div>
 
           <div className={styles.menuInfo}>

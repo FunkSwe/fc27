@@ -7,6 +7,7 @@ import {
   verifyPassword,
   hashPassword,
   validatePassword,
+  clearAuthCookie,
 } from '@/lib/auth';
 
 export async function PATCH(request: NextRequest) {
@@ -73,6 +74,47 @@ export async function PATCH(request: NextRequest) {
 
     return NextResponse.json(
       { error: 'Server error while changing password.' },
+      { status: 500 },
+    );
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const token = getTokenFromRequest(request);
+
+    if (!token) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const payload = verifyToken(token);
+
+    if (!payload || typeof payload.id !== 'string') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    await connect();
+
+    const deletedUser = await User.findByIdAndDelete(payload.id);
+
+    if (!deletedUser) {
+      return NextResponse.json(
+        { error: 'User not found or already deleted.' },
+        { status: 404 },
+      );
+    }
+
+    const response = NextResponse.json(
+      { message: 'Your account has been deleted.' },
+      { status: 200 },
+    );
+
+    return clearAuthCookie(response);
+  } catch (error) {
+    console.error('Delete account error:', error);
+
+    return NextResponse.json(
+      { error: 'Server error while deleting account.' },
       { status: 500 },
     );
   }

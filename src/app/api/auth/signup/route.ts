@@ -1,14 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import crypto from 'crypto';
 import connect from '@/lib/mongoose';
 import User from '@/models/User';
-import {
-  hashPassword,
-  validatePassword,
-  createToken,
-  createAuthResponse,
-} from '@/lib/auth';
-import { sendAccountVerificationEmail } from '@/lib/mail';
+import { hashPassword, validatePassword } from '@/lib/auth';
+import { sendAccountCreatedEmail } from '@/lib/mail';
 
 export async function POST(request: NextRequest) {
   try {
@@ -53,51 +47,27 @@ export async function POST(request: NextRequest) {
 
     const passwordHash = await hashPassword(password);
 
-    const verificationToken = crypto.randomBytes(32).toString('hex');
-    const verificationHash = await hashPassword(verificationToken);
-    const verificationExpires = new Date(Date.now() + 1000 * 60 * 60 * 24);
-
-    const user = await User.create({
+    await User.create({
       email,
       username,
       passwordHash,
       role: 'user',
-      emailVerified: false,
-      emailVerificationToken: verificationHash,
-      emailVerificationExpires: verificationExpires,
+      emailVerified: true,
       isAdmin: false,
     });
 
     try {
-      await sendAccountVerificationEmail(
-        user.email,
-        user.username,
-        verificationToken,
-      );
+      await sendAccountCreatedEmail(email, username);
     } catch (emailError) {
-      console.error('Verification email failed:', emailError);
+      console.error('Account created email failed:', emailError);
     }
 
-    const token = createToken({
-      id: user._id.toString(),
-      email: user.email,
-      role: user.role,
-    });
-
-    return createAuthResponse(
+    return NextResponse.json(
       {
         message:
-          'Account created successfully. Please check your email and confirm your address.',
-        user: {
-          id: user._id.toString(),
-          email: user.email,
-          username: user.username,
-          role: user.role,
-          emailVerified: user.emailVerified,
-          isAdmin: user.isAdmin,
-        },
+          'Account created successfully. You can now log in.',
       },
-      token,
+      { status: 201 },
     );
   } catch (error) {
     console.error('Signup error:', error);

@@ -5,33 +5,63 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './Login.module.scss';
 
+type ApiResponse = {
+  error?: string;
+  message?: string;
+};
+
+async function readJsonSafely(response: Response): Promise<ApiResponse> {
+  const text = await response.text();
+
+  if (!text) {
+    return {};
+  }
+
+  try {
+    return JSON.parse(text) as ApiResponse;
+  } catch {
+    return {};
+  }
+}
+
 export default function LoginPage() {
   const router = useRouter();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     setError('');
     setLoading(true);
 
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ email, password }),
+      });
 
-    setLoading(false);
+      const data = await readJsonSafely(response);
 
-    if (!response.ok) {
-      const data = await response.json();
-      setError(data?.error || 'Could not log in.');
-      return;
+      if (!response.ok) {
+        setError(data?.error || 'Could not log in.');
+        return;
+      }
+
+      window.dispatchEvent(new Event('auth-changed'));
+
+      router.push('/dashboard');
+      router.refresh();
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
     }
-
-    router.push('/dashboard');
   };
 
   return (

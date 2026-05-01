@@ -1,5 +1,3 @@
-'use client';
-import type { Metadata } from 'next';
 import { Geist, Geist_Mono, Anton, Archivo_Black } from 'next/font/google';
 import './globals.css';
 import FunkCampMenu from './_components/funkcampmenu';
@@ -27,12 +25,10 @@ const archivoBlack = Archivo_Black({
   subsets: ['latin'],
 });
 
-/* 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Funkcamp 2027',
   description: 'Funkcamp 2027',
 };
- */
 
 export default function RootLayout({
   children,
@@ -41,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang='en'
+      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${anton.variable} ${archivoBlack.variable}`}
     >
       <body>

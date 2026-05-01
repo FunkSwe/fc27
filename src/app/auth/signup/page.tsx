@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type SubmitEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './Signup.module.scss';
@@ -54,7 +54,7 @@ const EyeOffIcon = () => (
       strokeLinejoin='round'
     />
     <path
-      d='M21.07 19.07C23.08 17.23 24.52 14.68 25 12c-1.26-4.26-5.16-7-11-7-1.49 0-2.91.24-4.24.68'
+      d='M19.07 19.07C21.08 17.23 22.52 14.68 23 12c-1.26-4.26-5.16-7-11-7-1.49 0-2.91.24-4.24.68'
       stroke='currentColor'
       strokeWidth='2'
       strokeLinecap='round'
@@ -63,8 +63,28 @@ const EyeOffIcon = () => (
   </svg>
 );
 
+type ApiResponse = {
+  error?: string;
+  message?: string;
+};
+
+async function readJsonSafely(response: Response): Promise<ApiResponse> {
+  const text = await response.text();
+
+  if (!text) {
+    return {};
+  }
+
+  try {
+    return JSON.parse(text) as ApiResponse;
+  } catch {
+    return {};
+  }
+}
+
 export default function SignupPage() {
   const router = useRouter();
+
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -74,9 +94,11 @@ export default function SignupPage() {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     setError('');
+    setMessage('');
 
     if (password !== confirmPassword) {
       setError('Passwords do not match.');
@@ -85,28 +107,36 @@ export default function SignupPage() {
 
     setLoading(true);
 
-    const response = await fetch('/api/auth/signup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, email, password }),
-    });
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, email, password }),
+      });
 
-    setLoading(false);
+      const data = await readJsonSafely(response);
 
-    if (!response.ok) {
-      const data = await response.json();
-      setError(data?.error || 'Could not create account.');
-      return;
+      if (!response.ok) {
+        setError(data.error || 'Could not create account.');
+        return;
+      }
+
+      setMessage(data.message || 'Account created. You can now log in.');
+
+      setUsername('');
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
+
+      setTimeout(() => {
+        router.push('/auth/login');
+        router.refresh();
+      }, 1200);
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
     }
-
-    const data = await response.json();
-    setMessage(
-      data?.message || 'Account created. Check your email for confirmation.',
-    );
-    setUsername('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
   };
 
   return (
@@ -144,6 +174,7 @@ export default function SignupPage() {
 
             <label className={styles.label}>
               <span>Password</span>
+
               <div className={styles.passwordField}>
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -153,6 +184,7 @@ export default function SignupPage() {
                   required
                   minLength={8}
                 />
+
                 <button
                   type='button'
                   className={styles.eyeButton}
@@ -166,6 +198,7 @@ export default function SignupPage() {
 
             <label className={styles.label}>
               <span>Confirm Password</span>
+
               <div className={styles.passwordField}>
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -175,6 +208,7 @@ export default function SignupPage() {
                   required
                   minLength={8}
                 />
+
                 <button
                   type='button'
                   className={styles.eyeButton}

@@ -54,7 +54,11 @@ export default function DashboardProfilePage() {
   useEffect(() => {
     async function fetchProfile() {
       try {
-        const response = await fetch('/api/auth/me');
+        const response = await fetch('/api/auth/me', {
+          method: 'GET',
+          cache: 'no-store',
+          credentials: 'include',
+        });
 
         if (!response.ok) {
           router.push('/auth/login');
@@ -93,9 +97,10 @@ export default function DashboardProfilePage() {
     setPasswordLoading(true);
 
     try {
-      const response = await fetch('/api/auth/change-password', {
+      const response = await fetch('/api/auth/account', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
           currentPassword,
           newPassword,
@@ -110,6 +115,7 @@ export default function DashboardProfilePage() {
       }
 
       setPasswordMessage(data.message || 'Password changed successfully.');
+
       setCurrentPassword('');
       setNewPassword('');
       setConfirmNewPassword('');
@@ -145,6 +151,7 @@ export default function DashboardProfilePage() {
     try {
       const response = await fetch('/api/auth/account', {
         method: 'DELETE',
+        credentials: 'include',
       });
 
       const data = await readJsonSafely(response);
@@ -154,7 +161,10 @@ export default function DashboardProfilePage() {
         return;
       }
 
+      window.dispatchEvent(new Event('auth-changed'));
+
       router.push('/auth/signup');
+      router.refresh();
     } catch {
       setDeleteError('Something went wrong while deleting your account.');
     } finally {
@@ -179,6 +189,7 @@ export default function DashboardProfilePage() {
         <div className={styles.grain} />
         <section className={styles.posterFrame}>
           <h1 className={styles.bigTitle}>PROFILE</h1>
+
           <div className={styles.contentPanel}>
             <p>Unable to load your account.</p>
             {deleteError && <p className={styles.error}>{deleteError}</p>}
@@ -233,8 +244,8 @@ export default function DashboardProfilePage() {
               <p className={styles.kicker}>Your account</p>
               <h2>{user.username}</h2>
               <p>
-                View your account details, change your password, and manage
-                your profile settings.
+                View your account details, change your password, and manage your
+                profile settings.
               </p>
             </div>
           </section>
@@ -286,7 +297,7 @@ export default function DashboardProfilePage() {
               <label>
                 <span>Current Password</span>
                 <input
-                  type="password"
+                  type='password'
                   value={currentPassword}
                   onChange={(event) => setCurrentPassword(event.target.value)}
                   required
@@ -296,7 +307,7 @@ export default function DashboardProfilePage() {
               <label>
                 <span>New Password</span>
                 <input
-                  type="password"
+                  type='password'
                   value={newPassword}
                   onChange={(event) => setNewPassword(event.target.value)}
                   required
@@ -307,23 +318,23 @@ export default function DashboardProfilePage() {
               <label>
                 <span>Confirm New Password</span>
                 <input
-                  type="password"
+                  type='password'
                   value={confirmNewPassword}
-                  onChange={(event) => setConfirmNewPassword(event.target.value)}
+                  onChange={(event) =>
+                    setConfirmNewPassword(event.target.value)
+                  }
                   required
                   minLength={8}
                 />
               </label>
 
-              {passwordError && (
-                <p className={styles.error}>{passwordError}</p>
-              )}
+              {passwordError && <p className={styles.error}>{passwordError}</p>}
 
               {passwordMessage && (
                 <p className={styles.success}>{passwordMessage}</p>
               )}
 
-              <button type="submit" disabled={passwordLoading}>
+              <button type='submit' disabled={passwordLoading}>
                 {passwordLoading ? 'Changing password...' : 'Change Password'}
               </button>
             </form>
@@ -338,12 +349,11 @@ export default function DashboardProfilePage() {
             </p>
 
             <p>
-              To confirm, type your username:{' '}
-              <strong>{user.username}</strong>
+              To confirm, type your username: <strong>{user.username}</strong>
             </p>
 
             <input
-              type="text"
+              type='text'
               value={confirmText}
               onChange={(event) => setConfirmText(event.target.value)}
               placeholder={`Type ${user.username}`}
@@ -352,7 +362,7 @@ export default function DashboardProfilePage() {
             {deleteError && <p className={styles.error}>{deleteError}</p>}
 
             <button
-              type="button"
+              type='button'
               onClick={handleDeleteAccount}
               disabled={deleteLoading || confirmText !== user.username}
             >
@@ -360,7 +370,7 @@ export default function DashboardProfilePage() {
             </button>
           </section>
 
-          <div className={styles.barcode} aria-hidden="true">
+          <div className={styles.barcode} aria-hidden='true'>
             <span style={{ height: '30%' }} />
             <span style={{ height: '80%' }} />
             <span style={{ height: '55%' }} />
