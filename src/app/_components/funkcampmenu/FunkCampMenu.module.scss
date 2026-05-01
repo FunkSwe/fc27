@@ -207,8 +207,8 @@
   flex-direction: column;
   justify-content: space-between;
 
-  padding-top: 12rem;
-  padding-left: 12rem;
+  padding-top: 6rem;
+  padding-left: 8rem;
   padding-bottom: 4vh;
 }
 
@@ -234,7 +234,7 @@
   text-decoration: none;
 
   font-family: var(--font-archivo-black), sans-serif;
-  font-size: clamp(50px, 4.5vw + 1rem, 100px);
+  font-size: clamp(36px, 4vw + 1rem, 70px);
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 85%;
@@ -314,13 +314,13 @@
   }
 
   .menuCopy {
-    padding-top: 8rem;
-    padding-left: 4rem;
+    padding-top: 6rem;
+    padding-left: 1rem;
     padding-right: 2rem;
   }
 
   .menuLink {
-    font-size: clamp(50px, 14vw, 90px);
+    font-size: clamp(36px, 14vw, 0px);
   }
 
   .menuInfoCol {
