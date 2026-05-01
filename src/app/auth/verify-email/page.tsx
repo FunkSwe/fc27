@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import VerifyEmailContent from './VerifyemailContent';
+import VerifyEmailContent from './VerifyEmail';
 
 export default function VerifyEmailPage() {
   return (
