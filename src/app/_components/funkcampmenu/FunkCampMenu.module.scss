@@ -84,8 +84,8 @@
   padding: 0.5rem 1rem;
   border-radius: 50%;
   border: 2px solid #bebebe;
-  height: 32px;
-  width: 32px;
+  height: 46px;
+    width: 46px;
 
   display: grid;
   place-content: center;
@@ -137,13 +137,13 @@
     padding: 0.5rem 1rem;
     border-radius: 50%;
     border: 2px solid #00000011;
-    height: 32px;
-    width: 32px;
+    height: 46px;
+    width: 46px;
    
     display: grid;
     place-content: center;
 
-    font-size: clamp(12px, 1.5vw, 16px);
+    font-size: clamp(12px, 1vw, 12px);
     font-weight: 800;
     transition: all 0.3s ease-in-out;
   }
