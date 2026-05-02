@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
   const youtubeUrl = String(body.youtubeUrl || '').trim();
   const linkUrl = String(body.linkUrl || '').trim();
   const tags = Array.isArray(body.tags)
-    ? body.tags.map(String).map((tag) => tag.trim()).filter(Boolean)
+    ? body.tags.map((tag: unknown) => String(tag).trim()).filter(Boolean)
     : String(body.tags || '')
         .split(',')
         .map((tag) => tag.trim())
