@@ -1,23 +1,49 @@
 .homePanel {
-  padding: 4rem clamp(1rem, 4vw, 3rem);
-  max-width: 1200px;
+  min-height: 100vh;
+  background: #e9e4d6;
+  color: #111;
+  padding: 9rem clamp(1rem, 4vw, 4rem) 4rem;
+  max-width: 100%;
   margin: 0 auto;
 }
 
 .homeIntro {
+  width: 100%;
+  margin: 0 auto 4rem;
+
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 2rem;
-  margin-bottom: 2rem;
 }
 
 .smallLabel {
   margin: 0 0 1rem;
+  color: #000000;
+  font-family: var(--font-archivo-black), sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.85rem;
-  color: #a23b2c;
+  letter-spacing: -0.04em;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+}
+
+.homeIntro h1,
+.homeIntro h2 {
+  margin: 0;
+  color: #e2141f;
+  font-family: var(--font-archivo-black), sans-serif;
+  font-size: clamp(2.75rem, 8vw, 6rem);
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: -0.09em;
+  text-transform: uppercase;
+}
+
+.homeIntro p {
+  max-width: 720px;
+  margin-top: 1.5rem;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  line-height: 1.4;
+  color: #333;
 }
 
 .homeActions {
@@ -31,22 +57,37 @@
 .secondaryButton,
 .submitButton,
 .cancelButton {
-  border: none;
+  border: 2px solid #111;
   cursor: pointer;
-  border-radius: 999px;
+  border-radius: 20px;
   padding: 0.9rem 1.4rem;
-  font-weight: 700;
+  font-family: var(--font-archivo-black), sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
 }
 
 .primaryButton {
   background: #e2141f;
-  color: white;
+  color: #e9e4d6;
+  border-color: #e2141f;
+
+  &:hover {
+    background: #c1121a;
+  }
 }
 
 .secondaryButton {
-  background: white;
+  background: transparent;
   color: #111;
-  border: 1px solid #111;
+  border-color: #111;
+
+  &:hover {
+    background: #111;
+    color: #e9e4d6;
+  }
 }
 
 .sectionGrid {
@@ -62,12 +103,16 @@
   justify-content: space-between;
 }
 
+.sectionHeader h1,
 .sectionHeader h3 {
-  margin: 0;
-  font-size: 1.75rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: #111;
+  margin: 0 0 0.5rem;
+  font-family: var(--font-archivo-black), sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  color: #e2141f;
+  line-height: 0.9;
 }
 
 .postGrid {
@@ -77,13 +122,22 @@
 }
 
 .postCard {
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 3px solid #111;
   border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  text-decoration: none;
+  color: #111;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(226, 20, 31, 0.05);
+    border-color: #e2141f;
+    transform: translateY(-2px);
+  }
 }
 
 .postHero {
@@ -91,6 +145,7 @@
   min-height: 180px;
   overflow: hidden;
   background: #111;
+  border-bottom: 3px solid #111;
 }
 
 .postBadge {
@@ -122,12 +177,44 @@
 
 .postBody h3 {
   margin: 0;
+  font-family: var(--font-archivo-black), sans-serif;
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #e2141f;
 }
 
 .postBody p {
   margin: 0;
-  color: #444;
+  color: #333;
   line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.postDetailBody {
+  margin-top: 2rem;
+  padding: 2rem;
+  border: 3px solid #111;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.postDetailBody p,
+.postDetailBody a,
+.postDetailBody li,
+.postDetailBody blockquote {
+  color: #333;
+  line-height: 1.75;
+}
+
+.relatedLink {
+  margin-top: 1.5rem;
+}
+
+.videoEmbed {
+  margin-top: 1.5rem;
+  border: 3px solid #111;
+  overflow: hidden;
 }
 
 .postMeta {
@@ -151,11 +238,14 @@
 }
 
 .postTag {
-  background: rgba(226, 20, 31, 0.1);
-  color: #b72020;
-  padding: 0.35rem 0.65rem;
+  background: #e2141f;
+  color: #e9e4d6;
+  padding: 0.35rem 0.75rem;
   border-radius: 999px;
   font-size: 0.8rem;
+  font-family: var(--font-archivo-black), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
 .postLink {
@@ -163,6 +253,10 @@
   color: #e2141f;
   text-decoration: none;
   font-weight: 700;
+  font-family: var(--font-archivo-black), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-size: 0.9rem;
 }
 
 .modalOverlay {
@@ -179,8 +273,8 @@
   width: min(100%, 920px);
   max-height: 100vh;
   overflow-y: auto;
-  background: white;
-  border-radius: 24px;
+  border: 3px solid #111;
+  background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 35px 120px rgba(0, 0, 0, 0.18);
 }
 
@@ -189,7 +283,18 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 1.75rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 3px solid #111;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-family: var(--font-archivo-black), sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #111;
 }
 
 .modalBody {
@@ -224,11 +329,16 @@
 .textarea,
 .select {
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.16);
+  border: 2px solid #111;
   border-radius: 14px;
   padding: 0.95rem 1rem;
   font: inherit;
   outline: none;
+  background: rgba(255, 255, 255, 0.8);
+
+  &:focus {
+    border-color: #e2141f;
+  }
 }
 
 .toolbar {
@@ -238,19 +348,34 @@
 }
 
 .toolbar button {
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: white;
+  border: 2px solid #111;
+  background: rgba(255, 255, 255, 0.8);
   padding: 0.7rem 1rem;
-  border-radius: 999px;
+  border-radius: 20px;
   cursor: pointer;
+  font-family: var(--font-archivo-black), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #111;
+    color: #e9e4d6;
+  }
 }
 
 .editor {
   min-height: 220px;
-  border: 1px solid rgba(0, 0, 0, 0.16);
+  border: 2px solid #111;
   border-radius: 16px;
   padding: 1rem;
   outline: none;
+  background: rgba(255, 255, 255, 0.8);
+
+  &:focus {
+    border-color: #e2141f;
+  }
 }
 
 .actions {
@@ -263,21 +388,31 @@
 
 .submitButton {
   background: #e2141f;
-  color: white;
+  color: #e9e4d6;
+  border-color: #e2141f;
+
+  &:hover {
+    background: #c1121a;
+  }
 }
 
 .imagePreview {
   width: 100%;
   max-width: 420px;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 2px solid #111;
   object-fit: cover;
   margin-top: 0.75rem;
 }
 
 .cancelButton {
-  background: #f5f5f5;
+  background: transparent;
   color: #111;
+  border-color: #111;
+
+  &:hover {
+    background: #111;
+    color: #e9e4d6;
+  }
 }
 
 .error {
@@ -288,12 +423,18 @@
 .commentSection {
   margin-top: 2rem;
   padding: 1.5rem;
-  background: #f9f0ee;
-  border-radius: 24px;
+  border: 3px solid #111;
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .commentSection h4 {
   margin-top: 0;
+  font-family: var(--font-archivo-black), sans-serif;
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #e2141f;
 }
 
 .commentList {
@@ -304,9 +445,8 @@
 
 .commentItem {
   padding: 1rem;
-  background: white;
-  border-radius: 18px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 2px solid #111;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .commentHeader {
@@ -331,5 +471,17 @@
 @media (max-width: 940px) {
   .sectionGrid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .homePanel {
+    padding-top: 7rem;
+  }
+
+  .homeIntro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
   }
 }

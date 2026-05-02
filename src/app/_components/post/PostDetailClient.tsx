@@ -41,7 +41,7 @@ export default function PostDetailClient({ post, initialComments }: PostDetailPr
 
       {post.imageUrl ? <img className={styles.postImage} src={post.imageUrl} alt={post.title} /> : null}
       {post.youtubeUrl ? (
-        <div style={{ marginTop: '1.5rem' }}>
+        <div className={styles.videoEmbed}>
           <iframe
             width='100%'
             height='420'
@@ -54,10 +54,10 @@ export default function PostDetailClient({ post, initialComments }: PostDetailPr
         </div>
       ) : null}
 
-      <article style={{ marginTop: '2rem' }}>
+      <article className={styles.postDetailBody}>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
         {post.linkUrl ? (
-          <p style={{ marginTop: '1.5rem' }}>
+          <p className={styles.relatedLink}>
             Related link: <a href={post.linkUrl} target='_blank' rel='noreferrer'>{post.linkUrl}</a>
           </p>
         ) : null}
