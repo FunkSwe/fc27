@@ -4,6 +4,10 @@ export interface IPost extends Document {
   author: Types.ObjectId;
   title: string;
   content: string;
+  type: 'news' | 'post';
+  imageUrl?: string;
+  youtubeUrl?: string;
+  linkUrl?: string;
   tags: string[];
   published: boolean;
   createdAt: Date;
@@ -25,6 +29,26 @@ const postSchema = new Schema<IPost>(
     content: {
       type: String,
       required: true,
+    },
+    type: {
+      type: String,
+      enum: ['news', 'post'],
+      default: 'post',
+    },
+    imageUrl: {
+      type: String,
+      trim: true,
+      default: '',
+    },
+    youtubeUrl: {
+      type: String,
+      trim: true,
+      default: '',
+    },
+    linkUrl: {
+      type: String,
+      trim: true,
+      default: '',
     },
     tags: {
       type: [String],

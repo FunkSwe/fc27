@@ -1,0 +1,335 @@
+.homePanel {
+  padding: 4rem clamp(1rem, 4vw, 3rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.homeIntro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.smallLabel {
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+  color: #a23b2c;
+}
+
+.homeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.primaryButton,
+.secondaryButton,
+.submitButton,
+.cancelButton {
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 0.9rem 1.4rem;
+  font-weight: 700;
+}
+
+.primaryButton {
+  background: #e2141f;
+  color: white;
+}
+
+.secondaryButton {
+  background: white;
+  color: #111;
+  border: 1px solid #111;
+}
+
+.sectionGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+.sectionHeader {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.sectionHeader h3 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #111;
+}
+
+.postGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.postCard {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.postHero {
+  position: relative;
+  min-height: 180px;
+  overflow: hidden;
+  background: #111;
+}
+
+.postBadge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #e2141f;
+  color: white;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.postImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.postBody {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.postBody h3 {
+  margin: 0;
+}
+
+.postBody p {
+  margin: 0;
+  color: #444;
+  line-height: 1.6;
+}
+
+.postMeta {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.postFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #666;
+  font-size: 0.93rem;
+}
+
+.postTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.postTag {
+  background: rgba(226, 20, 31, 0.1);
+  color: #b72020;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+.postLink {
+  margin-top: auto;
+  color: #e2141f;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: grid;
+  place-items: center;
+  z-index: 100000;
+  padding: 1.5rem;
+}
+
+.modalContent {
+  width: min(100%, 920px);
+  max-height: 100vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 35px 120px rgba(0, 0, 0, 0.18);
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.modalBody {
+  padding: 1.5rem 1.75rem 2rem;
+}
+
+.closeButton {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #111;
+  font-weight: 700;
+}
+
+.form {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.fieldGroup {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 700;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 14px;
+  padding: 0.95rem 1rem;
+  font: inherit;
+  outline: none;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.toolbar button {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: white;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.editor {
+  min-height: 220px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 16px;
+  padding: 1rem;
+  outline: none;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.submitButton {
+  background: #e2141f;
+  color: white;
+}
+
+.imagePreview {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  object-fit: cover;
+  margin-top: 0.75rem;
+}
+
+.cancelButton {
+  background: #f5f5f5;
+  color: #111;
+}
+
+.error {
+  color: #b20b1a;
+  font-size: 0.95rem;
+}
+
+.commentSection {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f9f0ee;
+  border-radius: 24px;
+}
+
+.commentSection h4 {
+  margin-top: 0;
+}
+
+.commentList {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.commentItem {
+  padding: 1rem;
+  background: white;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: #5d5d5d;
+}
+
+.commentForm textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.commentForm {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (max-width: 940px) {
+  .sectionGrid {
+    grid-template-columns: 1fr;
+  }
+}

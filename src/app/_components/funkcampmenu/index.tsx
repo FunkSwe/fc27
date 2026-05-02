@@ -131,6 +131,37 @@ const UserAddIcon = () => (
   </svg>
 );
 
+const CreatePostIcon = () => (
+  <svg
+    width='18'
+    height='18'
+    viewBox='0 0 24 24'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+    aria-hidden='true'
+  >
+    <path
+      d='M4 20h4l10-10-4-4L4 16v4Z'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+    <path
+      d='M14 6l4 4'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinecap='round'
+    />
+    <path
+      d='M7 17h.01'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinecap='round'
+    />
+  </svg>
+);
+
 const CopyIcon = () => (
   <svg
     width='18'
@@ -327,6 +358,15 @@ export default function FunkCampMenu() {
         </div>
 
         <div className={styles.headerActions}>
+          <Link
+            href={isLoggedIn ? '/dashboard/posts/new' : '/auth/login'}
+            aria-label={isLoggedIn ? 'Create post' : 'Login to create post'}
+            className={styles.headerIconButton}
+            onClick={closeMenu}
+          >
+            <CreatePostIcon />
+          </Link>
+
           {isLoggedIn ? (
             <>
               <Link
@@ -444,6 +484,13 @@ export default function FunkCampMenu() {
           <div className={styles.authMenuLinks}>
             {isLoggedIn ? (
               <>
+                <Link
+                  href='/dashboard/posts/new'
+                  className={styles.authMenuLink}
+                  onClick={closeMenu}
+                >
+                  Create post
+                </Link>
                 <Link
                   href='/dashboard'
                   className={styles.authMenuLink}

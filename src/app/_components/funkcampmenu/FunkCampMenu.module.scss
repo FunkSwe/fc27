@@ -22,8 +22,8 @@
 
 .scrolled {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -120,6 +120,52 @@
     background: #e9e9e9;
     border: 5px solid #545454;
   }
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.headerIconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+  color: #424141;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.authMenuLink,
+.authMenuButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  font-family: var(--font-archivo-black), sans-serif;
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.authMenuButton {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.authMenuLink:hover,
+.authMenuButton:hover {
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .menuOpen,

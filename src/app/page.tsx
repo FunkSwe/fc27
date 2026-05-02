@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import styles from './page.module.css';
 import Hero from './_components/Hero';
+import PostHomePanel from './_components/post/PostHomePanel';
 
 export default function Home() {
   return (
@@ -13,6 +13,7 @@ export default function Home() {
           imageSrc='/images/hero-players.png'
         />
       </main>
+      <PostHomePanel />
     </div>
   );
 }
