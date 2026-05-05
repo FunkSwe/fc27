@@ -23,6 +23,7 @@ export default function PostHomePanel() {
   const [newsPosts, setNewsPosts] = useState<PostItem[]>([]);
   const [communityPosts, setCommunityPosts] = useState<PostItem[]>([]);
   const [userRole, setUserRole] = useState<string>('');
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('Create post');
 
@@ -44,11 +45,16 @@ export default function PostHomePanel() {
   const loadUser = async () => {
     try {
       const response = await fetch('/api/auth/me', { cache: 'no-store' });
-      if (!response.ok) return;
+      if (!response.ok) {
+        setIsLoggedIn(false);
+        return;
+      }
       const { user } = await response.json();
       setUserRole(user?.role || '');
+      setIsLoggedIn(true);
     } catch {
       setUserRole('');
+      setIsLoggedIn(false);
     }
   };
 
@@ -68,7 +74,8 @@ export default function PostHomePanel() {
           <p className={styles.smallLabel}>Latest from Funkcamp</p>
           <h2>News and community posts</h2>
           <p>
-            Admins can publish news posts here, while everyone can add new community updates.
+            Admins can publish news posts here, while everyone can add new
+            community updates.
           </p>
         </div>
 
@@ -117,20 +124,22 @@ export default function PostHomePanel() {
           </div>
         </div>
 
-        <div>
-          <div className={styles.sectionHeader}>
-            <h3>POSTS</h3>
+        {isLoggedIn && (
+          <div>
+            <div className={styles.sectionHeader}>
+              <h3>POSTS</h3>
+            </div>
+            <div className={styles.postGrid}>
+              {communityPosts.length > 0 ? (
+                communityPosts.map((post) => (
+                  <PostCard key={post._id} {...post} id={post._id} />
+                ))
+              ) : (
+                <p>No community posts yet.</p>
+              )}
+            </div>
           </div>
-          <div className={styles.postGrid}>
-            {communityPosts.length > 0 ? (
-              communityPosts.map((post) => (
-                <PostCard key={post._id} {...post} id={post._id} />
-              ))
-            ) : (
-              <p>No community posts yet.</p>
-            )}
-          </div>
-        </div>
+        )}
       </div>
 
       <PostModal

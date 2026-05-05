@@ -503,7 +503,9 @@ export default function FunkCampMenu() {
                   type='button'
                   className={styles.authMenuButton}
                   onClick={handleLogout}
+                  aria-label='Log out'
                 >
+                  <LogoutIcon />
                   Log out
                 </button>
               </>

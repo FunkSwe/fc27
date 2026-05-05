@@ -58,9 +58,9 @@
 .submitButton,
 .cancelButton {
   border: 2px solid #111;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 1.25rem;
   cursor: pointer;
-  border-radius: 20px;
-  padding: 0.9rem 1.4rem;
   font-family: var(--font-archivo-black), sans-serif;
   font-weight: 400;
   text-transform: uppercase;
@@ -123,7 +123,6 @@
 
 .postCard {
   border: 3px solid #111;
-  border-radius: 20px;
   background: rgba(255, 255, 255, 0.25);
   overflow: hidden;
   display: flex;
@@ -155,7 +154,6 @@
   background: #e2141f;
   color: white;
   padding: 0.35rem 0.75rem;
-  border-radius: 999px;
   font-size: 0.75rem;
   text-transform: uppercase;
 }
@@ -241,7 +239,6 @@
   background: #e2141f;
   color: #e9e4d6;
   padding: 0.35rem 0.75rem;
-  border-radius: 999px;
   font-size: 0.8rem;
   font-family: var(--font-archivo-black), sans-serif;
   text-transform: uppercase;
@@ -330,7 +327,6 @@
 .select {
   width: 100%;
   border: 2px solid #111;
-  border-radius: 14px;
   padding: 0.95rem 1rem;
   font: inherit;
   outline: none;
@@ -351,7 +347,6 @@
   border: 2px solid #111;
   background: rgba(255, 255, 255, 0.8);
   padding: 0.7rem 1rem;
-  border-radius: 20px;
   cursor: pointer;
   font-family: var(--font-archivo-black), sans-serif;
   text-transform: uppercase;
@@ -368,7 +363,6 @@
 .editor {
   min-height: 220px;
   border: 2px solid #111;
-  border-radius: 16px;
   padding: 1rem;
   outline: none;
   background: rgba(255, 255, 255, 0.8);
