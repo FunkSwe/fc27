@@ -33,7 +33,13 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  return new Response(JSON.stringify({ user }), {
+  const normalizedUser = {
+    ...user,
+    role: user.isAdmin === true || user.role === 'admin' ? 'admin' : user.role,
+    isAdmin: user.isAdmin === true || user.role === 'admin',
+  };
+
+  return new Response(JSON.stringify({ user: normalizedUser }), {
     status: 200,
     headers: { 'Content-Type': 'application/json' },
   });

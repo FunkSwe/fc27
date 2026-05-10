@@ -6,11 +6,19 @@ import PostModal from './PostModal';
 import PostCard from './PostCard';
 import styles from './PostStyles.module.scss';
 
+interface PostImageData {
+  url: string;
+  publicId: string;
+  width?: number;
+  height?: number;
+}
+
 interface PostItem {
   _id: string;
   title: string;
   content: string;
   type: 'news' | 'post';
+  image?: PostImageData | null;
   imageUrl?: string;
   youtubeUrl?: string;
   linkUrl?: string;
@@ -26,6 +34,7 @@ export default function PostHomePanel() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('Create post');
+  const [initialPostType, setInitialPostType] = useState<'news' | 'post'>('post');
 
   const loadPosts = async () => {
     const [newsResponse, communityResponse] = await Promise.all([
@@ -88,6 +97,7 @@ export default function PostHomePanel() {
             className={styles.secondaryButton}
             onClick={() => {
               setModalTitle('Create community post');
+              setInitialPostType('post');
               setIsOpen(true);
             }}
           >
@@ -99,6 +109,7 @@ export default function PostHomePanel() {
               className={styles.secondaryButton}
               onClick={() => {
                 setModalTitle('Create news post');
+                setInitialPostType('news');
                 setIsOpen(true);
               }}
             >
@@ -146,6 +157,16 @@ export default function PostHomePanel() {
         isOpen={isOpen}
         title={modalTitle}
         role={userRole}
+        initialData={{
+          title: '',
+          content: '',
+          type: initialPostType,
+          image: null,
+          imageUrl: '',
+          youtubeUrl: '',
+          linkUrl: '',
+          tags: '',
+        }}
         onClose={() => setIsOpen(false)}
         onSaved={handleSaved}
       />
