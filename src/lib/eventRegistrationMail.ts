@@ -90,6 +90,14 @@ After the booking fee is paid, your spot is secured and you will keep the price 
 
 The remaining amount must be paid no later than December 31st, 2026.
 
+Payment in Sweden can be done by Swish to:
+0723103233
+OBS! Write your full name + FC27 in the message part.
+
+From outside Sweden, you can make the payment / deposit to this account:
+IBAN: SE6630000000007511090032
+BIC / Swift code: NDEASESS
+
 The teachers will be introduced on the website during the coming months.
 
 Funkcamp 2027 will take place March 26th–29th, 2027.
@@ -154,6 +162,34 @@ funkcampswe@gmail.com
     <p>
       The remaining amount must be paid no later than <strong>December 31st, 2026</strong>.
     </p>
+
+     <h2 style="color: #e2141f;">Payment information</h2>
+
+  <p>
+    <strong>Payment in Sweden can be made by Swish to:</strong><br />
+    <span style="font-size: 20px; font-weight: bold;">0723103233</span>
+  </p>
+
+  <p>
+    <strong>Important:</strong> Write your <strong>full name + FC27</strong> in
+    the message field.
+  </p>
+
+  <hr style="border: none; border-top: 1px solid #111; margin: 18px 0;" />
+
+  <p>
+    <strong>From outside Sweden, you can make the payment / deposit to this account:</strong>
+  </p>
+
+  <p>
+    <strong>IBAN:</strong><br />
+    <span style="font-size: 18px; font-weight: bold;">SE6630000000007511090032</span>
+  </p>
+
+  <p>
+    <strong>BIC / Swift code:</strong><br />
+    <span style="font-size: 18px; font-weight: bold;">NDEASESS</span>
+  </p>
 
     <h2 style="color:#e2141f;">Dates</h2>
 
