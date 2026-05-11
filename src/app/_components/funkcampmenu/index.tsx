@@ -203,6 +203,8 @@ const menuLinks: MenuLink[] = [
   { path: '/info', label: 'Info' },
   { path: '/teachers', label: 'Teachers' },
   /* { path: '/dashboard', label: 'Dashboard' }, */
+  { path: '/registration', label: 'Registration' },
+  { path: '/contact', label: 'Contact' },
 ];
 
 export default function FunkCampMenu() {

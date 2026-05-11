@@ -1,0 +1,207 @@
+.page {
+  min-height: 100vh;
+  background: #e9e4d6;
+  color: #111;
+  padding: 8rem clamp(1rem, 4vw, 4rem) 4rem;
+}
+
+.hero {
+  max-width: 980px;
+  margin: 0 auto 3rem;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+    font-size: clamp(3rem, 10vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: -0.08em;
+    text-transform: uppercase;
+  }
+
+  p {
+    max-width: 680px;
+    margin: 1.25rem auto 0;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+  }
+}
+
+.kicker {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.75rem;
+  border: 2px solid #111;
+  border-radius: 999px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  background: #fff;
+}
+
+.contentGrid {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.infoCard,
+.formCard {
+  border: 3px solid #111;
+  background: #fffaf0;
+  box-shadow: 8px 8px 0 #111;
+}
+
+.infoCard {
+  padding: clamp(1.25rem, 3vw, 2rem);
+
+  h2 {
+    margin-top: 0;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    text-transform: uppercase;
+    letter-spacing: -0.06em;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  ul {
+    padding-left: 1.25rem;
+    line-height: 1.8;
+    font-weight: 800;
+  }
+}
+
+.priceBox {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 2px solid #111;
+  background: #e2141f;
+  color: #fff;
+
+  span {
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  strong {
+    display: block;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  }
+}
+
+.formCard {
+  padding: clamp(1.25rem, 3vw, 2rem);
+
+  h2 {
+    margin-top: 0;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-transform: uppercase;
+    letter-spacing: -0.07em;
+  }
+
+  label {
+    display: grid;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border: 2px solid #111;
+    border-radius: 0;
+    padding: 0.85rem 1rem;
+    background: #fff;
+    color: #111;
+    font: inherit;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    width: 100%;
+    border: 2px solid #111;
+    background: #111;
+    color: #fff;
+    padding: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      transform 160ms ease,
+      background 160ms ease,
+      color 160ms ease;
+
+    &:hover:not(:disabled) {
+      transform: translate(-2px, -2px);
+      background: #e2141f;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.checkboxLabel {
+  display: flex !important;
+  grid-template-columns: none !important;
+  align-items: flex-start;
+  gap: 0.7rem;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+
+  input {
+    width: auto;
+    margin-top: 0.25rem;
+  }
+}
+
+.successMessage,
+.errorMessage {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border: 2px solid #111;
+  font-weight: 800;
+}
+
+.successMessage {
+  background: #d7ffd7;
+}
+
+.errorMessage {
+  background: #ffd7d7;
+}
+
+@media (max-width: 860px) {
+  .page {
+    padding-top: 6rem;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .infoCard,
+  .formCard {
+    box-shadow: 5px 5px 0 #111;
+  }
+}
