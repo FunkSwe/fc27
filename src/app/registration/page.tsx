@@ -20,12 +20,10 @@ export default function RegistrationPage() {
 
       <section className={styles.contentGrid}>
         <div className={styles.infoCard}>
-          <h2>Early registration info</h2>
+          <h2>Registration info</h2>
 
           <p>
-            Before we officially announce the full line-up, we want to give a
-            special early bird offer to everyone who joined us at the Funkcamp
-            2025 “20 Year Anniversary” Camp.
+            Register to the funkcamp 2027 
           </p>
 
           <div className={styles.priceBox}>
@@ -35,7 +33,7 @@ export default function RegistrationPage() {
 
           <p>
             To secure your spot, a booking fee of <strong>€100</strong> must be
-            paid as soon as possible.
+            paid as soon as possible. (information will be sent in the registration confirmation email).
           </p>
 
           <p>
@@ -43,13 +41,15 @@ export default function RegistrationPage() {
             remaining amount must be paid no later than{' '}
             <strong>December 31st, 2026</strong>.
           </p>
-
+        <h4>Funkcamp Schedule</h4>
           <ul>
-            <li>Friday: 17.30–20.30</li>
-            <li>Saturday: 11.00–17.00</li>
-            <li>Sunday: 11.00–17.00</li>
+            <li>Friday 26th: 17.30–20.30</li>
+            <li>Saturday 27th: 11.00–17.00</li>
+            <li>Sunday 28th: 11.00–17.00</li>
             <li>Monday: 10.00–14.00</li>
-          </ul>
+                  </ul>
+                  <p>changes might occur closer to the event date.</p>
+                  <p>More will be announced and updated as the event approaches.</p>
         </div>
 
         <RegistrationForm />

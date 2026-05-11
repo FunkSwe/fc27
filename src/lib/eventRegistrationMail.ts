@@ -75,11 +75,9 @@ export async function sendFunkcampRegistrationConfirmation({
   const text = `
 Hi ${fullName},
 
-Thank you for registering your interest in Funkcamp 2027.
+Thank you for registering for Funkcamp 2027.
 
-Before we officially announce the full line-up, we want to give a special early bird offer to everyone who joined us at the Funkcamp 2025 “20 Year Anniversary” Camp.
-
-If you already know that you want to be part of Funkcamp 2027, this offer is for you.
+We are happy to know that you want to be part of the next Funkcamp experience in Stockholm, Sweden.
 
 Price: €250
 If you are in Sweden: 2700 kr
@@ -118,99 +116,99 @@ funkcampswe@gmail.com
 `.trim();
 
   const html = `
-    <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111; max-width: 680px;">
-      <h1 style="color:#e2141f;">Funkcamp 2027 Registration</h1>
+  <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111; max-width: 680px;">
+    <h1 style="color:#e2141f;">Funkcamp 2027 Registration</h1>
 
-      <p>Hi ${fullName},</p>
+    <p>Hi ${fullName},</p>
 
-      <p>Thank you for registering your interest in <strong>Funkcamp 2027</strong>.</p>
+    <p>
+      Thank you for registering for <strong>Funkcamp 2027</strong>.
+    </p>
 
-      <p>
-        Before we officially announce the full line-up, we want to give a special early bird offer
-        to everyone who joined us at the Funkcamp 2025 <strong>“20 Year Anniversary” Camp</strong>.
-      </p>
+    <p>
+      We are happy to know that you want to be part of the next Funkcamp
+      experience in <strong>Stockholm, Sweden</strong>.
+    </p>
 
-      <p>If you already know that you want to be part of Funkcamp 2027, this offer is for you.</p>
+    <h2 style="color:#e2141f;">Price</h2>
 
-      <h2 style="color:#e2141f;">Price</h2>
+    <p>
+      <strong>€250</strong><br />
+      If you are in Sweden: <strong>2700 kr</strong>
+    </p>
 
-      <p>
-        <strong>€250</strong><br />
-        If you are in Sweden: <strong>2700 kr</strong>
-      </p>
+    <p>
+      To secure your spot, a booking fee of <strong>€100</strong> must be paid as soon as possible.
+    </p>
 
-      <p>
-        To secure your spot, a booking fee of <strong>€100</strong> must be paid as soon as possible.
-      </p>
+    <p>
+      <strong>Please note:</strong> your spot is only secured once the booking fee has been paid.
+      If the camp starts to fill up and the booking fee has not been paid, the spot may be released.
+    </p>
 
-      <p>
-        <strong>Please note:</strong> your spot is only secured once the booking fee has been paid.
-        If the camp starts to fill up and the booking fee has not been paid, the spot may be released.
-      </p>
+    <p>
+      After the booking fee is paid, your spot is secured and you will keep the price of
+      <strong>€250 / 2700 kr</strong>.
+    </p>
 
-      <p>
-        After the booking fee is paid, your spot is secured and you will keep the price of
-        <strong>€250 / 2700 kr</strong>.
-      </p>
+    <p>
+      The remaining amount must be paid no later than <strong>December 31st, 2026</strong>.
+    </p>
 
-      <p>
-        The remaining amount must be paid no later than <strong>December 31st, 2026</strong>.
-      </p>
+    <h2 style="color:#e2141f;">Dates</h2>
 
-      <h2 style="color:#e2141f;">Dates</h2>
+    <p>
+      Funkcamp 2027 will take place <strong>March 26th–29th, 2027</strong>.
+    </p>
 
-      <p>
-        Funkcamp 2027 will take place <strong>March 26th–29th, 2027</strong>.
-      </p>
+    <p>
+      Times and venue will be announced later this year, but the schedule will be similar to 2025:
+    </p>
 
-      <p>
-        Times and venue will be announced later this year, but the schedule will be similar to 2025:
-      </p>
+    <ul>
+      <li>Friday: 17.30–20.30</li>
+      <li>Saturday: 11.00–17.00</li>
+      <li>Sunday: 11.00–17.00</li>
+      <li>Monday: 10.00–14.00</li>
+    </ul>
 
-      <ul>
-        <li>Friday: 17.30–20.30</li>
-        <li>Saturday: 11.00–17.00</li>
-        <li>Sunday: 11.00–17.00</li>
-        <li>Monday: 10.00–14.00</li>
-      </ul>
+    <p>
+      The teachers will be introduced on the website during the coming months.
+    </p>
 
-      <p>
-        The teachers will be introduced on the website during the coming months.
-      </p>
+    <p>
+      There might be extra events coming up, and we will let you know during the process leading up to 2027.
+    </p>
 
-      <p>
-        There might be extra events coming up, and we will let you know during the process leading up to 2027.
-      </p>
+    <p>
+      Once the booking fee has been paid, we will send you the sign-up/payment page link and continue
+      the registration process with you.
+    </p>
 
-      <p>
-        Once the booking fee has been paid, we will send you the sign-up/payment page link and continue
-        the registration process with you.
-      </p>
+    <p>
+      We are looking forward to having you here in Stockholm, Sweden once again for this beautiful experience.
+    </p>
 
-      <p>
-        We are looking forward to having you here in Stockholm, Sweden once again for this beautiful experience.
-      </p>
+    <p>
+      If you have any questions, please reach out.
+    </p>
 
-      <p>
-        If you have any questions, please reach out.
-      </p>
+    <p>
+      <a
+        href="${contactUrl}"
+        style="display:inline-block;padding:12px 18px;background:#e2141f;color:#ffffff;text-decoration:none;font-weight:bold;"
+      >
+        Contact Funkcamp
+      </a>
+    </p>
 
-      <p>
-        <a
-          href="${contactUrl}"
-          style="display:inline-block;padding:12px 18px;background:#e2141f;color:#ffffff;text-decoration:none;font-weight:bold;"
-        >
-          Contact Funkcamp
-        </a>
-      </p>
-
-      <p>
-        Best regards,<br />
-        Team Funkcamp<br />
-        funkcampswe@gmail.com
-      </p>
-    </div>
-  `;
+    <p>
+      Best regards,<br />
+      Team Funkcamp<br />
+      funkcampswe@gmail.com
+    </p>
+  </div>
+`;
 
   await sendMail({
     to: email,
