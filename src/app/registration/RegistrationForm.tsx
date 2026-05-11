@@ -74,7 +74,7 @@ export default function RegistrationForm() {
 
   return (
     <form className={styles.formCard} onSubmit={handleSubmit}>
-      <h2>Register your interest</h2>
+      <h2>Register to funkcamp 2027</h2>
 
       <label>
         Full name

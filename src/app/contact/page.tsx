@@ -12,7 +12,7 @@ export default function ContactPage() {
       <section className={styles.card}>
         <div className={styles.logoWrap}>
           <Image
-            src='/images/fclogosmall.png'
+            src='/fclogosmall.png'
             alt='Funkcamp'
             width={220}
             height={220}
