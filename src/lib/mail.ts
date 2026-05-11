@@ -1,10 +1,20 @@
 import nodemailer from 'nodemailer';
 
 const EMAIL_FROM = process.env.EMAIL_FROM || 'no-reply@funkcamp.example.com';
+
+/* 
 const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL ||
   process.env.APP_URL ||
+  'http://localhost:3000'; */
+  
+  const rawAppUrl =
+  process.env.APP_URL ||
+  process.env.NEXT_PUBLIC_APP_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '') ||
   'http://localhost:3000';
+
+const APP_URL = rawAppUrl.replace(/\/$/, '');
 
 const smtpHost = process.env.EMAIL_HOST;
 const smtpPort = Number(process.env.EMAIL_PORT || '587');
