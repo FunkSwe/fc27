@@ -40,6 +40,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (user.isBanned) {
+      return NextResponse.json(
+        { error: user.banReason || 'This account has been banned.' },
+        { status: 403 },
+      );
+    }
+
     const isValid = await verifyPassword(password, user.passwordHash);
 
     if (!isValid) {
@@ -64,6 +71,7 @@ export async function POST(request: NextRequest) {
           role: user.role,
           emailVerified: user.emailVerified,
           isAdmin: user.isAdmin,
+          isBanned: user.isBanned,
         },
       },
       token,

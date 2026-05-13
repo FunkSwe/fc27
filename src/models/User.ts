@@ -6,6 +6,8 @@ export interface IUser extends Document {
   passwordHash: string;
   role: 'user' | 'teacher' | 'admin';
   emailVerified: boolean;
+  isBanned: boolean;
+  banReason?: string;
   emailVerificationToken?: string;
   emailVerificationExpires?: Date;
   passwordResetToken?: string;
@@ -45,6 +47,15 @@ const userSchema = new Schema<IUser>(
     emailVerified: {
       type: Boolean,
       default: false,
+    },
+    isBanned: {
+      type: Boolean,
+      default: false,
+    },
+    banReason: {
+      type: String,
+      trim: true,
+      default: '',
     },
     emailVerificationToken: {
       type: String,

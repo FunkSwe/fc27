@@ -2,43 +2,44 @@
   min-height: 100vh;
   background: #e9e4d6;
   color: #111;
-  padding: 8rem clamp(1rem, 4vw, 4rem) 4rem;
+  padding: 9rem clamp(1rem, 4vw, 4rem) 4rem;
 }
 
 .hero {
-  max-width: 980px;
-  margin: 0 auto 3rem;
-  text-align: center;
+  width: 100%;
+  margin: 0 auto 4rem;
+  text-align: left;
+
+  .kicker {
+    margin: 0 0 1rem;
+    color: #000000;
+    font-family: var(--font-archivo-black), sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+  }
 
   h1 {
     margin: 0;
-    font-size: clamp(3rem, 10vw, 8rem);
-    line-height: 0.9;
-    letter-spacing: -0.08em;
+    color: #e2141f;
+    font-family: var(--font-archivo-black), sans-serif;
+    font-size: clamp(2.75rem, 12vw, 11rem);
+    font-weight: 400;
+    line-height: 0.8;
+    letter-spacing: -0.09em;
     text-transform: uppercase;
   }
 
   p {
-    max-width: 680px;
-    margin: 1.25rem auto 0;
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    max-width: 720px;
+    margin-top: 1.5rem;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    line-height: 1.4;
+    color: #333;
   }
 }
 
-.kicker {
-  display: inline-block;
-  margin-bottom: 1rem;
-  padding: 0.4rem 0.75rem;
-  border: 2px solid #111;
-  border-radius: 999px;
-  text-transform: uppercase;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  background: #fff;
-}
-
 .contentGrid {
-  max-width: 1180px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
@@ -193,7 +194,7 @@
 
 @media (max-width: 860px) {
   .page {
-    padding-top: 6rem;
+    padding-top: 7rem;
   }
 
   .contentGrid {

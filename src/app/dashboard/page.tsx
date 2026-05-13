@@ -106,6 +106,18 @@ export default function DashboardPage() {
             <h3>Profile</h3>
             <p>Update account details and settings.</p>
           </Link>
+          {user.isAdmin && (
+            <>
+              <Link href='/dashboard/admin/users' className={styles.linkCard}>
+                <h3>Admin Users</h3>
+                <p>Change roles, ban users, and check accounts.</p>
+              </Link>
+              <Link href='/dashboard/admin/participants' className={styles.linkCard}>
+                <h3>Participants</h3>
+                <p>Manage private participant and payment notes.</p>
+              </Link>
+            </>
+          )}
         </div>
       </section>
     </main>

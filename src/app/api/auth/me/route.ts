@@ -35,6 +35,7 @@ export async function GET(request: NextRequest) {
 
   const normalizedUser = {
     ...user,
+    id: String(user._id),
     role: user.isAdmin === true || user.role === 'admin' ? 'admin' : user.role,
     isAdmin: user.isAdmin === true || user.role === 'admin',
   };

@@ -9,6 +9,15 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <main className={styles.page}>
+      <section className={styles.hero}>
+        <p className={styles.kicker}>Stockholm, Sweden</p>
+        <h1>Contact</h1>
+        <p>
+          Questions about Funkcamp 2027, registration, payment, travel or the
+          camp experience? Reach out to us.
+        </p>
+      </section>
+
       <section className={styles.card}>
         <div className={styles.logoWrap}>
           <Image
@@ -20,15 +29,6 @@ export default function ContactPage() {
             priority
           />
         </div>
-
-        <p className={styles.kicker}>Stockholm, Sweden</p>
-
-        <h1>Contact Funkcamp</h1>
-
-        <p className={styles.intro}>
-          Questions about Funkcamp 2027, registration, payment, travel or the
-          camp experience? Reach out to us.
-        </p>
 
         <div className={styles.links}>
           <a href='mailto:funkcampswe@gmail.com' className={styles.linkButton}>

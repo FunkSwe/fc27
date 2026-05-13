@@ -1,6 +1,5 @@
 'use client';
 
-import { type ReactNode } from 'react';
 import styles from './PostStyles.module.scss';
 import PostForm, { type PostFormData } from './PostForm';
 

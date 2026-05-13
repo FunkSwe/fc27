@@ -86,6 +86,25 @@ export default function DashboardPostsPage() {
     loadUserAndPosts();
   }, []);
 
+  const handleWarning = async (postId: string) => {
+    const message = window.prompt('Write the warning message to send to this user:');
+    if (!message?.trim()) return;
+
+    const response = await fetch(`/api/posts/${postId}/warnings`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
+    });
+
+    if (!response.ok) {
+      const data = await response.json().catch(() => null);
+      setError(data?.error || 'Could not send warning.');
+      return;
+    }
+
+    window.alert('Warning saved for this user.');
+  };
+
   const handleDelete = async (postId: string) => {
     if (!window.confirm('Delete this post?')) return;
 
@@ -139,10 +158,11 @@ export default function DashboardPostsPage() {
       {loading ? <p>Loading posts…</p> : posts.length === 0 ? <p>No posts found.</p> : (
         <div className={styles.postGrid}>
           {posts.map((post) => (
-            <div key={post._id}>
+            <div key={post._id} className={styles.managementItem}>
               <PostCard {...post} id={post._id} />
-              <div className={styles.actions}>
+              <div className={styles.managementActions}>
                 <button type='button' className={styles.secondaryButton} onClick={() => { setSelectedPost(post); setIsOpen(true); }}>Edit</button>
+                {userRole === 'admin' && <button type='button' className={styles.secondaryButton} onClick={() => handleWarning(post._id)}>Warn user</button>}
                 <button type='button' className={styles.secondaryButton} onClick={() => handleDelete(post._id)}>Delete</button>
               </div>
             </div>
