@@ -4,6 +4,10 @@ export interface IMessage extends Document {
   conversation: Types.ObjectId;
   sender: Types.ObjectId;
   body: string;
+  originalBody?: string;
+  editedAt?: Date;
+  isDeleted: boolean;
+  deletedAt?: Date;
   readBy: Types.ObjectId[];
   replyTo?: Types.ObjectId;
   createdAt: Date;
@@ -25,6 +29,22 @@ const messageSchema = new Schema<IMessage>(
     body: {
       type: String,
       required: true,
+    },
+    originalBody: {
+      type: String,
+      default: '',
+    },
+    editedAt: {
+      type: Date,
+      default: null,
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
+    deletedAt: {
+      type: Date,
+      default: null,
     },
     readBy: [
       {

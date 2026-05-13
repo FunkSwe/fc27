@@ -6,6 +6,7 @@ export interface IConversation extends Document {
   name?: string;
   createdBy?: Types.ObjectId;
   lastMessageAt: Date;
+  hiddenFor: Types.ObjectId[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -37,6 +38,12 @@ const conversationSchema = new Schema<IConversation>(
       type: Date,
       default: Date.now,
     },
+    hiddenFor: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
   {
     timestamps: true,
@@ -44,6 +51,7 @@ const conversationSchema = new Schema<IConversation>(
 );
 
 conversationSchema.index({ participants: 1, lastMessageAt: -1 });
+conversationSchema.index({ hiddenFor: 1 });
 
 const Conversation = models.Conversation || model<IConversation>('Conversation', conversationSchema);
 export default Conversation;

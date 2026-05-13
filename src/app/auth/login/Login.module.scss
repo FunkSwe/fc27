@@ -73,20 +73,20 @@
     padding: 0.875rem 1rem;
     font-size: 1rem;
     border: 2px solid #111;
-    background: rgba(255, 255, 255, 0.8);
-    color: #111;
+    background: #1f1f1f;
+    color: #fff;
     font-family: var(--font-geist-sans), sans-serif;
     transition: all 0.2s ease;
 
     &:focus {
       outline: none;
       border-color: #e2141f;
-      background: rgba(255, 255, 255, 1);
+      background: #111;
       box-shadow: 0 0 0 3px rgba(226, 20, 31, 0.1);
     }
 
     &::placeholder {
-      color: #444;
+      color: #bbb;
     }
   }
 }
@@ -191,7 +191,7 @@
   transform: translateY(-50%);
   border: none;
   background: transparent;
-  color: #111;
+  color: #fff;
   cursor: pointer;
   padding: 0;
   display: flex;

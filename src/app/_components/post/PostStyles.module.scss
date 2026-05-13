@@ -303,6 +303,7 @@
   overflow-y: auto;
   border: 3px solid #111;
   background: rgba(255, 255, 255, 0.95);
+  color: #111;
   box-shadow: 0 35px 120px rgba(0, 0, 0, 0.18);
 }
 
@@ -361,7 +362,12 @@
   padding: 0.95rem 1rem;
   font: inherit;
   outline: none;
-  background: rgba(255, 255, 255, 0.8);
+  background: #fff;
+  color: #111;
+
+  &::placeholder {
+    color: #555;
+  }
 
   &:focus {
     border-color: #e2141f;
@@ -396,7 +402,12 @@
   border: 2px solid #111;
   padding: 1rem;
   outline: none;
-  background: rgba(255, 255, 255, 0.8);
+  background: #fff;
+  color: #111;
+
+  &::placeholder {
+    color: #555;
+  }
 
   &:focus {
     border-color: #e2141f;

@@ -15,7 +15,10 @@ export async function GET(request: NextRequest) {
   const user = await getCurrentUser(request);
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const conversations = await Conversation.find({ participants: user.id })
+  const conversations = await Conversation.find({
+    participants: user.id,
+    hiddenFor: { $ne: user.id },
+  })
     .populate('participants', 'username email role isAdmin')
     .sort({ lastMessageAt: -1, updatedAt: -1 })
     .limit(100)
@@ -67,7 +70,13 @@ export async function POST(request: NextRequest) {
       .populate('participants', 'username email role isAdmin')
       .lean();
 
-    if (existing) return NextResponse.json(existing);
+    if (existing) {
+      await Conversation.updateOne({ _id: existing._id }, { $pull: { hiddenFor: user.id } });
+      const visibleExisting = await Conversation.findById(existing._id)
+        .populate('participants', 'username email role isAdmin')
+        .lean();
+      return NextResponse.json(visibleExisting);
+    }
   }
 
   const conversation = await Conversation.create({
