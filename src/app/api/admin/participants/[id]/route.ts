@@ -32,6 +32,9 @@ export async function PUT(request: NextRequest, { params }: Params) {
   participant.name = String(body.name || '').trim();
   participant.email = String(body.email || '').trim().toLowerCase();
   participant.paid = body.paid === true;
+  if (typeof body.attended === 'boolean') {
+    participant.attended = body.attended;
+  }
   participant.paymentInfo = String(body.paymentInfo || '').trim();
   participant.note = String(body.note || '').trim();
 

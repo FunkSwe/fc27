@@ -11,11 +11,20 @@ export async function POST(request: NextRequest) {
     const email = String(body.email || '').trim().toLowerCase();
     const password = String(body.password || '');
     const username = String(body.username || '').trim().toLowerCase();
+    const signupCode = String(body.signupCode || '').trim();
+    const requiredSignupCode = (process.env.SIGNUP_ACCESS_CODE || 'fc27').trim();
 
     if (!email || !password || !username) {
       return NextResponse.json(
         { error: 'Username, email and password are required.' },
         { status: 400 },
+      );
+    }
+
+    if (requiredSignupCode && signupCode !== requiredSignupCode) {
+      return NextResponse.json(
+        { error: 'Invalid signup code.' },
+        { status: 403 },
       );
     }
 

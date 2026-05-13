@@ -360,15 +360,6 @@ export default function FunkCampMenu() {
         </div>
 
         <div className={styles.headerActions}>
-          <Link
-            href={isLoggedIn ? '/dashboard/posts/new' : '/auth/login'}
-            aria-label={isLoggedIn ? 'Create post' : 'Login to create post'}
-            className={styles.headerIconButton}
-            onClick={closeMenu}
-          >
-            <CreatePostIcon />
-          </Link>
-
           {isLoggedIn ? (
             <>
               <Link
@@ -400,14 +391,6 @@ export default function FunkCampMenu() {
                 <LoginIcon />
               </Link>
 
-              <Link
-                href='/auth/signup'
-                aria-label='Sign up'
-                className={styles.headerIconButton}
-                onClick={closeMenu}
-              >
-                <UserAddIcon />
-              </Link>
             </>
           )}
 
@@ -494,6 +477,13 @@ export default function FunkCampMenu() {
                   Create post
                 </Link>
                 <Link
+                  href='/dashboard/messages'
+                  className={styles.authMenuLink}
+                  onClick={closeMenu}
+                >
+                  Messages
+                </Link>
+                <Link
                   href='/dashboard'
                   className={styles.authMenuLink}
                   onClick={closeMenu}
@@ -519,14 +509,6 @@ export default function FunkCampMenu() {
                   onClick={closeMenu}
                 >
                   Log in
-                </Link>
-
-                <Link
-                  href='/auth/signup'
-                  className={styles.authMenuLink}
-                  onClick={closeMenu}
-                >
-                  Sign up
                 </Link>
               </>
             )}

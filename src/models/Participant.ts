@@ -4,6 +4,7 @@ export interface IParticipant extends Document {
   name: string;
   email?: string;
   paid: boolean;
+  attended: boolean;
   paymentInfo?: string;
   note?: string;
   createdAt: Date;
@@ -15,6 +16,7 @@ const participantSchema = new Schema<IParticipant>(
     name: { type: String, required: true, trim: true, maxlength: 140 },
     email: { type: String, trim: true, lowercase: true, default: '' },
     paid: { type: Boolean, default: false },
+    attended: { type: Boolean, default: false },
     paymentInfo: { type: String, trim: true, default: '', maxlength: 2000 },
     note: { type: String, trim: true, default: '', maxlength: 4000 },
   },

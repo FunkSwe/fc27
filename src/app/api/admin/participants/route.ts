@@ -36,6 +36,7 @@ export async function POST(request: NextRequest) {
     name,
     email: String(body.email || '').trim().toLowerCase(),
     paid: body.paid === true,
+    attended: body.attended === true,
     paymentInfo: String(body.paymentInfo || '').trim(),
     note: String(body.note || '').trim(),
   });

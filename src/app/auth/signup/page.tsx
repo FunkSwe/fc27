@@ -89,6 +89,7 @@ export default function SignupPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [signupCode, setSignupCode] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
@@ -111,7 +112,7 @@ export default function SignupPage() {
       const response = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ username, email, password, signupCode }),
       });
 
       const data = await readJsonSafely(response);
@@ -127,6 +128,7 @@ export default function SignupPage() {
       setEmail('');
       setPassword('');
       setConfirmPassword('');
+      setSignupCode('');
 
       setTimeout(() => {
         router.push('/auth/login');
@@ -168,6 +170,18 @@ export default function SignupPage() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder='you@example.com'
+                required
+              />
+            </label>
+
+
+            <label className={styles.label}>
+              <span>Signup Code</span>
+              <input
+                type='text'
+                value={signupCode}
+                onChange={(event) => setSignupCode(event.target.value)}
+                placeholder='Enter signup code'
                 required
               />
             </label>

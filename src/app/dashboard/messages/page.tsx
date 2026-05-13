@@ -35,6 +35,7 @@ export default function DashboardMessagesPage() {
   const [groupName, setGroupName] = useState('');
   const [messageText, setMessageText] = useState('');
   const [error, setError] = useState('');
+  const [currentUserId, setCurrentUserId] = useState('');
 
   const loadConversations = async () => {
     const response = await fetch('/api/conversations', { cache: 'no-store' });
@@ -60,6 +61,11 @@ export default function DashboardMessagesPage() {
 
   useEffect(() => {
     loadConversations();
+
+    fetch('/api/auth/me', { cache: 'no-store' })
+      .then((response) => response.json())
+      .then((data) => setCurrentUserId(data?.user?.id || data?.user?._id || ''))
+      .catch(() => undefined);
   }, []);
 
   useEffect(() => {
@@ -202,7 +208,7 @@ export default function DashboardMessagesPage() {
             <div style={{ marginBottom: '1rem' }}>
               <p><strong>People:</strong> {selectedConversation.participants.map((participant) => participant.username).join(', ')}</p>
               <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                {selectedConversation.participants.filter((participant) => !participant.isAdmin).map((participant) => (
+                {selectedConversation.participants.filter((participant) => !participant.isAdmin && participant._id !== currentUserId).map((participant) => (
                   <button key={participant._id} type='button' className={styles.logoutButton} onClick={() => blockUser(participant)}>
                     Block {participant.username}
                   </button>

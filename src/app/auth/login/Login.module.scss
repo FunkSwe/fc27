@@ -174,3 +174,27 @@
     padding: 1.5rem;
   }
 }
+
+.passwordField {
+  position: relative;
+  display: grid;
+
+  input {
+    padding-right: 3rem;
+  }
+}
+
+.eyeButton {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: #111;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
