@@ -90,6 +90,7 @@ export default function DashboardMessagesPage() {
       return;
     }
     setMessages(data);
+    window.dispatchEvent(new Event('messages-read'));
   };
 
   useEffect(() => {
@@ -181,6 +182,7 @@ export default function DashboardMessagesPage() {
     }
     setMessageText("");
     setMessages((current) => [...current, data]);
+    window.dispatchEvent(new Event('messages-changed'));
     loadConversations();
   };
 

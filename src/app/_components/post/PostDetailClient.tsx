@@ -110,7 +110,7 @@ export default function PostDetailClient({ post, initialComments }: PostDetailPr
 
       {error ? <p className={styles.error}>{error}</p> : null}
 
-      {displayImageUrl ? <img className={styles.postImage} src={displayImageUrl} alt={post.title} /> : null}
+      {displayImageUrl ? <img className={styles.postDetailImage} src={displayImageUrl} alt={post.title} /> : null}
       {post.youtubeUrl ? (
         <div className={styles.videoEmbed}>
           <iframe width='100%' height='420' src={post.youtubeUrl.replace('watch?v=', 'embed/')} title={post.title} frameBorder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowFullScreen />

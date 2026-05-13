@@ -39,6 +39,7 @@ export default function FloatingActions() {
   const [user, setUser] = useState<CurrentUser | null>(null);
   const [postModalOpen, setPostModalOpen] = useState(false);
   const [messagesOpen, setMessagesOpen] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
 
   const checkAuth = useCallback(async () => {
     try {
@@ -59,19 +60,61 @@ export default function FloatingActions() {
     }
   }, []);
 
+  const loadUnreadCount = useCallback(async () => {
+    try {
+      const response = await fetch('/api/messages/unread-count', {
+        cache: 'no-store',
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        setUnreadCount(0);
+        return;
+      }
+
+      const data = await response.json();
+      setUnreadCount(Number(data?.count || 0));
+    } catch {
+      setUnreadCount(0);
+    }
+  }, []);
+
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
 
   useEffect(() => {
-    const handleAuthChanged = () => checkAuth();
+    const handleAuthChanged = () => {
+      checkAuth();
+      loadUnreadCount();
+    };
     window.addEventListener('auth-changed', handleAuthChanged);
     window.addEventListener('focus', handleAuthChanged);
     return () => {
       window.removeEventListener('auth-changed', handleAuthChanged);
       window.removeEventListener('focus', handleAuthChanged);
     };
-  }, [checkAuth]);
+  }, [checkAuth, loadUnreadCount]);
+
+  useEffect(() => {
+    if (!user) {
+      setUnreadCount(0);
+      return;
+    }
+
+    loadUnreadCount();
+    const interval = window.setInterval(loadUnreadCount, 20000);
+
+    const handleMessagesRead = () => loadUnreadCount();
+    window.addEventListener('messages-read', handleMessagesRead);
+    window.addEventListener('messages-changed', handleMessagesRead);
+
+    return () => {
+      window.clearInterval(interval);
+      window.removeEventListener('messages-read', handleMessagesRead);
+      window.removeEventListener('messages-changed', handleMessagesRead);
+    };
+  }, [user, loadUnreadCount]);
 
   return (
     <>
@@ -81,8 +124,20 @@ export default function FloatingActions() {
             <button type='button' className={styles.actionButton} onClick={() => setPostModalOpen(true)} aria-label='Create post'>
               <PenIcon />
             </button>
-            <button type='button' className={styles.actionButton} onClick={() => setMessagesOpen(true)} aria-label='Open messages'>
+            <button
+              type='button'
+              className={styles.actionButton}
+              onClick={() => {
+                setMessagesOpen(true);
+                loadUnreadCount();
+              }}
+              aria-label={unreadCount > 0 ? `Open messages, ${unreadCount} unread` : 'Open messages'}
+              title={unreadCount > 0 ? `${unreadCount} unread message${unreadCount === 1 ? '' : 's'}` : 'Open messages'}
+            >
               <MessageIcon />
+              {unreadCount > 0 ? (
+                <span className={styles.badge}>{unreadCount > 99 ? '99+' : unreadCount}</span>
+              ) : null}
             </button>
           </>
         ) : (

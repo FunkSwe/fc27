@@ -533,3 +533,22 @@
     gap: 1.5rem;
   }
 }
+
+.postDetailImage {
+  width: min(100%, 1180px);
+  max-height: min(78vh, 900px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 2rem;
+  border: 3px solid #111;
+  background: #111;
+}
+
+@media (max-width: 700px) {
+  .postDetailImage {
+    width: 100%;
+    max-height: 72vh;
+    margin-bottom: 1.25rem;
+  }
+}

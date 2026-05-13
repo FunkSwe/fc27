@@ -101,6 +101,7 @@ export default function MessengerModal({
     }
 
     setMessages(data);
+    window.dispatchEvent(new Event('messages-read'));
   };
 
   useEffect(() => {
@@ -216,6 +217,7 @@ export default function MessengerModal({
 
     setMessageText("");
     setMessages((current) => [...current, data]);
+    window.dispatchEvent(new Event('messages-changed'));
     loadConversations();
   };
 
