@@ -140,7 +140,7 @@
 
   width: 100%;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 4.2rem;
 
   display: flex;
   align-items: flex-end;
@@ -151,7 +151,6 @@
   position: relative;
   width: 100%;
   height: clamp(400px, 52vw, 600px);
-  margin-bottom: 4.5rem;
 }
 
 .heroImage {
@@ -289,7 +288,7 @@
 
   .imageWrapper {
     height: clamp(320px, 72vw, 450px);
-    margin-bottom: 0;
+    padding-bottom: 0;
   }
 
   .heroImage {
