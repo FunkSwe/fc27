@@ -68,7 +68,7 @@ export async function sendFunkcampRegistrationConfirmation({
   fullName,
   email,
 }: RegistrationMailData) {
-  const contactUrl = `${APP_URL}/contact`;
+  const contactUrl = 'mailto:funkcampswe@gmail.com';
 
   const subject = 'Funkcamp 2027 Registration';
 
@@ -116,7 +116,7 @@ Once the booking fee has been paid, we will send you the sign-up/payment page li
 We are looking forward to having you here in Stockholm, Sweden once again for this beautiful experience.
 
 If you have any questions, please reach out:
-${contactUrl}
+funkcampswe@gmail.com
 
 Best regards,
 Team Funkcamp
@@ -231,7 +231,7 @@ funkcampswe@gmail.com
 
     <p>
       <a
-        href="${contactUrl}"
+        href="mailto:funkcampswe@gmail.com"
         style="display:inline-block;padding:12px 18px;background:#e2141f;color:#ffffff;text-decoration:none;font-weight:bold;"
       >
         Contact Funkcamp

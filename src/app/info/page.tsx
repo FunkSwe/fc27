@@ -40,8 +40,8 @@ export default function Info() {
           <span>03</span>
           <h2>Registration</h2>
           <p>
-            Early bird spots will be released in May 2026. Limited spots will be
-            available in each price tier.
+            Registration is open. A booking fee secures your spot, and the
+            remaining amount must be paid no later than December 31st, 2026.
           </p>
         </article>
 
@@ -58,8 +58,8 @@ export default function Info() {
       <section className={styles.notice}>
         <h2>More information coming soon</h2>
         <p>
-          Schedule, teachers, prices, venue details and practical information
-          will be added here when everything is confirmed.
+          Schedule, teacher updates, venue details and practical information
+          will be added here as the event approaches.
         </p>
       </section>
     </main>

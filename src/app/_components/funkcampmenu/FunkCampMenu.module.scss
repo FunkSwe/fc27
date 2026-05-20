@@ -96,17 +96,11 @@
 
   pointer-events: auto;
 
-  button {
+  a {
     width: inherit;
     height: inherit;
     display: grid;
     place-content: center;
-
-    border: 0;
-    background: transparent;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
   }
 
   img {
@@ -365,7 +359,7 @@
   }
 
   .menuLink {
-    font-size: clamp(36px, 14vw, 0px);
+    font-size: clamp(36px, 14vw, 72px);
   }
 
   .menuInfoCol {
@@ -406,40 +400,6 @@
     transition:
       opacity 0.15s ease 0.2s,
       visibility 0s linear 0s;
-  }
-}
-
-.logoGifOverlay {
-  position: fixed;
-  inset: 0;
-  z-index: 20000;
-
-  width: 100vw;
-  height: 100vh;
-
-  display: grid;
-  place-items: center;
-
-  background: rgba(0, 0, 0, 0.85);
-  pointer-events: none;
-
-  animation: gifOverlayFadeIn 0.2s ease forwards;
-
-  img {
-    width: 100vw;
-    height: 100vh;
-    object-fit: contain;
-    display: block;
-  }
-}
-
-@keyframes gifOverlayFadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
 

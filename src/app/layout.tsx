@@ -2,7 +2,6 @@ import { Geist, Geist_Mono, Anton, Archivo_Black } from 'next/font/google';
 import './globals.css';
 import FunkCampMenu from './_components/funkcampmenu';
 import PageLoader from './_components/PageLoader';
-import FloatingActions from './_components/FloatingActions';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -45,7 +44,6 @@ export default function RootLayout({
         <FunkCampMenu />
         <PageLoader />
         {children}
-        <FloatingActions />
       </body>
     </html>
   );

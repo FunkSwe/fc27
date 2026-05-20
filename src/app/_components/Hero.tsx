@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './Hero.module.scss';
 
 type HeroProps = {
@@ -7,6 +8,8 @@ type HeroProps = {
   subtitle?: string;
   imageSrc?: string;
   numberText?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
 };
 
 export default function Hero({
@@ -15,6 +18,8 @@ export default function Hero({
   subtitle = 'Funkcamp 2027',
   imageSrc = '/images/hero-players.png',
   numberText = '26–29 MARCH',
+  ctaHref = '/registration',
+  ctaLabel = 'Register now',
 }: HeroProps) {
   const barcodeBars = [
     8, 18, 28, 12, 34, 22, 40, 16, 30, 38, 14, 24, 42, 20, 32, 10, 36, 26, 44,
@@ -32,7 +37,7 @@ export default function Hero({
             <p>2027</p>
           </div>
 
-           <div>
+          <div>
             <span>Style</span>
             <p>Locking</p>
           </div>
@@ -46,8 +51,6 @@ export default function Hero({
             <span>Date</span>
             <p>26.03.2027</p>
           </div>
-
-         
         </div>
 
         <h1 className={styles.bigTitle} aria-label="Funkcamp 2027">
@@ -84,6 +87,10 @@ export default function Hero({
               <span key={index} style={{ height: `${height}px` }} />
             ))}
           </div>
+
+          <Link href={ctaHref} className={styles.ctaButton}>
+            {ctaLabel}
+          </Link>
         </div>
       </div>
     </section>

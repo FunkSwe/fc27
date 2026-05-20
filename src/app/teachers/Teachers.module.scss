@@ -37,16 +37,17 @@
 }
 
 .teacherGrid {
+  width: min(100%, 1440px);
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .notice {
-  width: 100%;
-  margin: 1rem auto 0;
+  width: min(100%, 1440px);
+  margin: 1.5rem auto 0;
   border: 3px solid #111;
   background: transparent;
   color: #111;
@@ -78,10 +79,23 @@
 
 @media (max-width: 560px) {
   .teachersPage {
-    padding-top: 7rem;
+    padding: 7rem 0 0;
+  }
+
+  .hero {
+    padding: 0 1rem;
+    margin-bottom: 2rem;
   }
 
   .teacherGrid {
+    width: 100%;
     grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .notice {
+    border-left: 0;
+    border-right: 0;
+    margin-top: 0;
   }
 }
