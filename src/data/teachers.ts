@@ -60,4 +60,14 @@ export const teacherData: Teacher[] = [
     subtitle: 'Funkademics',
     desc: 'Manne is one of the first lockers in Sweden to have the fundamentals right. He was first what many call a self-taught dancer, but later learned the artform of locking from the pioneers. He has been teaching locking for a long time and is well known on the scene. He has been in numerous productions, taught at many of Sweden’s top schools and battled in numerous competitions. He has always been dedicated to locking and has a lot to share with the community.',
   },
+   {
+    id: 6,
+    slug: 'tony-gogo',
+    name: 'Tony Gogo',
+    country: 'US',
+    img: '/teachers/t6.png',
+    title: 'Tony Gogo',
+    subtitle: 'The Gogo Brothers',
+    desc: 'Tony “Go-Go” Lewis is an original locking pioneer from the United States and one of the early members of The Go-Go Brothers, a legendary crew connected to the foundation of locking culture. He also performed with The Lockers, the iconic group that helped bring locking to the world stage in the 1970s. Now based in Japan, Tony has played a major role in spreading and teaching locking internationally, inspiring generations of dancers with his funk, groove, history, and original style. His legacy continues through his teaching, his influence on Japanese locking culture, and the next generation of Go-Go Brothers',
+  },
 ];

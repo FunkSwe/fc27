@@ -136,7 +136,7 @@
 
 .imageArea {
   position: relative;
-  z-index: 3;
+  z-index: 1;
 
   width: 100%;
   max-width: 100%;
@@ -150,14 +150,15 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  height: clamp(360px, 52vw, 590px);
+  height: clamp(400px, 52vw, 600px);
+  margin-bottom: 4rem;
 }
 
 .heroImage {
   object-fit: contain;
   object-position: bottom center;
   filter: grayscale(1) contrast(1.25);
-  opacity: 0.8;
+  opacity: 0.4;
 }
 
 .bottomContent {
