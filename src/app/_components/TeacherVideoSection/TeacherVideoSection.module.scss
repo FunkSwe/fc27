@@ -1,0 +1,202 @@
+.section {
+  position: relative;
+  width: 100%;
+  background: #e9e4d6;
+  color: #111;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1rem, 4vw, 4rem);
+  overflow: hidden;
+
+  &::before {
+    content: 'LOCKING';
+    position: absolute;
+    left: 50%;
+    top: 1.5rem;
+    transform: translateX(-50%);
+    color: rgba(226, 20, 31, 0.09);
+    font-family: var(--font-archivo-black), sans-serif;
+    font-size: clamp(5rem, 18vw, 18rem);
+    line-height: 0.8;
+    letter-spacing: -0.12em;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+}
+
+.header {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+  margin: 0 auto clamp(2rem, 5vw, 4rem);
+  text-align: center;
+
+  h2 {
+    margin: 0;
+    color: #e2141f;
+    font-family: var(--font-archivo-black), sans-serif;
+    font-size: clamp(3rem, 9vw, 8rem);
+    line-height: 0.78;
+    letter-spacing: -0.11em;
+    text-transform: uppercase;
+    text-shadow:
+      0.015em 0.015em #000,
+      0 0 #000;
+  }
+
+  p:not(.kicker) {
+    max-width: 680px;
+    margin: 1.25rem auto 0;
+    font-weight: 700;
+    line-height: 1.55;
+  }
+}
+
+.kicker {
+  display: inline-flex;
+  margin: 0 0 1rem;
+  padding: 0.4rem 0.75rem;
+  border: 2px solid #111;
+  background: #fffaf0;
+  color: #111;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.videoGrid {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1500px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.videoCard {
+  border: 3px solid #111;
+  background: #fffaf0;
+  box-shadow: 7px 7px 0 #111;
+  overflow: hidden;
+  transform-origin: center;
+}
+
+.videoFrame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #111;
+  border-bottom: 3px solid #111;
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.cardInfo {
+  padding: 1rem;
+
+  h3 {
+    margin: 0.8rem 0 0;
+    color: #e2141f;
+    font-family: var(--font-archivo-black), sans-serif;
+    font-size: clamp(1.7rem, 3vw, 2.8rem);
+    line-height: 0.85;
+    letter-spacing: -0.08em;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0.7rem 0 0;
+    font-weight: 900;
+    line-height: 1.25;
+  }
+
+  small {
+    display: block;
+    margin-top: 0.3rem;
+    color: #444;
+    font-weight: 800;
+  }
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #111;
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.actionButton,
+.actionButtonSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.65rem 0.85rem;
+  border: 2px solid #111;
+  color: #fff;
+  background: #111;
+  text-decoration: none;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 3px 3px 0 #111;
+    background: #e2141f;
+    color: #fff;
+  }
+}
+
+.actionButtonSecondary {
+  background: #fff;
+  color: #111;
+
+  &:hover {
+    background: #111;
+    color: #fff;
+  }
+}
+
+@media (max-width: 1050px) {
+  .videoGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .section {
+    padding: 4rem 1rem;
+  }
+
+  .videoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .videoCard {
+    box-shadow: 5px 5px 0 #111;
+  }
+
+  .actions {
+    display: grid;
+  }
+}

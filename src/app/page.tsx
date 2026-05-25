@@ -1,5 +1,7 @@
 import styles from './page.module.css';
 import Hero from './_components/Hero';
+import TeacherVideoSection from './_components/TeacherVideoSection';
+import HomeTeacherLinks from './_components/HomeTeacherLinks';
 
 export default function Home() {
   return (
@@ -11,6 +13,8 @@ export default function Home() {
           subtitle='Best of the best'
           imageSrc='/images/hero-players.png'
         />
+        <TeacherVideoSection />
+        <HomeTeacherLinks />
       </main>
     </div>
   );

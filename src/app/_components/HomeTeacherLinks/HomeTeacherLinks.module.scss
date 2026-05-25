@@ -1,0 +1,177 @@
+.section {
+  width: 100%;
+  background: #111;
+  color: #eedbbf;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1rem, 4vw, 4rem);
+}
+
+.header {
+  width: min(100%, 1100px);
+  margin: 0 auto 2rem;
+  text-align: center;
+
+  h2 {
+    margin: 0;
+    color: #e2141f;
+    font-family: var(--font-archivo-black), sans-serif;
+    font-size: clamp(3rem, 9vw, 8rem);
+    line-height: 0.78;
+    letter-spacing: -0.11em;
+    text-transform: uppercase;
+  }
+}
+
+.kicker {
+  display: inline-flex;
+  margin: 0 0 1rem;
+  padding: 0.4rem 0.75rem;
+  border: 2px solid #eedbbf;
+  color: #eedbbf;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.teacherList {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.teacherRow {
+  display: grid;
+  grid-template-columns: 60px 72px minmax(0, 1fr) auto 44px;
+  align-items: center;
+  gap: 1rem;
+  min-height: 96px;
+  padding: 0.75rem;
+  border: 2px solid #eedbbf;
+  background: #191919;
+  color: #eedbbf;
+  text-decoration: none;
+  overflow: hidden;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+
+  &:hover {
+    transform: translateX(8px);
+    background: #e2141f;
+    color: #fff;
+    border-color: #fff;
+
+    .image {
+      transform: scale(1.08);
+      filter: grayscale(0) contrast(1.1);
+    }
+
+    .arrow {
+      transform: translateX(4px);
+    }
+  }
+}
+
+.number,
+.country {
+  font-family: var(--font-archivo-black), sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.imageWrap {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border: 2px solid currentColor;
+  background: #e9e4d6;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.2);
+  transition:
+    transform 220ms ease,
+    filter 220ms ease;
+}
+
+.text {
+  min-width: 0;
+
+  h3 {
+    margin: 0;
+    font-family: var(--font-archivo-black), sans-serif;
+    font-size: clamp(1.7rem, 4vw, 3.2rem);
+    line-height: 0.85;
+    letter-spacing: -0.08em;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0.3rem 0 0;
+    font-weight: 800;
+    color: inherit;
+    opacity: 0.8;
+  }
+}
+
+.arrow {
+  font-family: var(--font-archivo-black), sans-serif;
+  font-size: 2.2rem;
+  transition: transform 180ms ease;
+}
+
+.footer {
+  width: min(100%, 1100px);
+  margin: 2rem auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+.allTeachersButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.2rem;
+  border: 2px solid #eedbbf;
+  background: #eedbbf;
+  color: #111;
+  text-decoration: none;
+  font-family: var(--font-archivo-black), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  box-shadow: 5px 5px 0 #e2141f;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+
+  &:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 #e2141f;
+  }
+}
+
+@media (max-width: 680px) {
+  .teacherRow {
+    grid-template-columns: 44px 64px minmax(0, 1fr) 32px;
+    gap: 0.75rem;
+    min-height: 88px;
+  }
+
+  .country {
+    display: none;
+  }
+
+  .imageWrap {
+    width: 64px;
+    height: 64px;
+  }
+
+  .arrow {
+    font-size: 1.8rem;
+  }
+}
