@@ -11,7 +11,7 @@ export type Teacher = {
 
 export const teacherData: Teacher[] = [
   {
-    id: 1,
+    id: 6,
     slug: 'a-train',
     name: 'A-train',
     country: 'SWE',
@@ -41,7 +41,7 @@ export const teacherData: Teacher[] = [
     desc: 'P-Lock began his dance career in the 1990s specialising in b-boying and popping before discovering Locking, the style that gave him his name. Over a decade on and P-Lock is one of the world’s finest Lockers gaining respect and accolades internationally for his vibrant and powerful skills. P-Lock has been a member of top French crews the Vagabonds and The Boogie Lockers. Since then, P-Lock has formed his own companies, toured the world and performed extensively. He is also a highly sought after judge and teacher. P-Lock’s energy and precision make him an unmistakeable artist and unique performer.',
   },
   {
-    id: 4,
+    id: 5,
     slug: 'willow',
     name: 'Willow',
     country: 'FR',
@@ -51,7 +51,7 @@ export const teacherData: Teacher[] = [
     desc: 'From the earliest age Willow Evann felt the need to express himself through dance. Lulled as a child by the reggae his father listened to, he has been immersed in the Hip Hop culture since the age of 10. He then turned to Locking and is considered today as an essential reference of this movement. At the same time, he developed his career as a photographer and focused his practice on capturing gesture and choreographic movement.',
   },
   {
-    id: 5,
+    id: 4,
     slug: 'funky-asparagus',
     name: 'Funky Asparagus',
     country: 'SWE',
@@ -61,7 +61,7 @@ export const teacherData: Teacher[] = [
     desc: 'Manne is one of the first lockers in Sweden to have the fundamentals right. He was first what many call a self-taught dancer, but later learned the artform of locking from the pioneers. He has been teaching locking for a long time and is well known on the scene. He has been in numerous productions, taught at many of Sweden’s top schools and battled in numerous competitions. He has always been dedicated to locking and has a lot to share with the community.',
   },
    {
-    id: 6,
+    id: 1,
     slug: 'tony-gogo',
     name: 'Tony Gogo',
     country: 'US',
