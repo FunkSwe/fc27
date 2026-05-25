@@ -27,8 +27,8 @@ export const teacherData: Teacher[] = [
     country: 'KR',
     img: '/teachers/t1.png',
     title: 'Khan',
-    subtitle: 'More info coming soon',
-    desc: 'More information about Khan will be added soon.',
+    subtitle: 'Originality',
+    desc: '`Khan, from Originality, is one of the most respected Locking dancers from the Korean scene, known for his groove, musicality, character, expression, and unmistakable style.He has been spreading Locking in Korea since the early 2000s and has helped push Korean Locking onto the international stage through battles, performances, workshops, and judging around the world.He was also a master student of Greg “Campbellock Jr.” Pope, carrying important knowledge from the roots of Locking into his own dance, teaching, and expression.His dance carries funk, feeling, and originality, not just steps, but presence.`',
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ export const teacherData: Teacher[] = [
     img: '/teachers/t2.png',
     title: 'Patrick Pires',
     subtitle: 'Team Rockets',
-    desc: 'P-Lock began his dance career in the late 1990s specialising in b-boying and popping before discovering Locking, the style that gave him his name. Over a decade on and P-Lock is one of the world’s finest Lockers gaining respect and accolades internationally for his vibrant and powerful skills. P-Lock has been a member of top French crews the Vagabonds and The Boogie Lockers. Since then, P-Lock has formed his own companies, toured the world and performed extensively. He is also a highly sought after judge and teacher. P-Lock’s energy and precision make him an unmistakeable artist and unique performer.',
+    desc: 'P-Lock began his dance career in the 1990s specialising in b-boying and popping before discovering Locking, the style that gave him his name. Over a decade on and P-Lock is one of the world’s finest Lockers gaining respect and accolades internationally for his vibrant and powerful skills. P-Lock has been a member of top French crews the Vagabonds and The Boogie Lockers. Since then, P-Lock has formed his own companies, toured the world and performed extensively. He is also a highly sought after judge and teacher. P-Lock’s energy and precision make him an unmistakeable artist and unique performer.',
   },
   {
     id: 4,
