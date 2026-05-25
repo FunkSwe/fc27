@@ -28,7 +28,7 @@ export const teacherData: Teacher[] = [
     img: '/teachers/t1.png',
     title: 'Khan',
     subtitle: 'Originality',
-    desc: '`Khan, from Originality, is one of the most respected Locking dancers from the Korean scene, known for his groove, musicality, character, expression, and unmistakable style.He has been spreading Locking in Korea since the early 2000s and has helped push Korean Locking onto the international stage through battles, performances, workshops, and judging around the world.He was also a master student of Greg “Campbellock Jr.” Pope, carrying important knowledge from the roots of Locking into his own dance, teaching, and expression.His dance carries funk, feeling, and originality, not just steps, but presence.`',
+    desc: 'Khan, from Originality, is one of the most respected Locking dancers from the Korean scene, known for his groove, musicality, character, expression, and unmistakable style.He has been spreading Locking in Korea since the early 2000s and has helped push Korean Locking onto the international stage through battles, performances, workshops, and judging around the world.He was also a master student of Greg “Campbellock Jr.” Pope, carrying important knowledge from the roots of Locking into his own dance, teaching, and expression.His dance carries funk, feeling, and originality, not just steps, but presence.',
   },
   {
     id: 3,
