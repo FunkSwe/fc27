@@ -6,7 +6,8 @@ export type TeacherVideo = {
   title: string;
   subtitle: string;
   embedId: string;
-  youtubeUrl: string;
+    youtubeUrl: string;
+    start?: number;
 };
 
 export const teacherVideos: TeacherVideo[] = [
@@ -20,16 +21,17 @@ export const teacherVideos: TeacherVideo[] = [
     embedId: 'VUP7I_85nCA',
     youtubeUrl: 'https://www.youtube.com/shorts/VUP7I_85nCA',
   },
-  {
-    id: 2,
-    teacherName: 'Tony GoGo',
-    teacherSlug: 'tony-gogo',
-    country: 'USA/JPN',
-    title: 'Tony GoGo / GoGo Family Judge Demo',
-    subtitle: 'Locking judge demo',
-    embedId: '3DHb4W-YoIs',
-    youtubeUrl: 'https://www.youtube.com/watch?v=3DHb4W-YoIs',
-  },
+{
+  id: 2,
+  teacherName: 'Tony GoGo',
+  teacherSlug: 'tony-gogo',
+  country: 'USA/JPN',
+  title: 'Tony GoGo / GoGo Family Judge Demo',
+  subtitle: 'Locking judge demo',
+    embedId: 'HuLWqin4QM4',
+  start: 67,
+  youtubeUrl: 'https://www.youtube.com/watch?v=HuLWqin4QM4&t=67s',
+},
   {
     id: 3,
     teacherName: 'Khan',
@@ -37,8 +39,9 @@ export const teacherVideos: TeacherVideo[] = [
     country: 'KOR',
     title: 'Khan Originality Crew Combo',
     subtitle: 'Locking tutorial / YAKfilms',
-    embedId: 'KNKcNhAOseY',
-    youtubeUrl: 'https://www.youtube.com/watch?v=KNKcNhAOseY',
+      embedId: '0w5golqDDwA',
+    start: 67,
+    youtubeUrl: 'https://www.youtube.com/watch?v=0w5golqDDwA',
   },
   {
     id: 4,
@@ -47,8 +50,8 @@ export const teacherVideos: TeacherVideo[] = [
     country: 'FR',
     title: 'P-Lock Locking Class',
     subtitle: 'Urban Dance Camp workshop',
-    embedId: 'ZdKCo6lZ51k',
-    youtubeUrl: 'https://www.youtube.com/watch?v=ZdKCo6lZ51k',
+    embedId: 'XMMKQYdEfMs',
+    youtubeUrl: 'https://www.youtube.com/watch?v=XMMKQYdEfMs',
   },
   {
     id: 5,
@@ -66,8 +69,8 @@ export const teacherVideos: TeacherVideo[] = [
     teacherSlug: 'willow',
     country: 'FR',
     title: 'Willow vs Candyman',
-    subtitle: 'Locking Forever / Summer Dance Forever',
-    embedId: '-dDwxbyfsHM',
-    youtubeUrl: 'https://www.youtube.com/watch?v=-dDwxbyfsHM',
+    subtitle: 'Willow / WHo is who 2010',
+    embedId: 'vpFJA7vt7EY',
+    youtubeUrl: 'https://www.youtube.com/watch?v=vpFJA7vt7EY',
   },
 ];

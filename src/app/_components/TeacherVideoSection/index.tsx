@@ -40,69 +40,76 @@ export default function TeacherVideoSection() {
       </div>
 
       <div className={styles.videoGrid}>
-        {teacherVideos.map((video, index) => (
-          <motion.article
-            key={video.id}
-            className={styles.videoCard}
-            initial={{
-              opacity: 0,
-              y: 44,
-              rotate: index % 2 === 0 ? -1.2 : 1.2,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              rotate: 0,
-            }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{
-              duration: 0.6,
-              delay: index * 0.06,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
-            <div className={styles.videoFrame}>
-              <iframe
-                src={`https://www.youtube.com/embed/${video.embedId}`}
-                title={video.title}
-                loading='lazy'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                allowFullScreen
-              />
-            </div>
+        {teacherVideos.map((video, index) => {
+          const embedUrl =
+            typeof video.start === 'number'
+              ? `https://www.youtube.com/embed/${video.embedId}?start=${video.start}`
+              : `https://www.youtube.com/embed/${video.embedId}`;
 
-            <div className={styles.cardInfo}>
-              <div className={styles.cardTop}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <span>{video.country}</span>
+          return (
+            <motion.article
+              key={video.id}
+              className={styles.videoCard}
+              initial={{
+                opacity: 0,
+                y: 44,
+                rotate: index % 2 === 0 ? -1.2 : 1.2,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                rotate: 0,
+              }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.06,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <div className={styles.videoFrame}>
+                <iframe
+                  src={embedUrl}
+                  title={video.title}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
               </div>
 
-              <h3>{video.teacherName}</h3>
-              <p>{video.title}</p>
-              <small>{video.subtitle}</small>
+              <div className={styles.cardInfo}>
+                <div className={styles.cardTop}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <span>{video.country}</span>
+                </div>
 
-              <div className={styles.actions}>
-                <a
-                  href={video.youtubeUrl}
-                  target='_blank'
-                  rel='noreferrer'
-                  className={styles.actionButton}
-                >
-                  YouTube
-                </a>
+                <h3>{video.teacherName}</h3>
+                <p>{video.title}</p>
+                <small>{video.subtitle}</small>
 
-                {video.teacherSlug && (
-                  <Link
-                    href={`/teachers/${video.teacherSlug}`}
-                    className={styles.actionButtonSecondary}
+                <div className={styles.actions}>
+                  <a
+                    href={video.youtubeUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={styles.actionButton}
                   >
-                    Teacher page
-                  </Link>
-                )}
+                    YouTube
+                  </a>
+
+                  {video.teacherSlug && (
+                    <Link
+                      href={`/teachers/${video.teacherSlug}`}
+                      className={styles.actionButtonSecondary}
+                    >
+                      Teacher page
+                    </Link>
+                  )}
+                </div>
               </div>
-            </div>
-          </motion.article>
-        ))}
+            </motion.article>
+          );
+        })}
       </div>
     </section>
   );
