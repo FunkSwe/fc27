@@ -32,7 +32,7 @@ export default function Info() {
           <h2>Location</h2>
           <p>
             The final venue information will be announced soon. The camp will be
-            held in Sweden.
+            held in Stockholm/Sweden.
           </p>
         </article>
 
@@ -58,7 +58,7 @@ export default function Info() {
       <section className={styles.notice}>
         <h2>More information coming soon</h2>
         <p>
-          Schedule, teacher updates, venue details and practical information
+          Schedule, venue details, other happenings and practical information
           will be added here as the event approaches.
         </p>
       </section>
