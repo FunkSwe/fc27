@@ -19,7 +19,7 @@ export default function Hero({
   imageSrc = '/images/hero-players.png',
   numberText = '26–29 MARCH',
   ctaHref = '/registration',
-  ctaLabel = 'Register now',
+  ctaLabel = 'Registeration closed',
 }: HeroProps) {
   const barcodeBars = [
     8, 18, 28, 12, 34, 22, 40, 16, 30, 38, 14, 24, 42, 20, 32, 10, 36, 26, 44,
@@ -53,7 +53,7 @@ export default function Hero({
           </div>
         </div>
 
-        <h1 className={styles.bigTitle} aria-label="Funkcamp 2027">
+        <h1 className={styles.bigTitle} aria-label='Funkcamp 2027'>
           <span className={styles.desktopTitle}>
             {desktopTitleLines.map((line) => (
               <span key={line}>{line}</span>
@@ -82,7 +82,7 @@ export default function Hero({
         <div className={styles.bottomContent}>
           <p className={styles.number}>{numberText}</p>
 
-          <div className={styles.barcode} aria-hidden="true">
+          <div className={styles.barcode} aria-hidden='true'>
             {barcodeBars.map((height, index) => (
               <span key={index} style={{ height: `${height}px` }} />
             ))}
