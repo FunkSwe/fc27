@@ -18,8 +18,8 @@ export default function Hero({
   subtitle = 'Funkcamp 2027',
   imageSrc = '/images/hero-players.png',
   numberText = '26–29 MARCH',
-  ctaHref = '/registration',
-  ctaLabel = 'Registeration closed',
+  ctaHref = '/registration#waiting-list',
+  ctaLabel = 'Join the waiting list',
 }: HeroProps) {
   const barcodeBars = [
     8, 18, 28, 12, 34, 22, 40, 16, 30, 38, 14, 24, 42, 20, 32, 10, 36, 26, 44,

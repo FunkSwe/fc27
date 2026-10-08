@@ -45,7 +45,7 @@ const menuLinks: MenuLink[] = [
   { path: '/', label: 'Home' },
   { path: '/info', label: 'Info' },
   { path: '/teachers', label: 'Teachers' },
-  { path: '/registration', label: 'Registration' },
+  { path: '/registration', label: 'Contact' },
 ];
 
 export default function FunkCampMenu() {
@@ -191,7 +191,10 @@ export default function FunkCampMenu() {
 
           <div className={styles.menuInfo}>
             <div className={styles.menuInfoCol}>
-              <p>Contact Us: funkcampswe@gmail.com</p>
+              <p>
+                Contact Us:{' '}
+                <a href="mailto:funkcampswe@gmail.com">funkcampswe@gmail.com</a>
+              </p>
 
               <button
                 type="button"

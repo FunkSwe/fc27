@@ -2,6 +2,7 @@
   min-height: 100vh;
   background: #e9e4d6;
   color: #111;
+  color-scheme: light;
   padding: 9rem clamp(1rem, 4vw, 4rem) 4rem;
 }
 
@@ -40,11 +41,12 @@
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
 .card {
+  min-width: 0;
   min-height: 260px;
   border: 3px solid #111;
   background: rgba(255, 255, 255, 0.25);
@@ -53,6 +55,7 @@
   display: grid;
   grid-template-rows: auto auto auto;
   justify-items: start;
+  align-content: start;
 
   span {
     color: #e2141f;
@@ -74,6 +77,32 @@
     margin: 0;
     line-height: 1.5;
     text-align: left;
+
+    & + p {
+      margin-top: 1rem;
+    }
+  }
+
+  ul {
+    padding-left: 1.25rem;
+    margin: 0 0 1rem;
+    line-height: 1.8;
+  }
+
+  a {
+    color: #111;
+    overflow-wrap: anywhere;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: #e2141f;
+    }
+
+    &:focus-visible {
+      outline: 3px solid #e2141f;
+      outline-offset: 3px;
+    }
   }
 }
 
