@@ -36,17 +36,21 @@ export default function Info() {
           <p>
             <strong>Friday 26 March</strong>
             <br />
-            To be announced.
+            TBA shortly
           </p>
           <p>
             <strong>Saturday–Monday, 27–29 March</strong>
             <br />
+            TBA shortly
+            {/*
             Danscenter Fryshuset
             <br />
             Mårtensdalsgatan 2–8
             <br />
             120 30 Stockholm, Sweden
+            */}
           </p>
+          {/*
           <p>
             <a
               href="https://www.google.com/maps/search/?api=1&query=Danscenter%20Fryshuset%2C%20M%C3%A5rtensdalsgatan%202-8%2C%20120%2030%20Stockholm"
@@ -54,6 +58,7 @@ export default function Info() {
               Click here to open in Google Maps
             </a>
           </p>
+          */}
         </article>
 
         <article className={styles.card}>
