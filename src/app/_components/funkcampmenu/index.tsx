@@ -88,6 +88,15 @@ export default function FunkCampMenu() {
     setIsMenuOpen(false);
   };
 
+  const handleLogoNavigate = (event: { preventDefault: () => void }) => {
+    closeMenu();
+
+    if (pathname === '/') {
+      event.preventDefault();
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  };
+
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText('funkcampswe@gmail.com');
@@ -115,7 +124,11 @@ export default function FunkCampMenu() {
 
       <div className={styles.menuBar}>
         <div className={styles.menuLogo}>
-          <Link href="/" aria-label="Go to Funkcamp home" onClick={closeMenu}>
+          <Link
+            href="/#top"
+            aria-label="Go to Funkcamp home"
+            onNavigate={handleLogoNavigate}
+          >
             <img src="/fclogosmall.png" alt="Funkcamp logo" />
           </Link>
         </div>
@@ -143,7 +156,11 @@ export default function FunkCampMenu() {
       >
         <div className={styles.menuOverlayBar}>
           <div className={styles.menuLogo}>
-            <Link href="/" aria-label="Go to Funkcamp home" onClick={closeMenu}>
+            <Link
+              href="/#top"
+              aria-label="Go to Funkcamp home"
+              onNavigate={handleLogoNavigate}
+            >
               <img src="/fclogosmall.png" alt="Funkcamp logo" />
             </Link>
           </div>

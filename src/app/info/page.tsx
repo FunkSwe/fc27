@@ -27,7 +27,7 @@ export default function Info() {
         <div className={styles.venueDetails}>
           <h2 id="venue-heading">Venue</h2>
           <p>
-            <strong>Saturday–Monday, 27–29 March</strong>
+            <strong>Friday–Monday, 26–29 March</strong>
           </p>
           <p>
             <strong>SKH — Stockholms konstnärliga högskola</strong>
@@ -40,8 +40,11 @@ export default function Info() {
             114 28 Stockholm, Sweden
           </address>
           <p>
-            We&apos;ll be dancing at SKH&apos;s dance campus. The address for
-            Friday&apos;s kick-off is coming soon.
+            All four days take place at SKH&apos;s dance campus, including
+            Friday&apos;s kick-off.
+          </p>
+          <p>
+            The Friday venue might change. If so, it will be announced shortly.
           </p>
           <div className={styles.venueLinks}>
             <a
@@ -81,7 +84,7 @@ export default function Info() {
           <span>02</span>
           <h2>Schedule</h2>
           <ul>
-            <li>Friday 26 March: 17.30–20.30</li>
+            <li>Friday 26 March: 17.00–late</li>
             <li>Saturday 27 March: 11.00–17.00</li>
             <li>Sunday 28 March: 11.00–17.00</li>
             <li>Monday 29 March: 11.00–15.00</li>
@@ -100,7 +103,10 @@ export default function Info() {
             sum to get the weekend started. Come ready to get down, meet the
             Funkcamp family and have some fun!
           </p>
-          <p>The Friday venue address and more details are coming soon.</p>
+          <p>
+            Join us at SKH, Brinellvägen 58, from 17.00 until late. More details
+            are coming soon.
+          </p>
         </article>
 
         <article className={styles.card}>

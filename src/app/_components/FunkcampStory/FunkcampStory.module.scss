@@ -1,0 +1,1746 @@
+/* Keep the viewport as sticky's scroll container, only while this page is mounted. */
+:global(html):has(.story),
+:global(body):has(.story) {
+  overflow-x: clip;
+}
+
+.story {
+  --red: #e2141f;
+  --paper: #e9e4d6;
+  --ink: #171717;
+  --muted: #6f6b62;
+  --line: #17171730;
+  --display: var(--font-archivo-black), 'Arial Black', sans-serif;
+  --sans: Arial, Helvetica, sans-serif;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  color-scheme: light;
+  color: var(--ink);
+  background: var(--paper);
+  font: 15px/1.5 var(--sans);
+}
+
+.story :global(*) {
+  box-sizing: border-box;
+}
+.story :global(img) {
+  display: block;
+  max-width: 100%;
+}
+.story :global(a) {
+  color: inherit;
+  text-decoration: none;
+}
+.story :global(button) {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.story :global(a),
+.story :global(button) {
+  -webkit-tap-highlight-color: transparent;
+}
+.story :global(a:focus-visible),
+.story :global(button:focus-visible) {
+  outline: 3px solid var(--red);
+  outline-offset: 5px;
+}
+.story :global(p),
+.story :global(h1),
+.story :global(h2),
+.story :global(h3),
+.story :global(figure) {
+  margin: 0;
+}
+.story :global(.scene) {
+  position: relative;
+  height: 210svh;
+}
+.story :global(.stage) {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 580px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.story :global(.scene-top),
+.story :global(.scene-bottom) {
+  position: absolute;
+  left: 8%;
+  right: 6%;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font: 9px/1.5 monospace;
+  letter-spacing: 0.07em;
+}
+.story :global(.scene-top) {
+  top: 110px;
+}
+.story :global(.scene-bottom) {
+  bottom: 26px;
+}
+.story :global(.eyebrow) {
+  font: 10px/1.5 monospace;
+  letter-spacing: 0.14em;
+  margin-bottom: 17px;
+}
+.story :global(.copy) {
+  position: absolute;
+  z-index: 10;
+}
+.story :global(.copy h2) {
+  font: 400 clamp(45px, 5.9vw, 96px)/0.98 var(--display);
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+}
+.story :global(.copy > p:last-child) {
+  font-size: 13px;
+}
+.story :global(.walker) {
+  background: url('/images/funkcamp-story/walker.png') 0 0/400% 100% no-repeat;
+  aspect-ratio: 3/4;
+  filter: drop-shadow(3px 4px 0 #17171715);
+  transform-origin: 50% 95%;
+}
+/* 01 — the type, walking lane and doorway have independent reserved areas. */
+.story :global(.hero-scene) {
+  height: 220svh;
+}
+.story :global(.hero-stage) {
+  background: var(--paper);
+  --floor: 76%;
+  --door-left: 73%;
+  --door-width: 19%;
+  --actor-height: 30svh;
+}
+.story :global(.hero-stage::after) {
+  content: '';
+  position: absolute;
+  top: var(--floor);
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line);
+  z-index: 2;
+}
+.story :global(.hero-meta) {
+  position: absolute;
+  top: 119px;
+  left: 8%;
+  right: 6%;
+  display: flex;
+  justify-content: space-between;
+  font: 9px monospace;
+  letter-spacing: 0.08em;
+  z-index: 10;
+}
+.story :global(.hero-stage h1) {
+  position: absolute;
+  left: 8%;
+  top: 25%;
+  width: 39%;
+  font: 400 clamp(44px, 5.45vw, 92px)/1.01 var(--display);
+  letter-spacing: -0.065em;
+  z-index: 8;
+  transform-origin: left center;
+}
+.story :global(.hero-stage h1 > span) {
+  display: block;
+}
+.story :global(.hero-stage .first-step) {
+  font-size: 1.45em;
+  color: var(--red);
+  margin-top: 5px;
+}
+.story :global(.hero-bottom) {
+  position: absolute;
+  left: 8%;
+  right: 6%;
+  bottom: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  z-index: 10;
+}
+.story :global(.date) {
+  font: 400 clamp(22px, 2.7vw, 43px)/1.1 var(--display);
+  letter-spacing: -0.05em;
+  color: var(--red);
+}
+.story :global(.small) {
+  font: 8px/1.6 monospace;
+  letter-spacing: 0.06em;
+  margin-top: 10px;
+}
+.story :global(.outline-button) {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+  padding: 15px 22px;
+  border: 1px solid var(--ink);
+  font-size: 11px;
+  font-weight: bold;
+}
+.story :global(.outline-button span) {
+  font-size: 22px;
+}
+.story :global(.outline-button:hover) {
+  background: var(--ink);
+  color: var(--paper);
+}
+.story :global(.hero-scroll-note) {
+  position: absolute;
+  bottom: 26px;
+  left: 8%;
+  right: 6%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font: 8px monospace;
+  z-index: 10;
+}
+.story :global(.door-world),
+.story :global(.door-front) {
+  position: absolute;
+  left: var(--door-left);
+  top: 27%;
+  width: var(--door-width);
+  bottom: calc(100% - var(--floor));
+  transform-origin: 50% 100%;
+  perspective: 1200px;
+}
+.story :global(.door-world) {
+  z-index: 3;
+  background: var(--ink);
+  border: 12px solid var(--ink);
+  box-shadow: 9px 9px 0 #17171718;
+}
+.story :global(.door-opening) {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: linear-gradient(120deg, #0a0a0a 35%, #551014);
+  color: var(--red);
+}
+.story :global(.door-opening > span) {
+  font: 400 clamp(26px, 3.7vw, 60px)/1 var(--display);
+  letter-spacing: -0.08em;
+  opacity: 0.8;
+}
+.story :global(.door-front) {
+  z-index: 7;
+  pointer-events: none;
+}
+.story :global(.door-leaf) {
+  position: absolute;
+  inset: 10px;
+  transform-origin: left center;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow:
+    inset 0 0 0 8px var(--paper),
+    inset 0 0 0 10px var(--line);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+.story :global(.door-leaf::after) {
+  content: '';
+  position: absolute;
+  right: 13px;
+  top: 48%;
+  height: 35px;
+  width: 5px;
+  background: var(--ink);
+}
+.story :global(.door-jamb) {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background: var(--ink);
+}
+.story :global(.home-path) {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  clip-path: inset(0 8% 0 0);
+}
+.story :global(.hero-walker) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: var(--actor-height);
+  width: auto;
+  aspect-ratio: 3/4;
+  will-change: transform;
+}
+/* 02 — the aircraft has a clear sky lane and passes behind the roof. */
+.story :global(.airport-scene) {
+  height: 215svh;
+}
+.story :global(.airport-stage) {
+  background: var(--paper);
+}
+.story :global(.airport-backdrop),
+.story :global(.airport-foreground) {
+  position: absolute;
+  left: -6%;
+  width: 112%;
+  height: 57%;
+  bottom: 0;
+  background: url('/images/funkcamp-story/airport.png') center bottom/100% 100%
+    no-repeat;
+  transform-origin: 60% 100%;
+}
+.story :global(.airport-backdrop) {
+  z-index: 0;
+  mask-image: linear-gradient(transparent, #000 12%);
+}
+.story :global(.airport-foreground) {
+  z-index: 7;
+  clip-path: polygon(0 25%, 55% 59%, 72% 53%, 100% 65%, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+.story :global(.airport-type) {
+  position: absolute;
+  left: 8%;
+  top: 22%;
+  width: 45%;
+  font: 400 clamp(43px, 6.2vw, 100px)/0.98 var(--display);
+  letter-spacing: -0.065em;
+  color: var(--red);
+  z-index: 8;
+}
+.story :global(.airplane) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 35%;
+  height: auto;
+  z-index: 5;
+  will-change: transform;
+  transform-origin: 50% 50%;
+}
+.story :global(.flight-ticks) {
+  position: absolute;
+  right: 6%;
+  top: 20%;
+  z-index: 10;
+  display: flex;
+  gap: 15px;
+}
+.story :global(.flight-ticks span) {
+  font: 9px monospace;
+  opacity: 0.3;
+  padding-bottom: 9px;
+  border-bottom: 2px solid var(--line);
+}
+.story :global(.flight-ticks span.active) {
+  color: var(--red);
+  opacity: 1;
+  border-color: var(--red);
+}
+.story :global(.airport-copy) {
+  left: 8%;
+  top: 23%;
+  width: 40%;
+  opacity: 0;
+}
+.story :global(.airport-copy .eyebrow) {
+  color: var(--red);
+}
+.story :global(.airport-copy h2) {
+  font-size: clamp(45px, 5.8vw, 94px);
+}
+.story :global(.airport-copy > p:last-child) {
+  margin-top: 23px;
+  max-width: 300px;
+}
+/* 03 — heading above, character below; camera pans at a separate depth. */
+.story :global(.terminal-scene) {
+  height: 190svh;
+}
+.story :global(.terminal-stage) {
+  background: var(--ink);
+  color: var(--paper);
+}
+.story :global(.terminal-panorama) {
+  position: absolute;
+  left: 0;
+  top: 14%;
+  bottom: 7%;
+  width: 170%;
+  background: url('/images/funkcamp-story/terminal.jpg') center/cover;
+  filter: grayscale(1) contrast(1.16);
+  opacity: 0.65;
+  transform-origin: 60% 50%;
+}
+.story :global(.terminal-tone) {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #171717dd, transparent 65%),
+    linear-gradient(0deg, #171717bb, transparent 35%);
+}
+.story :global(.terminal-glass) {
+  position: absolute;
+  left: -10%;
+  top: 17%;
+  bottom: 10%;
+  width: 160%;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 24%,
+    #e9e4d620 24.1% 24.35%,
+    transparent 24.45% 25%
+  );
+  pointer-events: none;
+  z-index: 8;
+}
+.story :global(.terminal-copy) {
+  left: 8%;
+  top: 24%;
+  width: 45%;
+  z-index: 9;
+}
+.story :global(.terminal-copy .eyebrow) {
+  color: #ff767c;
+}
+.story :global(.terminal-copy h2) {
+  font-size: clamp(45px, 5.5vw, 89px);
+}
+.story :global(.terminal-sign) {
+  position: absolute;
+  right: 7%;
+  top: 23%;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 17px 22px;
+  background: var(--red);
+  font: 400 clamp(14px, 1.8vw, 27px) var(--display);
+  z-index: 5;
+  box-shadow: 6px 6px 0 #17171730;
+}
+.story :global(.terminal-sign b) {
+  font-size: 1.4em;
+}
+.story :global(.terminal-walker) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 31svh;
+  max-height: 320px;
+  width: auto;
+  aspect-ratio: 3/4;
+  z-index: 7;
+}
+/* 04 — complete skyline below the title, with staggered vertical reveals. */
+.story :global(.city-stage) {
+  background: var(--paper);
+}
+.story :global(.city-title) {
+  position: absolute;
+  left: 8%;
+  top: 23%;
+  z-index: 8;
+}
+.story :global(.city-title h2) {
+  font: 400 clamp(53px, 7.8vw, 126px)/0.91 var(--display);
+  letter-spacing: -0.075em;
+}
+.story :global(.city-title h2 span) {
+  display: block;
+  color: var(--red);
+}
+.story :global(.city-sun) {
+  position: absolute;
+  top: 23%;
+  right: 15%;
+  width: clamp(140px, 20vw, 310px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--red);
+  z-index: 0;
+}
+.story :global(.city-layer) {
+  position: absolute;
+  left: -4%;
+  bottom: 11%;
+  width: 108%;
+  height: 47%;
+  background: url('/images/funkcamp-story/city.png') center bottom/100% 100%;
+  transform-origin: 50% 100%;
+  z-index: 3;
+}
+.story :global(.city-far) {
+  clip-path: inset(0 66.66% 0 0);
+}
+.story :global(.city-mid) {
+  clip-path: inset(0 33.33% 0 33.33%);
+}
+.story :global(.city-near) {
+  clip-path: inset(0 0 0 66.66%);
+}
+.story :global(.water) {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -3%;
+  height: 20%;
+  background:
+    repeating-linear-gradient(
+      178deg,
+      transparent 0 8px,
+      #17171730 9px 10px,
+      transparent 11px 21px
+    ),
+    linear-gradient(var(--red), #b91d25);
+  z-index: 5;
+}
+.story :global(.city-caption) {
+  position: absolute;
+  right: 6%;
+  bottom: 10%;
+  z-index: 7;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--paper);
+  font-size: 11px;
+}
+.story :global(.cross) {
+  font-size: 34px;
+  line-height: 1;
+  color: var(--red);
+}
+/* 05 — the photograph keeps its bottom edge, so the puzzle remains visible. */
+.story :global(.walk-scene) {
+  height: 210svh;
+}
+.story :global(.walk-stage) {
+  background: var(--ink);
+  color: var(--paper);
+}
+.story :global(.walk-panorama) {
+  position: absolute;
+  left: 0;
+  top: 17%;
+  bottom: 13%;
+  width: 145%;
+  transform-origin: 75% 65%;
+}
+.story :global(.venue-image) {
+  position: absolute;
+  inset: 0;
+  background: url('/images/funkcamp-story/venue-ink.png') center bottom/cover;
+  filter: none;
+  opacity: 0.8;
+}
+.story :global(.venue-red) {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--red), transparent 70%);
+  mix-blend-mode: multiply;
+  opacity: 0.65;
+}
+.story :global(.walk-copy) {
+  left: 8%;
+  top: 24%;
+  width: 43%;
+  z-index: 10;
+}
+.story :global(.walk-copy .eyebrow) {
+  color: #ff767c;
+}
+.story :global(.walk-copy h2) {
+  font-size: clamp(45px, 5.1vw, 84px);
+}
+.story :global(.walk-ground) {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 13%;
+  background: var(--paper);
+  border-top: 4px solid var(--red);
+  z-index: 6;
+}
+.story :global(.traveler) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 29svh;
+  max-height: 310px;
+  width: auto;
+  aspect-ratio: 3/4;
+  z-index: 7;
+}
+.story :global(.walk-stage .scene-bottom) {
+  color: var(--ink);
+}
+/* 06 — type and the reference photograph are separate columns. */
+.story :global(.studio-scene) {
+  height: 180svh;
+}
+.story :global(.studio-stage) {
+  background: var(--ink);
+  color: var(--paper);
+}
+.story :global(.studio-art) {
+  position: absolute;
+  inset: -3%;
+  background: url('/images/funkcamp-story/locking-storyboard.png') right
+    bottom/200% 200% no-repeat;
+  filter: grayscale(1) contrast(1.1);
+  transform-origin: 70% 55%;
+  opacity: 0.5;
+}
+.story :global(.studio-shade) {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #171717f0 10%, #17171755 90%);
+}
+.story :global(.studio-copy) {
+  position: absolute;
+  left: 8%;
+  top: 25%;
+  width: 40%;
+  z-index: 5;
+}
+.story :global(.studio-copy .eyebrow) {
+  color: #ff767c;
+}
+.story :global(.studio-copy h2) {
+  font: 400 clamp(52px, 6.1vw, 100px)/0.94 var(--display);
+  letter-spacing: -0.065em;
+}
+.story :global(.studio-copy h2 em) {
+  font-style: normal;
+  color: var(--red);
+}
+.story :global(.studio-copy > p:last-child) {
+  margin-top: 25px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.story :global(.class-photo-frame) {
+  position: absolute;
+  right: 8%;
+  top: 27%;
+  width: 34%;
+  max-width: 520px;
+  z-index: 4;
+  padding: 10px;
+  background: var(--paper);
+  box-shadow: 12px 12px 0 var(--red);
+  transform-origin: 50% 60%;
+}
+.story :global(.class-photo-frame img) {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.12;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.1);
+}
+.story :global(.class-photo-frame figcaption) {
+  font: 8px monospace;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  padding: 13px 3px 4px;
+}
+.story :global(.studio-stamp) {
+  position: absolute;
+  right: 8%;
+  bottom: 12%;
+  border: 2px solid var(--red);
+  padding: 11px 14px;
+  transform: rotate(5deg);
+  color: var(--red);
+  font: 400 15px/0.98 var(--display);
+  z-index: 6;
+}
+/* 07 — a fixed reading column, a fixed portrait column, then controls. */
+.story :global(.teachers-scene) {
+  height: 520svh;
+}
+.story :global(.teachers-stage) {
+  background: var(--paper);
+}
+.story :global(.teachers-heading) {
+  position: absolute;
+  left: 8%;
+  top: 21%;
+  font: 400 clamp(32px, 3.7vw, 60px)/1 var(--display);
+  letter-spacing: -0.06em;
+  z-index: 4;
+}
+.story :global(.teacher-backword) {
+  position: absolute;
+  left: 7%;
+  right: 5%;
+  top: 38%;
+  font: 400 15vw/1 var(--display);
+  letter-spacing: -0.08em;
+  color: #17171708;
+  pointer-events: none;
+}
+.story :global(.teacher-stage) {
+  position: absolute;
+  left: 8%;
+  right: 7%;
+  top: 32%;
+  bottom: 22%;
+}
+.story :global(.teacher) {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.story :global(.teacher.active) {
+  pointer-events: auto;
+  z-index: 4;
+}
+.story :global(.teacher img) {
+  position: absolute;
+  right: 3%;
+  bottom: 0;
+  width: 44%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  filter: grayscale(1) contrast(1.08);
+  z-index: 2;
+}
+.story :global(.teacher-disc) {
+  position: absolute;
+  right: 3%;
+  bottom: 0;
+  width: 42%;
+  max-height: 95%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--red);
+}
+.story :global(.teacher-copy) {
+  position: absolute;
+  left: 0;
+  top: 18%;
+  width: 46%;
+  z-index: 4;
+}
+.story :global(.teacher-copy .eyebrow) {
+  display: block;
+  color: var(--red);
+}
+.story :global(.teacher h3) {
+  font: 400 clamp(36px, 4.3vw, 70px)/0.98 var(--display);
+  letter-spacing: -0.06em;
+  margin: 18px 0 25px;
+  overflow-wrap: normal;
+}
+.story :global(.teacher a) {
+  display: inline-block;
+  font-size: 11px;
+  border-bottom: 1px solid;
+  padding-bottom: 6px;
+}
+.story :global(.teacher a:hover) {
+  color: var(--red);
+}
+.story :global(.teacher-controls) {
+  position: absolute;
+  right: 8%;
+  bottom: 12%;
+  display: flex;
+  gap: 19px;
+  align-items: center;
+  font: 10px monospace;
+  z-index: 10;
+}
+.story :global(.teacher-controls button) {
+  height: 40px;
+  width: 40px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  font-size: 22px;
+}
+.story :global(.teacher-controls button:hover) {
+  background: var(--ink);
+  color: var(--paper);
+}
+.story :global(.teacher-controls button:disabled) {
+  opacity: 0.25;
+  cursor: default;
+}
+.story :global(.lineup-shortcut) {
+  position: absolute;
+  left: 8%;
+  bottom: 13.5%;
+  font: 10px monospace;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+  z-index: 10;
+}
+.story :global(.lineup-shortcut:hover) {
+  color: var(--red);
+}
+.story :global(.teacher-names) {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 4.5%;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  z-index: 11;
+}
+.story :global(.teacher-names button) {
+  padding: 6px 0;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-size: 9px;
+}
+.story :global(.teacher-names button.active) {
+  color: var(--red);
+  font-weight: bold;
+}
+.story :global(.teacher-names button.active::before) {
+  content: '● ';
+  font-size: 7px;
+}
+/* The final title never enters the portrait zone, including in-flight. */
+.story :global(.finale-scene) {
+  height: 225svh;
+}
+.story :global(.finale-stage) {
+  background: var(--paper);
+}
+.story :global(.finale-beat) {
+  position: absolute;
+  top: 54%;
+  width: 1px;
+  height: 1px;
+}
+.story :global(.final-lineup) {
+  position: absolute;
+  left: 8%;
+  right: 7%;
+  top: 23%;
+  height: 36%;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+.story :global(.final-lineup figure) {
+  position: relative;
+  height: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  transform-origin: bottom center;
+}
+.story :global(.final-lineup img) {
+  width: 100%;
+  height: calc(100% - 26px);
+  object-fit: contain;
+  object-position: bottom;
+  filter: grayscale(1) contrast(1.1);
+}
+.story :global(.final-lineup figcaption) {
+  height: 26px;
+  padding-top: 10px;
+  text-align: center;
+  white-space: nowrap;
+  font: 9px monospace;
+}
+.story :global(.final-title-zone) {
+  position: absolute;
+  left: 8%;
+  right: 7%;
+  top: calc(66% + 2rem);
+  height: 15%;
+  overflow: hidden;
+  z-index: 5;
+}
+.story :global(.finale-stage h2) {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: baseline;
+  font: 400 clamp(46px, min(8.1vw, 12svh), 138px)/1.05 var(--display);
+  letter-spacing: -0.065em;
+  color: var(--red);
+}
+.story :global(.finale-stage .final-year) {
+  color: var(--ink);
+  font-size: 0.65em;
+}
+.story :global(.final-date) {
+  position: absolute;
+  left: 8%;
+  right: 7%;
+  bottom: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 400 clamp(21px, 2.5vw, 40px) var(--display);
+  letter-spacing: -0.05em;
+}
+.story :global(.final-date > span:last-child) {
+  font: 9px monospace;
+  letter-spacing: 0.1em;
+}
+/* Compact layouts retain the same separate text / figure / controls zones. */
+@media (max-width: 800px) {
+  .story :global(.stage) {
+    min-height: 570px;
+  }
+  .story :global(.scene-top),
+  .story :global(.scene-bottom) {
+    left: 11%;
+    right: 6%;
+    font-size: 7px;
+    gap: 16px;
+  }
+  .story :global(.scene-top) {
+    top: 91px;
+  }
+  .story :global(.scene-bottom) {
+    bottom: 22px;
+  }
+  .story :global(.eyebrow) {
+    font-size: 8px;
+    margin-bottom: 13px;
+  }
+  .story :global(.copy h2) {
+    font-size: clamp(38px, 10.7vw, 74px);
+  }
+  .story :global(.hero-stage) {
+    --floor: 77%;
+    --door-left: 68%;
+    --door-width: 25%;
+    --actor-height: 26svh;
+  }
+  .story :global(.hero-meta) {
+    top: 96px;
+    left: 11%;
+    right: 6%;
+    font-size: 7px;
+    gap: 20px;
+  }
+  .story :global(.hero-meta > span:last-child) {
+    max-width: 120px;
+    text-align: right;
+  }
+  .story :global(.hero-stage h1) {
+    top: 23%;
+    left: 11%;
+    width: 80%;
+    font-size: clamp(38px, 10.6vw, 65px);
+    line-height: 0.99;
+  }
+  .story :global(.hero-stage .first-step) {
+    font-size: 1.25em;
+  }
+  .story :global(.door-world),
+  .story :global(.door-front) {
+    top: 46%;
+    bottom: calc(100% - var(--floor));
+  }
+  .story :global(.door-world) {
+    border-width: 7px;
+    box-shadow: 5px 5px 0 #17171718;
+  }
+  .story :global(.door-opening > span) {
+    font-size: 5vw;
+  }
+  .story :global(.door-leaf) {
+    inset: 6px;
+    box-shadow:
+      inset 0 0 0 4px var(--paper),
+      inset 0 0 0 6px var(--line);
+  }
+  .story :global(.door-leaf::after) {
+    right: 6px;
+    width: 3px;
+    height: 22px;
+  }
+  .story :global(.door-jamb) {
+    width: 7px;
+  }
+  .story :global(.hero-bottom) {
+    left: 11%;
+    right: 6%;
+    bottom: 9%;
+    align-items: end;
+    gap: 12px;
+  }
+  .story :global(.hero-bottom .date) {
+    font-size: 20px;
+  }
+  .story :global(.small) {
+    font-size: 6px;
+    max-width: 150px;
+  }
+  .story :global(.outline-button) {
+    font-size: 9px;
+    padding: 11px 12px;
+    gap: 16px;
+  }
+  .story :global(.outline-button span) {
+    font-size: 17px;
+  }
+  .story :global(.hero-scroll-note) {
+    left: 11%;
+    right: 6%;
+    font-size: 6px;
+    bottom: 22px;
+    gap: 12px;
+  }
+  .story :global(.home-path) {
+    clip-path: inset(0 7% 0 0);
+  }
+  .story :global(.airport-backdrop),
+  .story :global(.airport-foreground) {
+    left: -45%;
+    width: 190%;
+    height: 48%;
+    bottom: 3%;
+  }
+  .story :global(.airport-type) {
+    left: 11%;
+    top: 23%;
+    width: 78%;
+    font-size: clamp(36px, 10.1vw, 67px);
+  }
+  .story :global(.airplane) {
+    width: 58%;
+  }
+  .story :global(.flight-ticks) {
+    top: 17%;
+    right: 6%;
+    gap: 12px;
+  }
+  .story :global(.flight-ticks span) {
+    font-size: 8px;
+  }
+  .story :global(.airport-copy) {
+    left: 11%;
+    top: 24%;
+    width: 80%;
+  }
+  .story :global(.airport-copy h2) {
+    font-size: clamp(41px, 11.8vw, 73px);
+  }
+  .story :global(.airport-copy > p:last-child) {
+    font-size: 11px;
+    margin-top: 18px;
+    max-width: 240px;
+  }
+  .story :global(.terminal-panorama) {
+    width: 220%;
+    top: 16%;
+    bottom: 8%;
+  }
+  .story :global(.terminal-copy) {
+    left: 11%;
+    top: 23%;
+    width: 78%;
+  }
+  .story :global(.terminal-copy h2) {
+    font-size: clamp(41px, 11.4vw, 70px);
+  }
+  .story :global(.terminal-sign) {
+    right: 6%;
+    top: 48%;
+    font-size: 11px;
+    padding: 11px 13px;
+    gap: 20px;
+    box-shadow: 4px 4px 0 #17171730;
+  }
+  .story :global(.terminal-glass) {
+    top: 18%;
+    bottom: 10%;
+    width: 190%;
+  }
+  .story :global(.terminal-walker) {
+    height: 28svh;
+    max-height: 270px;
+  }
+  .story :global(.city-title) {
+    left: 11%;
+    top: 23%;
+  }
+  .story :global(.city-title h2) {
+    font-size: clamp(52px, 15vw, 97px);
+  }
+  .story :global(.city-sun) {
+    top: 27%;
+    right: 9%;
+    width: 34vw;
+  }
+  .story :global(.city-layer) {
+    left: -26%;
+    width: 152%;
+    height: 35%;
+    bottom: 15%;
+  }
+  .story :global(.water) {
+    height: 22%;
+    bottom: -1%;
+  }
+  .story :global(.city-caption) {
+    right: 6%;
+    bottom: 10%;
+    padding: 12px 14px;
+    font-size: 9px;
+    gap: 12px;
+  }
+  .story :global(.cross) {
+    font-size: 28px;
+  }
+  .story :global(.walk-panorama) {
+    width: 190%;
+    top: 18%;
+    bottom: 15%;
+  }
+  .story :global(.walk-copy) {
+    left: 11%;
+    top: 24%;
+    width: 78%;
+  }
+  .story :global(.walk-copy h2) {
+    font-size: clamp(40px, 10.8vw, 70px);
+  }
+  .story :global(.traveler) {
+    height: 27svh;
+    max-height: 265px;
+  }
+  .story :global(.walk-ground) {
+    height: 15%;
+  }
+  .story :global(.studio-copy) {
+    left: 11%;
+    top: 22%;
+    width: 78%;
+  }
+  .story :global(.studio-copy h2) {
+    font-size: clamp(42px, 11.7vw, 65px);
+    line-height: 0.95;
+  }
+  .story :global(.studio-copy > p:last-child) {
+    font-size: 10px;
+    margin-top: 16px;
+    max-width: 175px;
+  }
+  .story :global(.class-photo-frame) {
+    top: 55%;
+    right: 8%;
+    width: 48%;
+    padding: 7px;
+    box-shadow: 7px 7px 0 var(--red);
+  }
+  .story :global(.class-photo-frame figcaption) {
+    font-size: 6px;
+    padding: 8px 2px 2px;
+  }
+  .story :global(.studio-stamp) {
+    right: auto;
+    left: 11%;
+    bottom: 13%;
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+  .story :global(.studio-art) {
+    inset: 0 -25%;
+    opacity: 0.35;
+  }
+  .story :global(.teachers-heading) {
+    left: 11%;
+    top: 20%;
+    font-size: clamp(27px, 6.4vw, 43px);
+  }
+  .story :global(.teacher-stage) {
+    left: 11%;
+    right: 7%;
+    top: 29%;
+    bottom: 24%;
+  }
+  .story :global(.teacher-copy) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 29%;
+  }
+  .story :global(.teacher-copy .eyebrow) {
+    font-size: 7px;
+    margin-bottom: 8px;
+  }
+  .story :global(.teacher h3) {
+    font-size: clamp(28px, 7.5vw, 44px);
+    line-height: 0.97;
+    margin: 9px 0 12px;
+  }
+  .story :global(.teacher a) {
+    font-size: 9px;
+    padding-bottom: 4px;
+  }
+  .story :global(.teacher img) {
+    right: 9%;
+    bottom: 0;
+    width: 75%;
+    height: 65%;
+  }
+  .story :global(.teacher-disc) {
+    right: 10%;
+    bottom: 0;
+    width: 72%;
+    max-height: 65%;
+    aspect-ratio: 1;
+  }
+  .story :global(.teacher-backword) {
+    top: 48%;
+    font-size: 20vw;
+  }
+  .story :global(.teacher-controls) {
+    right: 7%;
+    bottom: 15%;
+    gap: 14px;
+    font-size: 9px;
+  }
+  .story :global(.teacher-controls button) {
+    width: 34px;
+    height: 34px;
+    font-size: 19px;
+  }
+  .story :global(.lineup-shortcut) {
+    left: 11%;
+    bottom: 16.5%;
+    font-size: 8px;
+  }
+  .story :global(.teacher-names) {
+    left: 11%;
+    right: 7%;
+    bottom: 4%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px 15px;
+    padding-top: 11px;
+  }
+  .story :global(.teacher-names button) {
+    text-align: left;
+    font-size: 8px;
+    padding: 5px 0;
+  }
+  .story :global(.final-lineup) {
+    left: 11%;
+    right: 7%;
+    top: 22%;
+    height: 36%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 15px 12px;
+  }
+  .story :global(.final-lineup img) {
+    height: calc(100% - 21px);
+  }
+  .story :global(.final-lineup figcaption) {
+    height: 21px;
+    padding-top: 7px;
+    font-size: 7px;
+  }
+  .story :global(.final-title-zone) {
+    left: 11%;
+    right: 7%;
+    top: calc(65% + 2rem);
+    height: 19%;
+  }
+  .story :global(.finale-stage h2) {
+    display: block;
+    text-align: center;
+    font-size: clamp(38px, 11.8vw, 67px);
+    line-height: 1.02;
+  }
+  .story :global(.finale-stage h2 span) {
+    display: block;
+  }
+  .story :global(.finale-stage .final-year) {
+    font-size: 1.05em;
+    margin-top: 5px;
+  }
+  .story :global(.final-date) {
+    left: 11%;
+    right: 7%;
+    bottom: 9.5%;
+    align-items: center;
+    font-size: 17px;
+    gap: 20px;
+  }
+  .story :global(.final-date > span:last-child) {
+    font-size: 6px;
+    max-width: 90px;
+    text-align: right;
+  }
+}
+@media (max-width: 380px) {
+  .story :global(.hero-stage h1) {
+    font-size: 10.3vw;
+  }
+  .story :global(.hero-bottom .date) {
+    font-size: 17px;
+  }
+  .story :global(.outline-button) {
+    font-size: 8px;
+    gap: 10px;
+  }
+  .story :global(.teacher h3) {
+    font-size: 7.4vw;
+  }
+  .story :global(.teachers-heading) {
+    font-size: 6.4vw;
+  }
+  .story :global(.final-date) {
+    font-size: 15px;
+  }
+}
+@media (max-width: 800px) {
+  .story :global(.finale-stage h2) {
+    font-size: clamp(30px, min(11.8vw, 7.8svh), 67px);
+  }
+}
+@media (max-width: 800px) {
+  .story :global(.hero-stage h1) {
+    font-size: clamp(32px, min(10.6vw, 7svh), 65px);
+  }
+}
+/* A static reading mode exposes every teacher and preserves all content. */
+.story:global(.motion-off) :global(.scene) {
+  height: auto !important;
+}
+.story:global(.motion-off) :global(.stage) {
+  position: relative;
+  height: 100svh;
+  min-height: 650px;
+}
+.story:global(.motion-off) :global(.hero-stage h1),
+.story:global(.motion-off) :global(.hero-meta),
+.story:global(.motion-off) :global(.hero-bottom),
+.story:global(.motion-off) :global(.hero-scroll-note) {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.story:global(.motion-off) :global(.door-leaf) {
+  transform: rotateY(-65deg) !important;
+}
+.story:global(.motion-off) :global(.hero-walker) {
+  opacity: 1 !important;
+}
+.story:global(.motion-off) :global(.airport-type) {
+  display: none;
+}
+.story:global(.motion-off) :global(.airport-copy) {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.story:global(.motion-off) :global(.city-layer) {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.story:global(.motion-off) :global(.final-lineup figure),
+.story:global(.motion-off) :global(.final-funk),
+.story:global(.motion-off) :global(.final-year),
+.story:global(.motion-off) :global(.final-date) {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.story:global(.motion-off) :global(.teachers-stage) {
+  height: auto;
+  min-height: 0;
+  padding: 180px 8% 50px;
+}
+.story:global(.motion-off) :global(.teachers-heading) {
+  top: 110px;
+}
+.story:global(.motion-off) :global(.teacher-stage) {
+  position: relative;
+  inset: auto;
+}
+.story:global(.motion-off) :global(.teacher) {
+  position: relative;
+  min-height: 470px;
+  margin-bottom: 45px;
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto;
+}
+.story:global(.motion-off) :global(.teacher img),
+.story:global(.motion-off) :global(.teacher-copy) {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.story:global(.motion-off) :global(.teacher-controls),
+.story:global(.motion-off) :global(.teacher-names),
+.story:global(.motion-off) :global(.lineup-shortcut),
+.story:global(.motion-off) :global(.teacher-backword) {
+  display: none;
+}
+.story:global(.motion-off) :global(.teacher-disc) {
+  opacity: 1 !important;
+}
+@media (max-width: 800px) {
+  .story:global(.motion-off) :global(.teachers-stage) {
+    padding: 175px 7% 30px 11%;
+    min-height: 0;
+  }
+  .story:global(.motion-off) :global(.teacher) {
+    min-height: 540px;
+  }
+  .story:global(.motion-off) :global(.teacher img) {
+    height: 64%;
+    bottom: 0;
+  }
+  .story:global(.motion-off) :global(.teacher-copy) {
+    top: 0;
+  }
+  .story:global(.motion-off) :global(.teacher-disc) {
+    max-height: 64%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .story :global(*),
+  .story :global(*::before),
+  .story :global(*::after) {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 800px) and (max-height: 680px) {
+  .story :global(.airport-type) {
+    font-size: clamp(32px, min(10.1vw, 7svh), 67px);
+  }
+  .story :global(.airport-copy h2) {
+    font-size: clamp(40px, 8svh, 55px);
+  }
+  .story :global(.teacher-stage) {
+    top: 27%;
+    bottom: 24%;
+  }
+  .story :global(.teacher h3) {
+    font-size: clamp(23px, 4.3svh, 29px);
+    margin: 8px 0 10px;
+  }
+  .story :global(.teacher-copy .eyebrow) {
+    margin-bottom: 6px;
+  }
+  .story :global(.teacher img) {
+    height: 51%;
+    width: 70%;
+    right: 12%;
+  }
+  .story :global(.teacher-disc) {
+    height: 51%;
+    width: auto;
+    aspect-ratio: 1;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: none;
+  }
+  .story :global(.teachers-heading) {
+    top: 19%;
+    font-size: 6vw;
+  }
+  .story :global(.studio-copy) {
+    top: 21%;
+  }
+  .story :global(.studio-copy h2) {
+    font-size: 38px;
+  }
+  .story :global(.studio-copy > p:last-child) {
+    font-size: 9px;
+    line-height: 1.6;
+    margin-top: 14px;
+  }
+  .story :global(.class-photo-frame) {
+    top: 58%;
+    width: min(44vw, 30svh);
+  }
+}
+/* Illustrated chapter plates and street-art portrait treatments. */
+.story :global(.terminal-stage) {
+  background: var(--paper);
+  color: var(--ink);
+}
+.story :global(.terminal-panorama) {
+  background-image: url('/images/funkcamp-story/terminal-ink.png');
+  filter: none;
+  opacity: 0.95;
+}
+.story :global(.terminal-tone) {
+  background:
+    linear-gradient(90deg, #e9e4d6ed 0%, #e9e4d69c 28%, transparent 67%),
+    linear-gradient(0deg, #e9e4d630, transparent 35%);
+}
+.story :global(.terminal-copy .eyebrow) {
+  color: var(--red);
+}
+.story :global(.terminal-sign) {
+  color: var(--paper);
+}
+.story :global(.terminal-glass) {
+  opacity: 0.35;
+}
+.story :global(.studio-art) {
+  background: url('/images/funkcamp-story/class-wide-ink.png') center/cover
+    no-repeat;
+  filter: none;
+  opacity: 0.78;
+}
+.story :global(.studio-shade) {
+  background: linear-gradient(
+    90deg,
+    #171717f0 0%,
+    #171717a0 32%,
+    #17171712 85%
+  );
+}
+.story :global(.class-photo-frame img) {
+  filter: none;
+}
+.story :global(.class-photo-frame) {
+  border: 1px solid #17171740;
+}
+.story :global(.studio-stamp) {
+  right: auto;
+  left: 8%;
+  bottom: 12%;
+}
+.story :global(.teacher-disc) {
+  right: -2%;
+  left: auto;
+  bottom: -2%;
+  width: 52%;
+  height: 112%;
+  max-height: none;
+  aspect-ratio: auto;
+  border-radius: 0;
+  background: url('/images/funkcamp-story/paint-burst.svg') center/contain
+    no-repeat;
+  transform: rotate(var(--spray-turn, -4deg)) scale(var(--spray-scale, 1));
+  transform-origin: 50% 55%;
+  pointer-events: none;
+  z-index: 1;
+}
+.story :global(.teacher-scribble) {
+  position: absolute;
+  right: -3%;
+  bottom: -2%;
+  width: 54%;
+  height: 112%;
+  z-index: 1;
+  color: var(--ink);
+  pointer-events: none;
+  overflow: visible;
+}
+.story :global(.teacher-scribble path) {
+  stroke-dasharray: 1;
+  stroke-dashoffset: var(--draw, 0);
+}
+.story :global(.teacher img) {
+  filter: grayscale(1) contrast(1.08) drop-shadow(2px 0 0 var(--paper))
+    drop-shadow(-2px 0 0 var(--paper)) drop-shadow(0 3px 0 var(--paper))
+    drop-shadow(5px 5px 0 #17171722);
+}
+.story :global(.teacher-index) {
+  position: absolute;
+  right: 8%;
+  top: 19%;
+  font: 400 clamp(50px, 6vw, 92px)/1 var(--display);
+  letter-spacing: -0.09em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--red);
+  pointer-events: none;
+}
+.story :global(.teacher-ink-progress) {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 29%;
+  height: 2px;
+  background: #17171718;
+  pointer-events: none;
+}
+.story :global(.teacher-ink-progress span) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--red);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.story :global(.teacher-backword) {
+  color: #1717170b;
+  -webkit-text-stroke: 1px #1717170b;
+}
+.story :global(.teacher-names button.active) {
+  box-shadow: 0 2px 0 var(--red);
+}
+.story :global(.final-lineup figure::before) {
+  content: '';
+  position: absolute;
+  inset: 5% -5% 25px;
+  z-index: 0;
+  background: url('/images/funkcamp-story/paint-burst.svg') center/100% 100%
+    no-repeat;
+  transform: rotate(-6deg);
+  opacity: 0.92;
+  pointer-events: none;
+}
+.story :global(.final-lineup figure:nth-child(even)::before) {
+  transform: rotate(7deg) scaleX(-1);
+}
+.story :global(.final-lineup figure:nth-child(3n)::before) {
+  transform: rotate(-2deg) scale(0.94);
+}
+.story :global(.final-lineup img) {
+  position: relative;
+  z-index: 1;
+  filter: grayscale(1) contrast(1.1) drop-shadow(2px 1px 0 var(--paper))
+    drop-shadow(-2px 0 0 var(--paper));
+}
+.story :global(.final-lineup figcaption) {
+  position: relative;
+  z-index: 2;
+  background: var(--paper);
+}
+@media (max-width: 800px) {
+  .story :global(.teacher-disc) {
+    left: auto;
+    right: 0;
+    bottom: -1%;
+    width: 94%;
+    height: 69%;
+    max-height: none;
+    transform: rotate(var(--spray-turn, -4deg)) scale(var(--spray-scale, 1));
+  }
+  .story :global(.teacher-scribble) {
+    right: 0;
+    bottom: -1%;
+    width: 94%;
+    height: 69%;
+  }
+  .story :global(.teacher-index) {
+    display: none;
+  }
+  .story :global(.teacher-ink-progress) {
+    left: 11%;
+    right: 7%;
+    top: 26%;
+  }
+  .story :global(.final-lineup figure::before) {
+    inset: 3% -5% 21px;
+  }
+  .story :global(.studio-art) {
+    inset: -3% -12%;
+    opacity: 0.65;
+  }
+}
+@media (max-width: 800px) and (max-height: 680px) {
+  .story :global(.teacher-disc) {
+    left: auto;
+    right: 6%;
+    width: 85%;
+    height: 59%;
+    max-height: none;
+    transform: rotate(var(--spray-turn, -4deg)) scale(var(--spray-scale, 1));
+  }
+  .story :global(.teacher-scribble) {
+    right: 6%;
+    width: 85%;
+    height: 59%;
+  }
+  .story :global(.teacher-ink-progress) {
+    top: 24.5%;
+  }
+}
+.story:global(.motion-off) :global(.teacher-disc) {
+  clip-path: none !important;
+  --spray-turn: -4deg;
+  --spray-scale: 1;
+}
+.story:global(.motion-off) :global(.teacher-scribble) {
+  --draw: 0 !important;
+  opacity: 1 !important;
+}
+.story:global(.motion-off) :global(.teacher-index),
+.story:global(.motion-off) :global(.teacher-ink-progress) {
+  display: none;
+}
+.story:global(.motion-off) :global(.teacher-backword) {
+  transform: none !important;
+}
+
+/* Event overline follows the opening headline through its scroll fade. */
+.story :global(.hero-stage h1 > .hero-kicker) {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 17px);
+  font: 400 13px/1.3 var(--display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  white-space: nowrap;
+}
+@media (max-width: 800px) {
+  .story :global(.hero-stage h1 > .hero-kicker) {
+    bottom: calc(100% + 12px);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+}
+
+/* The site's existing fixed menu occupies the first 62px. Its markup stays untouched. */
+.story :global(.scene) {
+  scroll-margin-top: 64px;
+}
+.story:global(.motion-off) :global(.terminal-copy),
+.story:global(.motion-off) :global(.walk-copy) {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.story :global(.stage::before) {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23n)' opacity='.4' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+@media (prefers-reduced-motion: reduce) {
+  .story :global(*),
+  .story :global(*::before),
+  .story :global(*::after) {
+    animation: none !important;
+    transition: none !important;
+  }
+}

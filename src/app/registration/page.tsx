@@ -32,23 +32,23 @@ export default function ContactPage() {
 
           <h3>Location</h3>
           <p>
-            <strong>Friday 26 March</strong>
+            <strong>Friday–Monday, 26–29 March</strong>
             <br />
-            To be announced.
+            SKH — Stockholms konstnärliga högskola
+            <br />
+            Stockholm University of the Arts
+            <br />
+            Brinellvägen 58
+            <br />
+            114 28 Stockholm, Sweden
           </p>
           <p>
-            <strong>Saturday–Monday, 27–29 March</strong>
-            <br />
-            Danscenter Fryshuset
-            <br />
-            Mårtensdalsgatan 2–8
-            <br />
-            120 30 Stockholm, Sweden
+            The Friday venue might change. If so, it will be announced shortly.
           </p>
           <p>
             <a
               className={styles.mapLink}
-              href="https://www.google.com/maps/search/?api=1&query=Danscenter%20Fryshuset%2C%20M%C3%A5rtensdalsgatan%202-8%2C%20120%2030%20Stockholm"
+              href="https://www.google.com/maps/search/?api=1&query=SKH%2C%20Brinellv%C3%A4gen%2058%2C%20114%2028%20Stockholm%2C%20Sweden"
             >
               Click here to open in Google Maps
             </a>
@@ -56,7 +56,7 @@ export default function ContactPage() {
 
           <h3>Schedule</h3>
           <ul>
-            <li>Friday 26 March: 17.30–20.30</li>
+            <li>Friday 26 March: 17.00–late</li>
             <li>Saturday 27 March: 11.00–17.00</li>
             <li>Sunday 28 March: 11.00–17.00</li>
             <li>Monday 29 March: 11.00–15.00</li>
