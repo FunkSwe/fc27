@@ -712,7 +712,7 @@
   pointer-events: auto;
   z-index: 4;
 }
-.story :global(.teacher img) {
+.story :global(.teacher-portrait) {
   position: absolute;
   right: 3%;
   bottom: 0;
@@ -720,7 +720,6 @@
   height: 100%;
   object-fit: contain;
   object-position: bottom;
-  filter: grayscale(1) contrast(1.08);
   z-index: 2;
 }
 .story :global(.teacher-disc) {
@@ -1202,7 +1201,7 @@
     font-size: 9px;
     padding-bottom: 4px;
   }
-  .story :global(.teacher img) {
+  .story :global(.teacher-portrait) {
     right: 9%;
     bottom: 0;
     width: 75%;
@@ -1412,7 +1411,7 @@
   .story:global(.motion-off) :global(.teacher) {
     min-height: 540px;
   }
-  .story:global(.motion-off) :global(.teacher img) {
+  .story:global(.motion-off) :global(.teacher-portrait) {
     height: 64%;
     bottom: 0;
   }
@@ -1450,7 +1449,7 @@
   .story :global(.teacher-copy .eyebrow) {
     margin-bottom: 6px;
   }
-  .story :global(.teacher img) {
+  .story :global(.teacher-portrait) {
     height: 51%;
     width: 70%;
     right: 12%;
@@ -1725,6 +1724,54 @@
 .story:global(.motion-off) :global(.walk-copy) {
   opacity: 1 !important;
   transform: none !important;
+}
+
+/* Match the close portraits of Khan and P-Lock without changing source images. */
+.story :global(.portrait-crop) {
+  --portrait-scale: 1;
+  --portrait-top: 0%;
+  overflow: hidden;
+}
+
+.story :global(.portrait-tony) {
+  --portrait-scale: 1.35;
+  --portrait-top: -9%;
+}
+
+.story :global(.portrait-asparagus),
+.story :global(.portrait-willow) {
+  --portrait-scale: 1.6;
+}
+
+.story :global(.portrait-atrain) {
+  --portrait-scale: 1.75;
+  --portrait-top: -10%;
+}
+
+.story :global(.lineup-portrait) {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 26px);
+  flex-shrink: 0;
+}
+
+.story :global(.portrait-crop img) {
+  position: absolute;
+  top: var(--portrait-top);
+  left: calc(50% * (1 - var(--portrait-scale)));
+  right: auto;
+  bottom: auto;
+  width: calc(100% * var(--portrait-scale));
+  height: calc(100% * var(--portrait-scale));
+  max-width: none;
+  object-fit: contain;
+  object-position: center top;
+}
+
+@media (max-width: 800px) {
+  .story :global(.lineup-portrait) {
+    height: calc(100% - 21px);
+  }
 }
 .story :global(.stage::before) {
   content: '';

@@ -158,7 +158,7 @@ export default function FunkcampStory() {
           <div className="city-title">
             <p className="eyebrow">WELCOME TO</p>
             <h2 id="fc-story-city-title">
-              STOCK<span>HOLM.</span>
+              FUNK<span>CAMP</span>
             </h2>
           </div>
           <div className="city-layer city-far" aria-hidden="true"></div>
@@ -318,13 +318,15 @@ export default function FunkcampStory() {
                   />
                 </g>
               </svg>
-              <img
-                src="/images/funkcamp-story/t6.png"
-                alt="Tony GoGo"
-                width="500"
-                height="650"
-                loading="lazy"
-              />
+              <div className="portrait-crop teacher-portrait portrait-tony">
+                <img
+                  src="/images/funkcamp-story/t6.png"
+                  alt="Tony GoGo"
+                  width="500"
+                  height="650"
+                  loading="lazy"
+                />
+              </div>
               <div className="teacher-copy">
                 <span className="eyebrow">01 / USA · JAPAN</span>
                 <h3>
@@ -363,13 +365,15 @@ export default function FunkcampStory() {
                   />
                 </g>
               </svg>
-              <img
-                src="/images/funkcamp-story/t1.png"
-                alt="Khan"
-                width="500"
-                height="650"
-                loading="lazy"
-              />
+              <div className="portrait-crop teacher-portrait portrait-khan">
+                <img
+                  src="/images/funkcamp-story/t1.png"
+                  alt="Khan"
+                  width="500"
+                  height="650"
+                  loading="lazy"
+                />
+              </div>
               <div className="teacher-copy">
                 <span className="eyebrow">02 / KOREA</span>
                 <h3>KHAN</h3>
@@ -404,13 +408,15 @@ export default function FunkcampStory() {
                   />
                 </g>
               </svg>
-              <img
-                src="/images/funkcamp-story/t2.png"
-                alt="P-Lock"
-                width="500"
-                height="650"
-                loading="lazy"
-              />
+              <div className="portrait-crop teacher-portrait portrait-plock">
+                <img
+                  src="/images/funkcamp-story/t2.png"
+                  alt="P-Lock"
+                  width="500"
+                  height="650"
+                  loading="lazy"
+                />
+              </div>
               <div className="teacher-copy">
                 <span className="eyebrow">03 / FRANCE</span>
                 <h3>P-LOCK</h3>
@@ -445,13 +451,15 @@ export default function FunkcampStory() {
                   />
                 </g>
               </svg>
-              <img
-                src="/images/funkcamp-story/t4.png"
-                alt="Funky Asparagus"
-                width="500"
-                height="650"
-                loading="lazy"
-              />
+              <div className="portrait-crop teacher-portrait portrait-asparagus">
+                <img
+                  src="/images/funkcamp-story/t4.png"
+                  alt="Funky Asparagus"
+                  width="500"
+                  height="650"
+                  loading="lazy"
+                />
+              </div>
               <div className="teacher-copy">
                 <span className="eyebrow">04 / SWEDEN</span>
                 <h3>
@@ -490,13 +498,15 @@ export default function FunkcampStory() {
                   />
                 </g>
               </svg>
-              <img
-                src="/images/funkcamp-story/t5.png"
-                alt="Willow"
-                width="500"
-                height="650"
-                loading="lazy"
-              />
+              <div className="portrait-crop teacher-portrait portrait-willow">
+                <img
+                  src="/images/funkcamp-story/t5.png"
+                  alt="Willow"
+                  width="500"
+                  height="650"
+                  loading="lazy"
+                />
+              </div>
               <div className="teacher-copy">
                 <span className="eyebrow">05 / FRANCE</span>
                 <h3>WILLOW</h3>
@@ -531,13 +541,15 @@ export default function FunkcampStory() {
                   />
                 </g>
               </svg>
-              <img
-                src="/images/funkcamp-story/t3.png"
-                alt="A-Train"
-                width="500"
-                height="650"
-                loading="lazy"
-              />
+              <div className="portrait-crop teacher-portrait portrait-atrain">
+                <img
+                  src="/images/funkcamp-story/t3.png"
+                  alt="A-Train"
+                  width="500"
+                  height="650"
+                  loading="lazy"
+                />
+              </div>
               <div className="teacher-copy">
                 <span className="eyebrow">06 / SWEDEN</span>
                 <h3>A-TRAIN</h3>
@@ -607,27 +619,42 @@ export default function FunkcampStory() {
           </div>
           <div className="final-lineup" aria-label="The Funkcamp 2027 teachers">
             <figure>
-              <img src="/images/funkcamp-story/t6.png" alt="Tony GoGo" />
+              <div className="portrait-crop lineup-portrait portrait-tony">
+                <img src="/images/funkcamp-story/t6.png" alt="Tony GoGo" />
+              </div>
               <figcaption>Tony GoGo</figcaption>
             </figure>
             <figure>
-              <img src="/images/funkcamp-story/t1.png" alt="Khan" />
+              <div className="portrait-crop lineup-portrait portrait-khan">
+                <img src="/images/funkcamp-story/t1.png" alt="Khan" />
+              </div>
               <figcaption>Khan</figcaption>
             </figure>
             <figure>
-              <img src="/images/funkcamp-story/t2.png" alt="P-Lock" />
+              <div className="portrait-crop lineup-portrait portrait-plock">
+                <img src="/images/funkcamp-story/t2.png" alt="P-Lock" />
+              </div>
               <figcaption>P-Lock</figcaption>
             </figure>
             <figure>
-              <img src="/images/funkcamp-story/t4.png" alt="Funky Asparagus" />
+              <div className="portrait-crop lineup-portrait portrait-asparagus">
+                <img
+                  src="/images/funkcamp-story/t4.png"
+                  alt="Funky Asparagus"
+                />
+              </div>
               <figcaption>Funky Asparagus</figcaption>
             </figure>
             <figure>
-              <img src="/images/funkcamp-story/t5.png" alt="Willow" />
+              <div className="portrait-crop lineup-portrait portrait-willow">
+                <img src="/images/funkcamp-story/t5.png" alt="Willow" />
+              </div>
               <figcaption>Willow</figcaption>
             </figure>
             <figure>
-              <img src="/images/funkcamp-story/t3.png" alt="A-Train" />
+              <div className="portrait-crop lineup-portrait portrait-atrain">
+                <img src="/images/funkcamp-story/t3.png" alt="A-Train" />
+              </div>
               <figcaption>A-Train</figcaption>
             </figure>
           </div>
