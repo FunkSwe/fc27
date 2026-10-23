@@ -1769,8 +1769,35 @@
 }
 
 @media (max-width: 800px) {
+  .story :global(.final-lineup figure) {
+    container-type: size;
+    min-height: 0;
+    align-items: center;
+  }
+
   .story :global(.lineup-portrait) {
-    height: calc(100% - 21px);
+    width: min(100%, calc((100cqh - 21px) * 0.8));
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .story :global(.final-lineup figure::before) {
+    inset: auto;
+    left: 50%;
+    bottom: 21px;
+    width: min(100cqw, calc((100cqh - 21px) * 0.8));
+    height: min(calc(100cqh - 21px), 125cqw);
+    translate: -50% 0;
+  }
+
+  .story :global(.final-lineup figcaption) {
+    flex-shrink: 0;
+    width: 100%;
+  }
+
+  .story :global(.final-lineup .portrait-plock) {
+    --portrait-scale: 1.06;
+    --portrait-top: -6%;
   }
 }
 .story :global(.stage::before) {

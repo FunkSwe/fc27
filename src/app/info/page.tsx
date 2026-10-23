@@ -209,6 +209,28 @@ export default function Info() {
         </article>
       </section>
 
+      <section className={styles.historyCard} aria-labelledby="locking-history-title">
+        <div>
+          <p className={styles.historyKicker}>Locking / Campbellocking</p>
+          <h2 id="locking-history-title">Wanna learn more about locking?</h2>
+          <p>
+            Curious about the dance and its roots? Explore locking / Campbellocking
+            history at{' '}
+            <a href="https://locking.se" target="_blank" rel="noopener noreferrer">
+              locking.se
+            </a>.
+          </p>
+        </div>
+        <a
+          className={styles.historyButton}
+          href="https://locking.se"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit locking.se <span aria-hidden="true">↗</span>
+        </a>
+      </section>
+
       <section className={styles.notice}>
         <h2>Get ready to get down!</h2>
         <p>

@@ -144,6 +144,74 @@
   background: #e9e4d6;
 }
 
+.historyCard {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  width: 100%;
+  margin: 1rem auto 0;
+  border: 3px solid #111;
+  background: rgba(255, 255, 255, 0.25);
+  padding: clamp(1.5rem, 4vw, 3rem);
+
+  > div {
+    flex: 1;
+    min-width: 0;
+  }
+
+  h2 {
+    max-width: 20ch;
+    margin: 1rem 0;
+    font: 400 clamp(2rem, 4.5vw, 4.5rem)/0.95 var(--font-archivo-black), sans-serif;
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+  }
+
+  p {
+    max-width: 60ch;
+    line-height: 1.5;
+  }
+
+  p a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: #c4121c;
+    }
+  }
+
+  a:focus-visible {
+    outline: 3px solid #c4121c;
+    outline-offset: 5px;
+  }
+}
+
+.historyKicker {
+  color: #c4121c;
+  font-family: var(--font-archivo-black), sans-serif;
+  text-transform: uppercase;
+}
+
+.historyButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-shrink: 0;
+  min-height: 52px;
+  border: 3px solid #111;
+  padding: 1rem 1.25rem;
+  background: #c4121c;
+  color: #e9e4d6;
+  box-shadow: 4px 4px 0 #111;
+  font-family: var(--font-archivo-black), sans-serif;
+
+  &:hover {
+    background: #111;
+  }
+}
+
 .notice {
   width: 100%;
   margin: 1rem auto 0;
@@ -171,6 +239,11 @@
 }
 
 @media (max-width: 900px) {
+  .historyCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .contentGrid {
     grid-template-columns: repeat(2, 1fr);
   }

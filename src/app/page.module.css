@@ -1,3 +1,50 @@
+.footerNav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  padding: 2.5rem clamp(1rem, 8vw, 8rem) 3rem;
+  border-top: 1px solid #17171730;
+  background: #e9e4d6;
+  color-scheme: light;
+}
+
+.footerNav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 88px;
+  padding: 1.25rem;
+  border: 3px solid #171717;
+  background: #e2141f;
+  color: #e9e4d6;
+  box-shadow: 5px 5px 0 #171717;
+  font: 400 clamp(1.25rem, 2.5vw, 2.5rem)/1 var(--font-archivo-black), sans-serif;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.footerNav a:hover {
+  background: #171717;
+}
+
+.footerNav a:focus-visible {
+  outline: 3px solid #171717;
+  outline-offset: 6px;
+}
+
+@media (max-width: 600px) {
+  .footerNav {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .footerNav a {
+    min-height: 72px;
+  }
+}
+
 .page {
   --background: #fafafa;
   --foreground: #fff;
