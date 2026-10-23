@@ -69,7 +69,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
 
-  color: #e2141f;
+  color: #c4121c;
   text-align: left;
   text-transform: uppercase;
   line-height: 1;
@@ -105,7 +105,7 @@
 
   margin: 0;
 
-  color: #e2141f;
+  color: #c4121c;
   font-family: var(--font-archivo-black), sans-serif;
   font-size: clamp(6rem, 16.5vw, 24rem);
   font-weight: 400;
@@ -169,7 +169,7 @@
 .number {
   margin: 0;
 
-  color: #e2141f;
+  color: #c4121c;
   font-family: var(--font-archivo-black), sans-serif;
   font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 400;
@@ -197,7 +197,7 @@
   span {
     display: block;
     width: 4px;
-    background: #e2141f;
+    background: #c4121c;
   }
 }
 
@@ -208,7 +208,7 @@
   margin-top: 1rem;
   padding: 0.85rem 1.35rem;
   border: 3px solid #000;
-  background: #e2141f;
+  background: #c4121c;
   color: #eedbbf;
   font-family: var(--font-archivo-black), sans-serif;
   font-size: clamp(1rem, 1.7vw, 1.55rem);

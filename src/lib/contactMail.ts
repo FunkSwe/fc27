@@ -65,7 +65,7 @@ export async function sendFunkcampContactQuestion({
     text: `New Funkcamp 2027 question\n\nName: ${fullName}\nEmail: ${email}\n\nQuestion:\n${message}`,
     html: `
       <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111;">
-        <h1 style="color:#e2141f;">New Funkcamp 2027 question</h1>
+        <h1 style="color:#c4121c;">New Funkcamp 2027 question</h1>
         <p><strong>Name:</strong> ${escapedName}</p>
         <p><strong>Email:</strong> <a href="mailto:${escapedEmail}">${escapedEmail}</a></p>
         <h2>Question</h2>

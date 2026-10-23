@@ -2,10 +2,13 @@ import Link from 'next/link';
 import { teacherData } from '@/data/teachers';
 import styles from './Info.module.scss';
 
+const venueQuery = encodeURIComponent('SKH, Brinellvägen 58, 114 28 Stockholm, Sweden');
+const venueMapUrl = `https://www.google.com/maps/search/?api=1&query=${venueQuery}`;
+
 export const metadata = {
   title: 'Information | Funkcamp 2027',
   description:
-    'Funkcamp 2027 dates, schedule and teachers. Contact us with camp questions or join the waiting list.',
+    'Plan your Funkcamp 2027 trip: dates, schedule, SKH venue and map, airport transfers and getting around Stockholm.',
 };
 
 export default function Info() {
@@ -20,6 +23,50 @@ export default function Info() {
         </p>
       </section>
 
+      <section className={`${styles.card} ${styles.venue}`} aria-labelledby="venue-heading">
+        <div className={styles.venueDetails}>
+          <h2 id="venue-heading">Venue</h2>
+          <p>
+            <strong>Saturday–Monday, 27–29 March</strong>
+          </p>
+          <p>
+            <strong>SKH — Stockholms konstnärliga högskola</strong>
+            <br />
+            Stockholm University of the Arts
+          </p>
+          <address>
+            Brinellvägen 58
+            <br />
+            114 28 Stockholm, Sweden
+          </address>
+          <p>
+            We&apos;ll be dancing at SKH&apos;s dance campus. The address for
+            Friday&apos;s kick-off is coming soon.
+          </p>
+          <div className={styles.venueLinks}>
+            <a
+              href="https://www.skh.se/english/about-skh/premises/brinellvagen-58/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit SKH&apos;s website
+            </a>
+            <a href={venueMapUrl} target="_blank" rel="noopener noreferrer">
+              Open venue in Google Maps
+            </a>
+          </div>
+          <p>On your phone? Tap the Google Maps link to find your way here.</p>
+        </div>
+        <iframe
+          className={styles.venueMap}
+          title="Google Maps: SKH dance campus, Brinellvägen 58, Stockholm"
+          src={`https://www.google.com/maps?q=${venueQuery}&output=embed`}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allowFullScreen
+        />
+      </section>
+
       <section className={styles.contentGrid}>
         <article className={styles.card}>
           <span>01</span>
@@ -32,37 +79,6 @@ export default function Info() {
 
         <article className={styles.card}>
           <span>02</span>
-          <h2>Location</h2>
-          <p>
-            <strong>Friday 26 March</strong>
-            <br />
-            TBA shortly
-          </p>
-          <p>
-            <strong>Saturday–Monday, 27–29 March</strong>
-            <br />
-            TBA shortly
-            {/*
-            Danscenter Fryshuset
-            <br />
-            Mårtensdalsgatan 2–8
-            <br />
-            120 30 Stockholm, Sweden
-            */}
-          </p>
-          {/*
-          <p>
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Danscenter%20Fryshuset%2C%20M%C3%A5rtensdalsgatan%202-8%2C%20120%2030%20Stockholm"
-            >
-              Click here to open in Google Maps
-            </a>
-          </p>
-          */}
-        </article>
-
-        <article className={styles.card}>
-          <span>03</span>
           <h2>Schedule</h2>
           <ul>
             <li>Friday 26 March: 17.30–20.30</li>
@@ -77,7 +93,79 @@ export default function Info() {
         </article>
 
         <article className={styles.card}>
+          <span>03</span>
+          <h2>Friday kick-off</h2>
+          <p>
+            On Friday 26 March, we&apos;ll kick things off with a lil&apos; sum
+            sum to get the weekend started. Come ready to get down, meet the
+            Funkcamp family and have some fun!
+          </p>
+          <p>The Friday venue address and more details are coming soon.</p>
+        </article>
+
+        <article className={styles.card}>
           <span>04</span>
+          <h2>Flying in</h2>
+          <p>
+            <strong>Stockholm Arlanda Airport (ARN)</strong> is the nearest major
+            international airport. The fastest way into town is the{' '}
+            <a href="https://www.arlandaexpress.com/" target="_blank" rel="noopener noreferrer">
+              Arlanda Express
+            </a>
+            , taking around 18 minutes to Stockholm Central Station.
+          </p>
+          <p>
+            Check their website for tickets and departures. Arlanda Express
+            requires a separate ticket from SL public transport.
+          </p>
+        </article>
+
+        <article className={styles.card}>
+          <span>05</span>
+          <h2>Around Stockholm</h2>
+          <p>
+            Use <strong>SL</strong> for the metro (tunnelbana), commuter trains
+            (pendeltåg), buses and trams. From Stockholm Central, follow the
+            signs to T-Centralen for the metro.
+          </p>
+          <p>
+            Plan your route in the SL app or on{' '}
+            <a href="https://sl.se/en/in-english" target="_blank" rel="noopener noreferrer">
+              SL&apos;s English website
+            </a>
+            . You can buy tickets in the app or use a contactless payment card.
+            Remember to tap your ticket or card when boarding or at the gates.
+          </p>
+          <p>
+            <a href="https://sl.se/en/getting-around" target="_blank" rel="noopener noreferrer">
+              SL travel information &amp; maps
+            </a>
+            <br />
+            <a href="https://sl.se/en/fares-and-tickets" target="_blank" rel="noopener noreferrer">
+              SL tickets &amp; travel passes
+            </a>
+          </p>
+        </article>
+
+        <article className={styles.card}>
+          <span>06</span>
+          <h2>Coming by train</h2>
+          <p>
+            Travelling from another city in Sweden? Check{' '}
+            <a href="https://www.sj.se/en" target="_blank" rel="noopener noreferrer">
+              SJ for train journeys and tickets
+            </a>{' '}
+            to Stockholm Central Station, then continue with SL for your journey
+            around town.
+          </p>
+          <p>
+            SJ is for travel between cities; SL is for local public transport.
+            Check which tickets you need for each part of your trip.
+          </p>
+        </article>
+
+        <article className={styles.card}>
+          <span>07</span>
           <h2>Teachers</h2>
           <ul>
             {teacherData.map((teacher) => (
@@ -89,7 +177,7 @@ export default function Info() {
         </article>
 
         <article className={styles.card}>
-          <span>05</span>
+          <span>08</span>
           <h2>Community</h2>
           <p>
             Funkcamp is built around locking, culture, history, connection and
@@ -98,7 +186,7 @@ export default function Info() {
         </article>
 
         <article className={styles.card}>
-          <span>06</span>
+          <span>09</span>
           <h2>Questions &amp; waiting list</h2>
           <p>
             Have questions about the camp? Send us a message through the{' '}
@@ -116,7 +204,13 @@ export default function Info() {
       </section>
 
       <section className={styles.notice}>
-        <h2>More info added closer to the camp</h2>
+        <h2>Get ready to get down!</h2>
+        <p>
+          We&apos;re looking forward to having you all in Stockholm for Funkcamp
+          2027. Bring your energy, your love for the dance and get ready for a
+          weekend of good music, connection and fun.
+        </p>
+        <p>More info will be added as we get closer to the camp. See you there!</p>
       </section>
     </main>
   );

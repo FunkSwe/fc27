@@ -12,7 +12,7 @@
 
   h2 {
     margin: 0;
-    color: #e2141f;
+    color: #c4121c;
     font-family: var(--font-archivo-black), sans-serif;
     font-size: clamp(3rem, 9vw, 8rem);
     line-height: 0.78;
@@ -59,7 +59,7 @@
 
   &:hover {
     transform: translateX(8px);
-    background: #e2141f;
+    background: #c4121c;
     color: #fff;
     border-color: #fff;
 
@@ -144,14 +144,14 @@
   font-family: var(--font-archivo-black), sans-serif;
   text-transform: uppercase;
   letter-spacing: -0.04em;
-  box-shadow: 5px 5px 0 #e2141f;
+  box-shadow: 5px 5px 0 #c4121c;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease;
 
   &:hover {
     transform: translate(3px, 3px);
-    box-shadow: 2px 2px 0 #e2141f;
+    box-shadow: 2px 2px 0 #c4121c;
   }
 }
 

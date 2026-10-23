@@ -20,7 +20,7 @@
 
   h1 {
     margin: 0;
-    color: #e2141f;
+    color: #c4121c;
     font-family: var(--font-archivo-black), sans-serif;
     font-size: clamp(2.75rem, 12vw, 11rem);
     font-weight: 400;
@@ -58,7 +58,7 @@
   align-content: start;
 
   span {
-    color: #e2141f;
+    color: #c4121c;
     font-family: var(--font-archivo-black), sans-serif;
     font-size: 1.4rem;
   }
@@ -96,21 +96,59 @@
     text-underline-offset: 3px;
 
     &:hover {
-      color: #e2141f;
+      color: #c4121c;
     }
 
     &:focus-visible {
-      outline: 3px solid #e2141f;
+      outline: 3px solid #c4121c;
       outline-offset: 3px;
     }
   }
 }
 
+.venue {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  grid-template-rows: auto;
+  align-items: stretch;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin: 0 auto 1rem;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  address {
+    margin: 1rem 0;
+    font-style: normal;
+    line-height: 1.5;
+  }
+}
+
+.venueDetails {
+  min-width: 0;
+}
+
+.venueLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.venueMap {
+  display: block;
+  width: 100%;
+  min-height: 360px;
+  height: 100%;
+  border: 3px solid #111;
+  background: #e9e4d6;
+}
+
 .notice {
   width: 100%;
   margin: 1rem auto 0;
-  border: 3px solid #e2141f;
-  background: #e2141f;
+  border: 3px solid #c4121c;
+  background: #c4121c;
   color: #e9e4d6;
   padding: clamp(1.5rem, 4vw, 3rem);
 
@@ -149,5 +187,13 @@
 
   .contentGrid {
     grid-template-columns: 1fr;
+  }
+
+  .venue {
+    grid-template-columns: 1fr;
+  }
+
+  .venueMap {
+    min-height: 300px;
   }
 }

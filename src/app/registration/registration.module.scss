@@ -22,7 +22,7 @@
 
   h1 {
     margin: 0;
-    color: #e2141f;
+    color: #c4121c;
     font-family: var(--font-archivo-black), sans-serif;
     font-size: clamp(2.75rem, 12vw, 11rem);
     font-weight: 400;
@@ -68,7 +68,7 @@
   }
 
   a:focus-visible {
-    outline: 3px solid #e2141f;
+    outline: 3px solid #c4121c;
     outline-offset: 4px;
   }
 }
@@ -97,12 +97,12 @@
   text-underline-offset: 3px;
 
   &:hover {
-    color: #e2141f;
+    color: #c4121c;
   }
 }
 
 .mapLink {
-  color: #e2141f;
+  color: #c4121c;
   overflow-wrap: anywhere;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -152,7 +152,7 @@
     letter-spacing: normal;
 
     &:focus-visible {
-      outline: 3px solid #e2141f;
+      outline: 3px solid #c4121c;
       outline-offset: 2px;
     }
   }
@@ -176,11 +176,11 @@
 
     &:hover:not(:disabled) {
       transform: translate(-2px, -2px);
-      background: #e2141f;
+      background: #c4121c;
     }
 
     &:focus-visible {
-      outline: 3px solid #e2141f;
+      outline: 3px solid #c4121c;
       outline-offset: 3px;
     }
 
@@ -224,7 +224,7 @@
   display: inline-block;
   max-width: 100%;
   margin: 0.5rem 0;
-  color: #e2141f;
+  color: #c4121c;
   font-weight: 900;
   overflow-wrap: anywhere;
   text-decoration: underline;
